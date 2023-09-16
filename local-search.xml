@@ -4,11 +4,38 @@
   
   
   <entry>
+    <title>微电子前沿技术-Lesson1</title>
+    <link href="/2023/09/16/%E5%BE%AE%E7%94%B5%E5%AD%90%E5%89%8D%E6%B2%BF%E6%8A%80%E6%9C%AF-Lesson1/"/>
+    <url>/2023/09/16/%E5%BE%AE%E7%94%B5%E5%AD%90%E5%89%8D%E6%B2%BF%E6%8A%80%E6%9C%AF-Lesson1/</url>
+    
+    <content type="html"><![CDATA[<h2 id="半导体器件">半导体器件</h2><h3 id="分类按产品">分类（按产品）</h3><ul><li>集成电路（比例：市场份额）<ul><li><strong>模拟芯片</strong>（15%）</li><li>数字芯片（85%）</li></ul></li><li>光电子</li><li>传感器</li><li>分立的器件</li></ul><h4 id="国内芯片设计公司产品领域分布">国内芯片设计公司产品领域分布</h4><ul><li>高点：消费类、通信</li><li>增长点：多媒体、计算机芯片</li><li>模拟芯片占比国内12.8%</li></ul><h3 id="模拟芯片">模拟芯片</h3><blockquote><p>*：市场份额最大的</p></blockquote><ul><li>信号链<ul><li>ADC、DAC</li><li>放大器、比较器（*）</li><li>接口芯片</li></ul></li><li>电源链（*）</li><li>射频前端</li></ul><h4 id="电源管理">电源管理</h4><h5 id="功能">功能</h5><ul><li>负责在电子设备系统中对电能进行变换、分配、检测以及其他电能指责的芯片</li><li>将源电压、电流转化为可被微处理器、传感器等负载使用的电源</li></ul><h5 id="分类">分类</h5><ul><li>开关电源（DC/DC，AC/DC）<ul><li>电荷泵-手机快充相关</li></ul></li><li>线性电源<ul><li><ahref="https://zhuanlan.zhihu.com/p/36101543">参考和开关电源的区别</a></li></ul></li><li>电池管理<ul><li>充电管理：手机最佳充电范围 (20%,80%）</li><li>电池保护：和电池管理芯片协同起作用</li></ul></li><li>电源开关<ul><li>负载开关：置于电池、电源和负载之间，只有在系统需要负载时才打开，从而最大限度地减少电力消耗</li><li>低侧开关、高侧开关：相对于外部负载，将半导体<em>开关</em>配置在上侧电路的叫作高边，配置在下侧电路叫作低边</li></ul></li><li>LED驱动</li><li>MOS驱动<ul><li>多应用于工业类的汽车等器件，控制电压率、速度</li></ul></li><li>电机驱动</li></ul><h2 id="reference">Reference</h2><section class="footnotes"><div class="footnote-list"><ol><li><span id="fn:1"class="footnote-text"><span>https://zhuanlan.zhihu.com/p/36101543<a href="#fnref:1" rev="footnote" class="footnote-backref">↩︎</a></span></span></li></ol></div></section>]]></content>
+    
+    
+    <categories>
+      
+      <category>PKU lessons</category>
+      
+      <category>PG-1</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>微电子</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>商业创新与金融战略-Lesson1</title>
     <link href="/2023/09/15/%E5%95%86%E4%B8%9A%E5%88%9B%E6%96%B0%E4%B8%8E%E9%87%91%E8%9E%8D%E6%88%98%E7%95%A5-Lesson1/"/>
     <url>/2023/09/15/%E5%95%86%E4%B8%9A%E5%88%9B%E6%96%B0%E4%B8%8E%E9%87%91%E8%9E%8D%E6%88%98%E7%95%A5-Lesson1/</url>
     
-    <content type="html"><![CDATA[<h2 id="新一代的金融业格局">新一代的金融业格局</h2><p>围绕霸权的三大斗争</p><ol><li><p>科技公司和金融机构：一键式的支付、充值、融资等综合金融服务</p></li><li><p>客户接触点、客户体验、维护客户关系</p></li><li><p>行业的秩序和格局的重定义</p></li></ol><h2 id="市场结构">市场结构</h2><p>结构可以分为4种类型</p><ol><li><p>完全竞争</p></li><li><p>垄断竞争</p></li><li><p>寡头垄断</p></li><li><p>完全垄断</p></li></ol><h2 id="商业模式">商业模式</h2><p><strong>定义：创造和传递客户价值的方式</strong></p><p><strong>价值链：创造和传递客户价值的过程流程</strong></p><h3 id="商业模式的创新">商业模式的创新</h3><h4 id="模仿">模仿</h4><ul><li>很多商业的产生都是模仿，模仿难易：制度 &gt; 产品 &gt; 战略 &gt; 商业模式</li></ul><h4 id="回归价值目标">回归价值目标</h4><ul><li>集中市场占有率</li><li>集中资源</li><li>集中管理效能</li></ul><h4 id="分析工具：创新板">分析工具：创新板</h4><center>    <img src="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/image-20230915204406290.png" alt="image-20230915204406290" style="zoom:33%;" />    <br>    商业模式的创新板</center><h4 id="案例-itune的创新板">案例: itune的创新板</h4><center>    <img src="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/202309152045519.png" alt="ipod的商业模式" style="zoom:50%;" />    <br>    ipod/itunes的创新板</center>]]></content>
+    <content type="html"><![CDATA[<h2 id="新一代的金融业格局">新一代的金融业格局</h2><p>围绕霸权的三大斗争</p><ol type="1"><li><p>科技公司和金融机构：一键式的支付、充值、融资等综合金融服务</p></li><li><p>客户接触点、客户体验、维护客户关系</p></li><li><p>行业的秩序和格局的重定义</p></li></ol><h2 id="市场结构">市场结构</h2><p>结构可以分为4种类型</p><ol type="1"><li><p>完全竞争</p></li><li><p>垄断竞争</p></li><li><p>寡头垄断</p></li><li><p>完全垄断</p></li></ol><h2 id="商业模式">商业模式</h2><p><strong>定义：创造和传递客户价值的方式</strong></p><p><strong>价值链：创造和传递客户价值的过程流程</strong></p><h3 id="商业模式的创新">商业模式的创新</h3><h4 id="模仿">模仿</h4><ul><li>很多商业的产生都是模仿，模仿难易：制度 &gt; 产品 &gt; 战略 &gt;商业模式</li></ul><h4 id="回归价值目标">回归价值目标</h4><ul><li>集中市场占有率</li><li>集中资源</li><li>集中管理效能</li></ul><h4 id="分析工具创新板">分析工具：创新板</h4><center><img src="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/image-20230915204406290.png" alt="image-20230915204406290" style="zoom:33%;" /><br> 商业模式的创新板</center><h4 id="案例-itune的创新板">案例: itune的创新板</h4><center><img src="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/202309152045519.png" alt="ipod的商业模式" style="zoom:50%;" /><br> ipod/itunes的创新板</center>]]></content>
     
     
     <categories>
