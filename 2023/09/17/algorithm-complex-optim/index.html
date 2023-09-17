@@ -1,0 +1,788 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/aidan.jpeg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Aidan Lew">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="总结的一些降低算法复杂度的奇技淫巧，持续更新">
+<meta property="og:type" content="article">
+<meta property="og:title" content="算法复杂度优化的技巧">
+<meta property="og:url" content="https://al-377.github.io/2023/09/17/algorithm-complex-optim/index.html">
+<meta property="og:site_name" content="Aidan Lew&#39;s Blog">
+<meta property="og:description" content="总结的一些降低算法复杂度的奇技淫巧，持续更新">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/image-20230917085731952.png">
+<meta property="article:published_time" content="2023-09-17T00:56:34.000Z">
+<meta property="article:modified_time" content="2023-09-17T01:17:43.652Z">
+<meta property="article:author" content="Aidan Lew">
+<meta property="article:tag" content="leetcode">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/image-20230917085731952.png">
+  
+  
+  
+  <title>算法复杂度优化的技巧 - Aidan Lew&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"al-377.github.io","root":"/","version":"1.9.5-a","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Aidan Lew&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于我</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/image-20230917085731952.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="算法复杂度优化的技巧"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-09-17 08:56" pubdate>
+          星期日, 九月 17日 2023, 8:56 早上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          <!-- compatible with older versions-->
+          4.4k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          <!-- compatible with older versions-->
+          37 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">算法复杂度优化的技巧</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="一移项法">一、移项法</h2>
+<p>●原理：
+所谓的移项法，就是将<mark>目标等式</mark>进行左右等价变化，辅助以哈希表/桶，从而减少类似<code>for(j:for(i))</code>的双层循环</p>
+<p>●效果： 将算法从 $ O(n^2) $ 复杂度降低为 $ O(n) $</p>
+<h3 id="使数组和能被p整除"><a
+target="_blank" rel="noopener" href="https://leetcode.cn/problems/make-sum-divisible-by-p/solutions/2158435/tao-lu-qian-zhui-he-ha-xi-biao-pythonjav-rzl0/">1590.使数组和能被P整除</a></h3>
+<h4 id="前置余数知识">前置余数知识</h4>
+<p>1、<code>( a + b ) % p = a % p + b % p</code></p>
+<p>2、假如<code>( x - y) % p == 0</code> 1.
+假设<code>x &gt;= 0,y &gt;= 0</code>, 则有 <code>x % p == y % p</code>
+2.
+假设上面的某一方<code>x &lt; 0</code>，则有<code>x % p + p == y % p</code></p>
+<h4 id="思路">思路</h4>
+<p>1、利用余数结论，计算<strong>前缀和对p的余数</strong>，则
+<code>s[n]</code>就表示整体sum对p的余数。</p>
+<p>2、则问题等价于找到 - 2.1、在前缀和数组上找到两个数
+<code>s[left]</code>和 <code>s[right]</code>，满足
+<code>right−left</code>最小且<code>(s[right]−s[left]) % p == s[n]</code>
+- 2.2、<mark>移项</mark>，<code>s[right]−s[n] % p == s[left]</code> -
+2.3、考虑可能出现正负<code>((s[right] − s[n]) % p + p) % p =  s[left]</code></p>
+<p>3、
+<mark>避免双层遍历找left和right：</mark>使用一个哈希，存储<code>s[i]</code>出现的最近下标</p>
+<p>4、遍历一遍，到了right，就找哈希里面是否存在left满足 =
+<code>((s[right] − s[n]) % p + p) % p</code></p>
+<h4 id="代码">代码</h4>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">minSubarray</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt; &amp;nums, <span class="hljs-type">int</span> p)</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-type">int</span> n = nums.<span class="hljs-built_in">size</span>(), ans = n, s[n + <span class="hljs-number">1</span>];<br>    s[<span class="hljs-number">0</span>] = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; n; ++i)<br>        s[i + <span class="hljs-number">1</span>] = (s[i] + nums[i]) % p;<br>    <span class="hljs-type">int</span> x = s[n];<br>    <span class="hljs-keyword">if</span> (x == <span class="hljs-number">0</span>)<br>        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>; <span class="hljs-comment">// 移除空子数组（这行可以不要）</span><br><br>    unordered_map&lt;<span class="hljs-type">int</span>, <span class="hljs-type">int</span>&gt; last;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt;= n; ++i)<br>    &#123;<br>        last[s[i]] = i;<br>        <span class="hljs-keyword">auto</span> it = last.<span class="hljs-built_in">find</span>((s[i] - x + p) % p);<br>        <span class="hljs-keyword">if</span> (it != last.<span class="hljs-built_in">end</span>())<br>            ans = <span class="hljs-built_in">min</span>(ans, i - it-&gt;second);<br>    &#125;<br>    <span class="hljs-keyword">return</span> ans &lt; n ? ans : <span class="hljs-number">-1</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="面试题-17.05.-字母与数字"><a
+target="_blank" rel="noopener" href="https://leetcode.cn/problems/find-longest-subarray-lcci/description/">面试题
+17.05. 字母与数字</a></h3>
+<h4 id="思路-1">思路</h4>
+<p>1、前缀计数：<code>left1[i]</code>记录到i位置的字母个数，<code>left2[j]</code>记录到j位置的数字个数</p>
+<p>2、思路1：暴力，$ O(n^2) $
+，看看什么位置满足<code>left1[j]-left1[i] ==  left2[j]-left2[i]</code>,找到最小的i</p>
+<p>3、思路2：<mark>移项</mark>，$ O(n) $
+，即找到<code>left1[j]-left2[j] ==  left1[i]-left2[i]</code>，那么用<code>map</code>保存当前差值<code>(left1[i]-left2[i])</code>出现的最早位置</p>
+<blockquote>
+<p>当然这题对字母、数字建模为-1，1。可以压缩空间到O(n);
+且用桶代替map的时间效率更高。 这里重点介绍移项的思想</p>
+</blockquote>
+<h4 id="代码-1">代码</h4>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function">vector&lt;string&gt; <span class="hljs-title">findLongestSubarray</span><span class="hljs-params">(vector&lt;string&gt; &amp;array)</span></span><br><span class="hljs-function"></span>&#123;<br>    unordered_map&lt;<span class="hljs-type">int</span>, <span class="hljs-type">int</span>&gt; uii;<br>    <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">left1</span><span class="hljs-params">(array.size() + <span class="hljs-number">1</span>, <span class="hljs-number">0</span>)</span></span>;<br>    <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">left2</span><span class="hljs-params">(array.size() + <span class="hljs-number">1</span>, <span class="hljs-number">0</span>)</span></span>;<br><br>    vector&lt;string&gt; ansv;<br>    <span class="hljs-type">int</span> ans = <span class="hljs-number">0</span>;<br>    pair&lt;<span class="hljs-type">int</span>, <span class="hljs-type">int</span>&gt; ansp = <span class="hljs-built_in">make_pair</span>(array.<span class="hljs-built_in">size</span>() + <span class="hljs-number">1</span>, array.<span class="hljs-built_in">size</span>() + <span class="hljs-number">1</span>);<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; array.<span class="hljs-built_in">size</span>(); i++)<br>    &#123;<br>        <span class="hljs-keyword">if</span> ((array[i][<span class="hljs-number">0</span>] &gt;= <span class="hljs-string">&#x27;A&#x27;</span> &amp;&amp; array[i][<span class="hljs-number">0</span>] &lt;= <span class="hljs-string">&#x27;Z&#x27;</span>) || (array[i][<span class="hljs-number">0</span>] &gt;= <span class="hljs-string">&#x27;a&#x27;</span> &amp;&amp; array[i][<span class="hljs-number">0</span>] &lt;= <span class="hljs-string">&#x27;z&#x27;</span>))<br>        &#123;<br>            left1[i + <span class="hljs-number">1</span>] = left1[i] + <span class="hljs-number">1</span>;<br>            left2[i + <span class="hljs-number">1</span>] = left2[i];<br>        &#125;<br>        <span class="hljs-keyword">else</span><br>        &#123;<br>            left1[i + <span class="hljs-number">1</span>] = left1[i];<br>            left2[i + <span class="hljs-number">1</span>] = left2[i] + <span class="hljs-number">1</span>;<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> j = <span class="hljs-number">0</span>; j &lt;= array.<span class="hljs-built_in">size</span>(); j++)<br>    &#123;<br>        <span class="hljs-type">int</span> tp = left1[j] - left2[j];<br>        <span class="hljs-keyword">if</span> (uii.<span class="hljs-built_in">find</span>(tp) != uii.<span class="hljs-built_in">end</span>())<br>        &#123;<br>            <span class="hljs-keyword">if</span> (j - uii[tp] + <span class="hljs-number">1</span> &gt; ans)<br>            &#123;<br>                ansp.first = uii[tp];<br>                ansp.second = j;<br>                ans = <span class="hljs-built_in">max</span>(ans, j - uii[tp] + <span class="hljs-number">1</span>);<br>            &#125;<br>            <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (j - uii[tp] + <span class="hljs-number">1</span> == ans &amp;&amp; uii[tp] &lt; ansp.first)<br>            &#123;<br>                ansp.first = uii[tp];<br>                ansp.second = j;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">else</span><br>        &#123;<br>            uii[tp] = j;<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">if</span> (ansp.first == array.<span class="hljs-built_in">size</span>() + <span class="hljs-number">1</span>)<br>        <span class="hljs-keyword">return</span> ansv;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = ansp.first; i &lt; ansp.second; i++)<br>    &#123;<br>        ansv.<span class="hljs-built_in">push_back</span>(array[i]);<br>        cout &lt;&lt; array[i] &lt;&lt; <span class="hljs-string">&quot; &quot;</span>;<br>    &#125;<br>    <span class="hljs-keyword">return</span> ansv;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="统计中位数为-k-的子数组"><a
+target="_blank" rel="noopener" href="https://leetcode.cn/problems/count-subarrays-with-median-k/description/">2488.
+统计中位数为 K 的子数组</a></h3>
+<h4 id="思路1">思路1</h4>
+<p>0、找到k所在的位置kInd</p>
+<p>1、写出<mark>目标表达式：</mark>: <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-comment">// 对于奇数长度的子序列：</span><br>「左侧小于 + 右侧小于 = 左侧大于 + 右侧大于」<br><span class="hljs-comment">//等价于</span><br>「左侧小于 - 左侧大于 = 右侧大于 - 右侧小于」<br><br><span class="hljs-comment">// 对于偶数长度的子序列：</span><br>「左侧小于 + 右侧小于 + <span class="hljs-number">1</span> = 左侧大于 + 右侧大于」<br><span class="hljs-comment">//等价于</span><br>「左侧小于 - 左侧大于 = 右侧大于 - 右侧小于 - <span class="hljs-number">1</span>」<br><br></code></pre></td></tr></table></figure>
+2、统计kInd左右侧，每个位置到kInd这段子数组中，小于、大于K值的位置数，分别记为smallK、bigK；</p>
+<p>3、用一个哈希记录左侧每个位置的smallK -
+bigK位置数、右侧bigK-smallK的位置数，然后同时开第2个维度，记录位置的距离kInd的奇、偶。</p>
+<p>4、之后根据不同位置距离kInd的奇数、偶数，可以得到子序列的奇偶，也就可以使用步骤1中的目标表达式，具体见下面代码</p>
+<h4 id="思路2"><mark>思路2：</mark></h4>
+<p>参考：灵神的神级建模，见<a
+target="_blank" rel="noopener" href="https://leetcode.cn/problems/count-subarrays-with-median-k/solutions/1993439/deng-jie-zhuan-huan-pythonjavacgo-by-end-5w11/">原题解</a></p>
+<h4 id="代码-2">代码</h4>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">// （思路1）</span><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">countSubarrays</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt; &amp;nums, <span class="hljs-type">int</span> k)</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-type">int</span> ans = <span class="hljs-number">0</span>;<br>    <span class="hljs-type">int</span> kInd = <span class="hljs-number">-1</span>;<br>    <span class="hljs-type">int</span> bigK;<br>    <span class="hljs-type">int</span> smallK;<br>    unordered_map&lt;<span class="hljs-type">int</span>, vector&lt;<span class="hljs-type">int</span>&gt;&gt; leftH;<br>    unordered_map&lt;<span class="hljs-type">int</span>, vector&lt;<span class="hljs-type">int</span>&gt;&gt; rightH;<br><br>    set&lt;<span class="hljs-type">int</span>&gt; hasPos;<br><br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; nums.<span class="hljs-built_in">size</span>(); i++)<br>        <span class="hljs-keyword">if</span> (nums[i] == k)<br>            kInd = i;<br>    <span class="hljs-type">int</span> i = kInd - <span class="hljs-number">1</span>, j = kInd + <span class="hljs-number">1</span>;<br><br>    leftH[<span class="hljs-number">0</span>] = &#123;<span class="hljs-number">1</span>, <span class="hljs-number">0</span>&#125;;<br>    rightH[<span class="hljs-number">0</span>] = &#123;<span class="hljs-number">1</span>, <span class="hljs-number">0</span>&#125;;<br>    smallK = <span class="hljs-number">0</span>;<br>    bigK = <span class="hljs-number">0</span>;<br>    hasPos.<span class="hljs-built_in">insert</span>(<span class="hljs-number">0</span>);<br>    <span class="hljs-comment">// 统计</span><br>    <span class="hljs-keyword">while</span> (i &gt;= <span class="hljs-number">0</span>)<br>    &#123;<br>        <span class="hljs-keyword">if</span> (nums[i] &lt; k)<br>        &#123;<br>            smallK++;<br>        &#125;<br>        <span class="hljs-keyword">else</span><br>        &#123;<br>            bigK++;<br>        &#125;<br>        <span class="hljs-keyword">if</span> (leftH.<span class="hljs-built_in">find</span>(smallK - bigK) == leftH.<span class="hljs-built_in">end</span>())<br>        &#123;<br>            vector&lt;<span class="hljs-type">int</span>&gt; tp = &#123;<span class="hljs-number">0</span>, <span class="hljs-number">0</span>&#125;;<br>            tp[(kInd - i) % <span class="hljs-number">2</span>] = <span class="hljs-number">1</span>;<br>            leftH[smallK - bigK] = tp;<br>        &#125;<br>        <span class="hljs-keyword">else</span><br>        &#123;<br>            leftH[smallK - bigK][(kInd - i) % <span class="hljs-number">2</span>]++;<br>        &#125;<br>        i--;<br>    &#125;<br>    smallK = <span class="hljs-number">0</span>;<br>    bigK = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">while</span> (j &lt; nums.<span class="hljs-built_in">size</span>())<br>    &#123;<br><br>        <span class="hljs-keyword">if</span> (nums[j] &lt; k)<br>        &#123;<br>            smallK++;<br>        &#125;<br>        <span class="hljs-keyword">else</span><br>        &#123;<br>            bigK++;<br>        &#125;<br><br>        <span class="hljs-keyword">if</span> (rightH.<span class="hljs-built_in">find</span>(bigK - smallK) == rightH.<span class="hljs-built_in">end</span>())<br>        &#123;<br>            vector&lt;<span class="hljs-type">int</span>&gt; tp = &#123;<span class="hljs-number">0</span>, <span class="hljs-number">0</span>&#125;;<br>            tp[(j - kInd) % <span class="hljs-number">2</span>] = <span class="hljs-number">1</span>;<br>            rightH[bigK - smallK] = tp;<br>        &#125;<br>        <span class="hljs-keyword">else</span><br>        &#123;<br>            rightH[bigK - smallK][(j - kInd) % <span class="hljs-number">2</span>]++;<br>        &#125;<br>        hasPos.<span class="hljs-built_in">insert</span>(bigK - smallK);<br>        j++;<br>    &#125;<br><br>    <span class="hljs-comment">// hash统计位置数</span><br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> pos : hasPos)<br>    &#123;<br>        <span class="hljs-keyword">if</span> (leftH.<span class="hljs-built_in">find</span>(pos) != leftH.<span class="hljs-built_in">end</span>())<br>        &#123;<br>            <span class="hljs-type">int</span> rOu = rightH[pos][<span class="hljs-number">0</span>];<br>            <span class="hljs-type">int</span> lOu = leftH[pos][<span class="hljs-number">0</span>];<br>            <span class="hljs-type">int</span> rJi = rightH[pos][<span class="hljs-number">1</span>];<br>            <span class="hljs-type">int</span> lJi = leftH[pos][<span class="hljs-number">1</span>];<br>            ans += rOu * lOu;<br>            ans += rJi * lJi;<br>        &#125;<br>        <span class="hljs-keyword">if</span> (leftH.<span class="hljs-built_in">find</span>(pos - <span class="hljs-number">1</span>) != leftH.<span class="hljs-built_in">end</span>())<br>        &#123;<br>            ans += rightH[pos][<span class="hljs-number">0</span>] * leftH[pos - <span class="hljs-number">1</span>][<span class="hljs-number">1</span>];<br>            ans += rightH[pos][<span class="hljs-number">1</span>] * leftH[pos - <span class="hljs-number">1</span>][<span class="hljs-number">0</span>];<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> ans;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="二剪枝">二、剪枝</h2>
+<p>●原理：
+广义的剪枝法，就是将没有必要的搜索空间直接跳过，常见于递归问题。但要建立一个剪枝的思想，在各类问题中都适用，<mark>不局限于递归、搜索树。</mark></p>
+<p>●效果： 将算法进行不同程度优化</p>
+<h3 id="最大网络秩"><a
+target="_blank" rel="noopener" href="https://leetcode.cn/problems/maximal-network-rank/description/">1615.
+最大网络秩</a></h3>
+<p>参考(关注思路2的分类讨论)：<a
+target="_blank" rel="noopener" href="https://leetcode.cn/problems/maximal-network-rank/solutions/2167846/zui-da-wang-luo-zhi-by-leetcode-solution-x4gx/">leetcode官方题解</a></p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/" class="category-chain-item">基础算法</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/leetcode/" class="print-no-link">#leetcode</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>算法复杂度优化的技巧</div>
+      <div>https://al-377.github.io/2023/09/17/algorithm-complex-optim/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Aidan Lew</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年9月17日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/09/17/multi-thread/" title="多线程编程">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">多线程编程</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/09/17/old-blog-package-deploy/" title="旧博客打包部署流程">
+                        <span class="hidden-mobile">旧博客打包部署流程</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+  <script>
+  Fluid.utils.createScript('https://lib.baomitu.com/mermaid/8.14.0/mermaid.min.js', function() {
+    mermaid.initialize({"theme":"default"});
+
+    Fluid.utils.listenDOMLoaded(function() {
+      Fluid.events.registerRefreshCallback(function() {
+        if ('mermaid' in window) {
+          mermaid.init();
+        }
+      });
+    });
+  });
+</script>
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
