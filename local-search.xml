@@ -4,6 +4,37 @@
   
   
   <entry>
+    <title>操作系统与虚拟化安全-OS基础</title>
+    <link href="/2023/09/18/OS-Virtualization-Security-lesson2-md/"/>
+    <url>/2023/09/18/OS-Virtualization-Security-lesson2-md/</url>
+    
+    <content type="html"><![CDATA[<h2 id="cpu管理">CPU管理</h2><h3 id="进程调度">进程调度</h3><h4 id="意义">意义</h4><p>​ 线程-资源分配、保护的基本单位</p><h4 id="攻击点">攻击点</h4><ul><li><p>进程调度优先级控制：拒绝服务</p></li><li><p>cpu时间窃取</p></li></ul><h3 id="中断管理">中断管理</h3><h4 id="定义">定义</h4><p><img src="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/image-20230918085040730.png" alt="中断定义" style="zoom: 50%;" /></p><h4 id="功能">功能</h4><ul><li>实现多道程序设计与并发执行的基础和必要条件</li><li>将CPU（也作为一种资源）分派给不同的进程而实现并发执行</li></ul><h4 id="中断源">中断源</h4><ul><li>中断时机</li></ul><p><img src="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/image-20230918085510940.png" alt="image-20230918085510940" style="zoom: 33%;" /></p><h2 id="存储管理">存储管理</h2><h3 id="功能-1">功能</h3><ul><li>分配：给用户程序分配运行空间</li><li>扩充：虚拟存储</li><li>保护：隔离不同的用户程序</li><li>共享：用户程序公用数据</li></ul><h3 id="存储体系">存储体系</h3><ul><li>在cache层次解密，提高安全等级</li></ul><p><img src="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/image-20230918085756979.png" alt="image-20230918085756979" style="zoom:33%;" /></p><h2 id="设备管理">设备管理</h2><p>解决不同类型的设备协同</p><h3 id="设备类型">设备类型</h3><h4 id="按资源的占用">按资源的占用</h4><ul><li><p>独占设备：一个时间仅允许一个进程</p></li><li><p>共享设备</p></li><li><p>虚设备</p><ul><li>共享模拟独占</li><li>高速模拟低速</li><li>慢速模拟共享：提高利用率</li></ul></li></ul><h4 id="按数据访问方式">按数据访问方式</h4><ul><li>块设备：常用缓冲-填满再一并处理</li><li>字符设备</li><li>网络设备：by BSD套接口socket</li></ul><h2 id="文件管理">文件管理</h2><h3 id="文件系统">文件系统</h3><p>操纵和管理文件的整套设施</p><h4 id="分类">分类</h4><blockquote><p>下面的数值-文件存储最小单元，即新建文件的初始大小</p></blockquote><ul><li>FAT：32kb</li><li>FAT32：4kb</li><li>NTFS：4kb</li></ul><p>不同的文件系统设计、<strong>对加密的支持不同</strong></p><p><ahref="https://learn.microsoft.com/zh-CN/troubleshoot/windows-client/backup-and-storage/fat-hpfs-and-ntfs-file-systems">对比FAT和NTFS的特点、优缺</a></p><h3 id="文件目录">文件目录</h3><ul><li>对于不同层级的路径进行权限管理、监测</li></ul><p><img src="/Users/aidanlew/Library/Application Support/typora-user-images/image-20230918092242609.png" alt="image-20230918092242609" style="zoom: 33%;" /></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>PKU lessons</category>
+      
+      <category>PG-1</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>OS</tag>
+      
+      <tag>Virtualization</tag>
+      
+      <tag>Security</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>多线程编程</title>
     <link href="/2023/09/17/multi-thread/"/>
     <url>/2023/09/17/multi-thread/</url>
