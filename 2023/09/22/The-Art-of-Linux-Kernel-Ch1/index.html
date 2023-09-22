@@ -16,26 +16,24 @@
   <meta name="author" content="Aidan Lew">
   <meta name="keywords" content="">
   
-    <meta name="description" content="操作系统的内核知识">
+    <meta name="description" content="《Linux内核设计的艺术》- 第一章：从开机到main">
 <meta property="og:type" content="article">
-<meta property="og:title" content="操作系统与虚拟化安全-内核导论">
-<meta property="og:url" content="https://al-377.github.io/2023/09/18/OS-Virtualization-Security-lesson3-md/index.html">
+<meta property="og:title" content="《The Art of Linux Kernel》- Ch1">
+<meta property="og:url" content="https://al-377.github.io/2023/09/22/The-Art-of-Linux-Kernel-Ch1/index.html">
 <meta property="og:site_name" content="Aidan Lew&#39;s Blog">
-<meta property="og:description" content="操作系统的内核知识">
+<meta property="og:description" content="《Linux内核设计的艺术》- 第一章：从开机到main">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/image-20230915122823399.png">
-<meta property="article:published_time" content="2023-09-18T01:36:21.000Z">
-<meta property="article:modified_time" content="2023-09-18T05:23:18.688Z">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/202309221405907.png">
+<meta property="article:published_time" content="2023-09-22T06:00:52.000Z">
+<meta property="article:modified_time" content="2023-09-22T08:51:18.126Z">
 <meta property="article:author" content="Aidan Lew">
 <meta property="article:tag" content="OS">
-<meta property="article:tag" content="Virtualization">
-<meta property="article:tag" content="Security">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/image-20230915122823399.png">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/202309221405907.png">
   
   
   
-  <title>操作系统与虚拟化安全-内核导论 - Aidan Lew&#39;s Blog</title>
+  <title>《The Art of Linux Kernel》- Ch1 - Aidan Lew&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -195,13 +193,13 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/image-20230915122823399.png') no-repeat center center; background-size: cover;">
+     style="background: url('https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/202309221405907.png') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="操作系统与虚拟化安全-内核导论"></span>
+            <span id="subtitle" data-typed-text="《The Art of Linux Kernel》- Ch1"></span>
           
         </div>
 
@@ -212,8 +210,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-09-18 09:36" pubdate>
-          星期一, 九月 18日 2023, 9:36 上午
+        <time datetime="2023-09-22 14:00" pubdate>
+          星期五, 九月 22日 2023, 2:00 下午
         </time>
       </span>
     
@@ -225,7 +223,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          2.2k 字
+          1.9k 字
         
       </span>
     
@@ -237,7 +235,7 @@
         
         
           <!-- compatible with older versions-->
-          19 分钟
+          17 分钟
         
       </span>
     
@@ -282,194 +280,143 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">操作系统与虚拟化安全-内核导论</h1>
+            <h1 id="seo-header">《The Art of Linux Kernel》- Ch1</h1>
             
             
               <div class="markdown-body">
                 
-                <p><a target="_blank" rel="noopener" href="https://www.kernel.org/**">配合内核代码结构理解</a></p>
-<p><strong>安全工作重点关注：</strong>不同子组件的系统调用，pool</p>
-<h2 id="内核结构">内核结构</h2>
-<p><img src="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/image-20230918093945084.png" srcset="/img/loading.gif" lazyload alt="程序调用内核协同" style="zoom:50%;" /></p>
-<h3 id="内核代码结构">内核代码结构</h3>
-<blockquote>
-<p><strong>linux
-4.19内核代码</strong>：https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/tree/?h=v4.19.294</p>
+                <blockquote>
+<p>版本：Linux 0.11</p>
+<p>硬件：IA-32 CPU、16MB
+内存（2MB作为虚拟内存）、BIOS中设置软驱作为启动</p>
+<p>（软盘相当于一种可移动的外部存储设备，由于读取速度慢、容量小等原因，目前已经被其他更高效、容量更大的外部存储设备所替代）</p>
 </blockquote>
-<p>init：开机启动</p>
-<ul>
-<li>https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/tree/init?h=v4.19.294</li>
-</ul>
-<p>kernel：进程管理和调度</p>
-<ul>
-<li>https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/tree/kernel?h=v4.19.294</li>
-<li>fork.c等等</li>
-</ul>
-<p>ipc：进程通信</p>
-<ul>
-<li>https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/tree/ipc?h=v4.19.294</li>
-</ul>
-<p>fs：文件系统</p>
-<ul>
-<li>https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/tree/fs?h=v4.19.294</li>
-<li>vfs是抽象层次封装的文件系统，便于扩展</li>
-<li>鸿蒙的文件系统就是在vfs下实现的分布式文件系统</li>
-</ul>
-<p>include：数据结构的实现</p>
-<p>security：安全部分代码</p>
-<ul>
-<li>https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/tree/security?h=v4.19.294</li>
-<li>比如se linux等模块</li>
-</ul>
-<h3 id="文件子系统">文件子系统</h3>
-<h4 id="功能">功能</h4>
-<ul>
-<li>分配文件空间</li>
-<li>管理空闲空间</li>
-<li>控制对文件的存取</li>
-<li>为用户检索数据</li>
-</ul>
-<h4 id="系统调用">系统调用</h4>
-<ul>
-<li>open, creat, close, read, write, state, chown, chmod, link, unlink,
-mount, umount</li>
-</ul>
-<h3 id="进程控制子系统">进程控制子系统</h3>
-<h4 id="功能-1">功能</h4>
-<ul>
-<li>进程同步</li>
-<li>进程间通信</li>
-<li>存储管理</li>
-<li>进程调度</li>
-</ul>
-<h4 id="系统调用-1">系统调用</h4>
-<ul>
-<li>fork, exec, execve, setuid, exit, kill, wait, brk</li>
-</ul>
-<h3 id="硬件控制">硬件控制</h3>
-<h4 id="功能-2">功能</h4>
-<ul>
-<li>负责处理中断及与机器通信</li>
-</ul>
-<h2 id="文件的内容表示">文件的内容表示</h2>
-<h3 id="inode-table">inode table</h3>
+<h2 id="通电---main">通电 -&gt; main</h2>
 <blockquote>
-<p>include/inode.c</p>
+<p>通电-&gt;BIOS启动-&gt;内存中加载中断向量表、中断服务程序-&gt;32位模式</p>
 </blockquote>
-<h4 id="内容">内容</h4>
+<h3 id="bios启动">1、BIOS启动</h3>
+<h4 id="找到bios">找到BIOS</h4>
 <ul>
-<li><p>包含文件所有者、存取权限、及其存取时间等信息</p></li>
-<li><p><strong>后期做安全权限控制修改的部分</strong></p></li>
+<li>CPU硬件逻辑实现：CS=0xF000 IF=0xFFF0</li>
+<li>BIOS的地址位置：0xFFFF0，固化在主机版的ROM中</li>
 </ul>
-<h4 id="文件索引过程">文件索引过程</h4>
+<p><img src="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/image-20230922144002551.png" srcset="/img/loading.gif" lazyload alt="开电时，BIOS的状态" style="zoom:33%;" /></p>
+<h4
+id="bios加载中断向量表中断服务程序">BIOS加载中断向量表、中断服务程序</h4>
 <ul>
-<li>内核每次分析文件名中的<strong>一个分量</strong>，检查该进程是否有权检索路径中的目录</li>
-<li>并且最终检索到该文件所对应的索引节点。如：<code>open(“/fs2/mjb/rje/sourcefile”,1);</code></li>
+<li>启动BIOS以后，开始监测显卡、内存等等，最重要开始加载中断向量表、中断服务程序</li>
 </ul>
-<h4 id="文件创建操作过程">文件创建、操作过程</h4>
+<p><img src="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/image-20230922144618617.png" srcset="/img/loading.gif" lazyload alt="image-20230922144618617" style="zoom:33%;" /></p>
 <ul>
-<li>当一个进程建立一个新文件时，内核分配给它一个尚未使用的索引节点，索引节点被存储在文件系统中(即磁盘索引节点表）</li>
-<li>但是当操作文件时，内核将它们读到内存索引节点表中，即：对系统中的每个活动的文件（被某个进程打开了），内存中索引节点表都包含一个条目</li>
+<li>每个中断向量都指向对应的中断服务程序（实模式的中断机制）</li>
+<li>256个中断向量，每个4字节，2字节IP的值，2字节是CS的值</li>
+</ul>
+<h3 id="加载操作系统内核程序">2、加载操作系统内核程序</h3>
+<blockquote>
+<p>分批从软盘的不同扇区加载所有的操作系统程序到内存，为保护模式准备</p>
+</blockquote>
+<h4 id="加载第一批内核代码bootsect">加载第一批内核代码：bootsect</h4>
+<ul>
+<li>硬件设计+BIOS，出现一个int
+0x19中断，对应找到对应的中断服务程序，这个服务程序的作用是将第一扇区的程序加载</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/image-20230922150911622.png" srcset="/img/loading.gif" lazyload alt="image-20230922150911622" style="zoom:33%;" /></p>
+<ul>
+<li>第一扇区（boot
+sector）内对应的程序就是引导程序：bootsect（512B）</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/image-20230922151502051.png" srcset="/img/loading.gif" lazyload alt="image-20230922151502051" style="zoom:33%;" /></p>
+<ul>
+<li>至此，从启动电脑终于接触到了linux操作系统自己的代码（一段汇编），加载到了内存中</li>
 </ul>
 <h4
-id="对比磁盘索引节点表内存索引节点表">对比：磁盘索引节点表、内存索引节点表</h4>
+id="讨论对于不同操作系统如何同样方式加载">讨论：对于不同操作系统，如何同样方式加载？</h4>
+<p>BIOS是写在主机板ROM上的，不管操作系统是啥，对于不同的操作系统类型，采用同样方式加载：</p>
+<ol type="1">
+<li>BIOS接到启动os的指定，固定从启动扇区把程序加载到0x07C00</li>
+<li>操作系统的第一段程序固定放在软盘0盘面0磁道1扇区</li>
+</ol>
+<h4 id="第二部分内核代码setup">第二部分内核代码：setup</h4>
+<p>boosect的任务是继续加载第二、三批的内核代码，采取以下步骤：</p>
+<h5 id="规划内存key-in-os">（1）规划内存（key in os）</h5>
 <ul>
-<li>磁盘索引节点</li>
+<li>确保不同的程序、数据不会重叠，有足够的空间安身立命</li>
 </ul>
-<p><img src="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/image-20230918102004538.png" srcset="/img/loading.gif" lazyload alt="磁盘索引节点内容" style="zoom: 50%;" /></p>
+<p><img src="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/image-20230922153024041.png" srcset="/img/loading.gif" lazyload alt="image-20230922153024041" style="zoom:33%;" /></p>
+<h5 id="复制bootsect到新的位置">（2）复制bootsect到新的位置</h5>
 <ul>
-<li>内存索引节点
+<li><p>现在CPU的CS指向的就是BOOTSEG</p></li>
+<li><p>bootsect把自身从BOOTSEG复制到INITSEG（pool）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs 56">start:<br>  mov ax，#BOOTSEG<br>  mov ds,ax<br>  mov ax，#INITSEG<br>  mov es,ax<br>  mov cx,#256  (256字就是512B)<br>  sub si,si<br>  sub di,di<br>  rep<br>  movw<br> <br></code></pre></td></tr></table></figure></li>
+<li><p>bootsect直接可以跳转到INITSEG执行了（相当于原来的BOOTSEG位置是约定的位置，不是自己规划的位置），这个时候开始完全摆脱BIOS，根据自己的安排执行</p></li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/image-20230922161104507.png" srcset="/img/loading.gif" lazyload alt="image-20230922161104507" style="zoom:33%;" /></p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs vim">jmpi <span class="hljs-keyword">go</span>，INITSEG   ！这行之前bootsect已经复制过去到了INITSEG，程序跳转到INITSEG执行了<br><span class="hljs-keyword">go</span>: mov ax, <span class="hljs-keyword">cs</span>	  ！在INITSEG新的位置继续执行bootsect代码<br></code></pre></td></tr></table></figure>
+<p><img src="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/image-20230922161722859.png" srcset="/img/loading.gif" lazyload alt="image-20230922161722859" style="zoom:33%;" /></p>
 <ul>
-<li><img src="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/image-20230918102202300.png" srcset="/img/loading.gif" lazyload alt="内存索引节点" style="zoom: 50%;" /></li>
-<li>引用数：open文件的进程数</li>
-<li>内核函数：
+<li>代码整体位置变了，所以代码各个段（寄存器）也会发生变化
 <ul>
-<li>iget 分配一个索引节点的内存拷贝</li>
-<li>iput 释放一个索引节点的内存拷贝</li>
-<li>namei 把路径名转换为索引节点</li>
-<li>ialloc 把一个磁盘索引节点分配给一个新建立的文件</li>
-<li>ifree 释放一个磁盘索引节点</li>
+<li>SS（Stack segment）：指向栈段</li>
+<li>SP（Stack pointer）：栈顶指针</li>
 </ul></li>
-</ul></li>
+</ul>
+<h5 id="加载setup程序">（3）加载setup程序</h5>
+<ul>
+<li>int 0x13中断，指向磁盘服务程序</li>
+<li>和加载bootect时候的0x19中断不同，0x19对应的服务程序是BIOS执行的，但现在是bootsect执行0x13指向的程序</li>
+<li>0x19对应的服务程序写死，将第一扇区的程序加载到0x07C00，而0x13的程序可以指定扇区的代码加载到指定位置，开始要<strong>传参</strong>了</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/image-20230922162147780.png" srcset="/img/loading.gif" lazyload alt="image-20230922162147780" style="zoom: 33%;" /></p>
+<ul>
+<li><p>注意此时已经加载5个扇区，且setup.s会加载到INITSEG的位置</p>
+<p><img src="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/image-20230922162942831.png" srcset="/img/loading.gif" lazyload alt="image-20230922162942831" style="zoom:33%;" /></p></li>
 </ul>
 <h4
-id="对比文件表file-table用户文件描述符表user-file-descriptor-table内存索引节点">对比：文件表(file
-table)、用户文件描述符表(user file descriptor table)、内存索引节点</h4>
+id="加载第三部分内核代码system模块">加载第三部分内核代码：system模块</h4>
 <ul>
-<li><p>文件表</p>
-<blockquote>
-<p>include/file结构体</p>
-</blockquote>
-<ul>
-<li>linux内核里全局表，所有进程共享（内核唯一）</li>
-<li>其中的一个条目《=》内核里all进程的open
-<ul>
-<li>文件偏移量</li>
-<li>访问模式（读、写、or 读-写）</li>
-<li>指向它的文件描述符表的条目计数</li>
-</ul></li>
-</ul></li>
-<li><p>用户文件描述符表</p>
-<blockquote>
-<p>files_struct 结构体</p>
-</blockquote>
-<ul>
-<li>记录某进程所有打开的文件（进程唯一）</li>
-<li>每个进程用一个fs_struct结构体来描述<strong>进程的当前工作目录</strong>及其<strong>所在文件系统根目录下的索引节点</strong></li>
-<li>理解图1：由于文件表条目存储了访问模式（当前读写位置），所以由于A、B进程中对同一个位置的访问模式不同，所以指向不同的文件表条目。</li>
-<li>理解图2：假设B是一个A打开文件以后fork的进程，对应后面的图，不需要再开一个新的文件表条目</li>
-</ul></li>
+<li><p>still用0x13的中断</p>
+<p><img src="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/image-20230922163259030.png" srcset="/img/loading.gif" lazyload alt="image-20230922163259030" style="zoom:33%;" /></p></li>
+<li><p>这次加载240个扇区，由bootsect的read_it完成，加载到SYSSEG之后</p>
+<p><img src="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/image-20230922163439978.png" srcset="/img/loading.gif" lazyload alt="image-20230922163439978" style="zoom:33%;" /></p></li>
 </ul>
-<p><img src="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/image-20230918103220916.png" srcset="/img/loading.gif" lazyload alt="理解三张表的关系" style="zoom:33%;" /></p>
-<p><img src="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/image-20230918103902793.png" srcset="/img/loading.gif" lazyload alt="image-20230918103902793" style="zoom:33%;" /></p>
-<h2 id="进程的结构">进程的结构</h2>
-<h3 id="数据结构">数据结构</h3>
+<h4
+id="bootsect收尾工作检查根设备号">Bootsect收尾工作：检查根设备号</h4>
 <ul>
-<li>标识号：唯一标识一个进程，用组号标识、用户标识来确定权限
-<ul>
-<li>真正用户/组标识号：uid，gid</li>
-<li>有效用户/组标识号：euid，egid（真正有效的一组），pool</li>
-</ul></li>
-<li>状态信息：进程当前的状态</li>
-<li>调度信息：如计数器、优先级、调度策略、实时优先级</li>
-<li>通信信息：
-<ul>
-<li>如信号Signals，管道Pipes，以及内存共享shared memory,
-信号量semaphore, 消息队列 Message Queues</li>
-<li>进程接到的信号、信号掩码、信号处理函数、为避免死锁而在信号量上设置的取消操作、与信号量相关的等待队列</li>
-</ul></li>
-<li>进程链接信息：
-<ul>
-<li>进程树中的位置（父子关系、兄弟关系）</li>
-<li>运行队列的位置</li>
-</ul></li>
-<li>时间和定时器</li>
-<li>文件系统信息
-<ul>
-<li>可执行映像所对应根目录、当前目录的指针（<code>struct fs_struct *fs</code>）</li>
-<li>打开的文件的描述符（<code>struct files_struct *files</code>）</li>
-</ul></li>
-<li>相关上下文信息
-<ul>
-<li>虚拟内存与物理内存之间的映射信息</li>
-<li>和处理器相关的环境信息，如寄存器、堆栈信息，在进程暂停、恢复是保存和恢复其状态</li>
-</ul></li>
+<li>检查是否设置了根文件系统设备，若没有设置根据不同扇区数设置</li>
+<li>所以linux启动要系统内核镜像、根文件系统</li>
+<li>可以理解到这里，bootsect程序执行完了，接下来是setup的执行</li>
 </ul>
-<h3 id="进程树">进程树</h3>
-<h3 id="进程的标识">进程的标识</h3>
-<h3 id="进程上下文">进程上下文</h3>
-<h3 id="进程表与u区">进程表与U区</h3>
-<h3 id="进程的状态">进程的状态</h3>
-<h4 id="进程的控制">进程的控制</h4>
-<h2 id="进程的通信">进程的通信</h2>
-<h3 id="基本机制">基本机制</h3>
-<h3 id="unix系统v的ipc机制">UNIX系统V的IPC机制</h3>
-<h3 id="系统调用-2">系统调用</h3>
-<h4 id="消息队列">消息队列</h4>
-<h4 id="共享存储区">共享存储区</h4>
-<h4 id="信号量">信号量</h4>
-<h2 id="io-子系统">I/O 子系统</h2>
-<p>​</p>
+<h4 id="setup执行">setup执行</h4>
+<ul>
+<li>jump 0，SETUPSEG，跳转到setup程序的位置开始执行</li>
+<li>利用BIOS的中断服务程序，提取内核运行需要的<strong>机器系统数据</strong>：光标位置、显示页面等等，加载到内存对应的位置</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/image-20230922164428132.png" srcset="/img/loading.gif" lazyload alt="image-20230922164428132" style="zoom:33%;" /></p>
+<ul>
+<li>加载的位置覆盖了bootsect的程序位置（只留出一个字节空间）</li>
+<li>至此，加载完全结束，通过已经加载到内存的内核代码，系统将从实模式转变为保护模式</li>
+</ul>
+<h3
+id="开启32位保护模式准备调用main">3、开启32位保护模式，准备调用main</h3>
+<ul>
+<li>p17</li>
+</ul>
+<h2 id="review">review</h2>
+<h4 id="实模式和保护模式">实模式和保护模式</h4>
+<ul>
+<li>实模式，即程序中用到的地址都是真实的物理地址，“段基址:段内偏移地址”产生的逻辑地址就是物理地址，即程序员可见的地址完全是真实的内存地址</li>
+<li>保护模式：pool</li>
+</ul>
+<h4 id="cs和ip">CS和IP</h4>
+<ul>
+<li>CS是代码段寄存器，定义存放代码的存储器的起始地址</li>
+<li>IP为指令指针寄存器，他们一起合作指向了CPU当前要读取的指令地址</li>
+</ul>
+<h4 id="段寄存器">段寄存器</h4>
+<ul>
+<li>pool</li>
+</ul>
 
                 
               </div>
@@ -488,15 +435,8 @@ table)、用户文件描述符表(user file descriptor table)、内存索引节�
     
       <span class="category-chain">
         
-  <a href="/categories/PKU-lessons/" class="category-chain-item">PKU lessons</a>
+  <a href="/categories/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/" class="category-chain-item">系统设计</a>
   
-  
-    <span>></span>
-    
-  <a href="/categories/PKU-lessons/PG-1/" class="category-chain-item">PG-1</a>
-  
-  
-
   
 
       </span>
@@ -512,10 +452,6 @@ table)、用户文件描述符表(user file descriptor table)、内存索引节�
       
         <a href="/tags/OS/" class="print-no-link">#OS</a>
       
-        <a href="/tags/Virtualization/" class="print-no-link">#Virtualization</a>
-      
-        <a href="/tags/Security/" class="print-no-link">#Security</a>
-      
     </div>
   
 </div>
@@ -526,8 +462,8 @@ table)、用户文件描述符表(user file descriptor table)、内存索引节�
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>操作系统与虚拟化安全-内核导论</div>
-      <div>https://al-377.github.io/2023/09/18/OS-Virtualization-Security-lesson3-md/</div>
+      <div>《The Art of Linux Kernel》- Ch1</div>
+      <div>https://al-377.github.io/2023/09/22/The-Art-of-Linux-Kernel-Ch1/</div>
     </div>
     <div class="license-meta">
       
@@ -539,7 +475,7 @@ table)、用户文件描述符表(user file descriptor table)、内存索引节�
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年9月18日</div>
+          <div>2023年9月22日</div>
         </div>
       
       
@@ -571,18 +507,12 @@ table)、用户文件描述符表(user file descriptor table)、内存索引节�
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/09/22/The-Art-of-Linux-Kernel-Ch1/" title="《The Art of Linux Kernel》- Ch1">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">《The Art of Linux Kernel》- Ch1</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/09/18/OS-Virtualization-Security-lesson2-md/" title="操作系统与虚拟化安全-OS基础">
-                        <span class="hidden-mobile">操作系统与虚拟化安全-OS基础</span>
+                      <a href="/2023/09/18/OS-Virtualization-Security-lesson3-md/" title="操作系统与虚拟化安全-内核导论">
+                        <span class="hidden-mobile">操作系统与虚拟化安全-内核导论</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
