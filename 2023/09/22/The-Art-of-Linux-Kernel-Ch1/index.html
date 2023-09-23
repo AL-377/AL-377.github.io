@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/202309221405907.png">
 <meta property="article:published_time" content="2023-09-22T06:00:52.000Z">
-<meta property="article:modified_time" content="2023-09-22T08:51:18.126Z">
+<meta property="article:modified_time" content="2023-09-23T02:50:16.947Z">
 <meta property="article:author" content="Aidan Lew">
 <meta property="article:tag" content="OS">
 <meta name="twitter:card" content="summary_large_image">
@@ -223,7 +223,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          1.9k 字
+          2.6k 字
         
       </span>
     
@@ -235,7 +235,7 @@
         
         
           <!-- compatible with older versions-->
-          17 分钟
+          23 分钟
         
       </span>
     
@@ -287,101 +287,107 @@
                 
                 <blockquote>
 <p>版本：Linux 0.11</p>
-<p>硬件：IA-32 CPU、16MB
-内存（2MB作为虚拟内存）、BIOS中设置软驱作为启动</p>
+<p>硬件：IA-32 CPU、16MB 内存（2MB作为虚拟内存）、BIOS中设置软驱作为启动</p>
 <p>（软盘相当于一种可移动的外部存储设备，由于读取速度慢、容量小等原因，目前已经被其他更高效、容量更大的外部存储设备所替代）</p>
 </blockquote>
-<h2 id="通电---main">通电 -&gt; main</h2>
+<h2 id="通电-main">通电 -&gt; main</h2>
 <blockquote>
 <p>通电-&gt;BIOS启动-&gt;内存中加载中断向量表、中断服务程序-&gt;32位模式</p>
 </blockquote>
-<h3 id="bios启动">1、BIOS启动</h3>
-<h4 id="找到bios">找到BIOS</h4>
+<h3 id="1、BIOS启动">1、BIOS启动</h3>
+<h4 id="找到BIOS">找到BIOS</h4>
 <ul>
 <li>CPU硬件逻辑实现：CS=0xF000 IF=0xFFF0</li>
 <li>BIOS的地址位置：0xFFFF0，固化在主机版的ROM中</li>
 </ul>
-<p><img src="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/image-20230922144002551.png" srcset="/img/loading.gif" lazyload alt="开电时，BIOS的状态" style="zoom:33%;" /></p>
-<h4
-id="bios加载中断向量表中断服务程序">BIOS加载中断向量表、中断服务程序</h4>
+<img src="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/image-20230922144002551.png" srcset="/img/loading.gif" lazyload alt="开电时，BIOS的状态" style="zoom:33%;" />
+<h4 id="BIOS加载中断向量表、中断服务程序">BIOS加载中断向量表、中断服务程序</h4>
 <ul>
 <li>启动BIOS以后，开始监测显卡、内存等等，最重要开始加载中断向量表、中断服务程序</li>
 </ul>
-<p><img src="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/image-20230922144618617.png" srcset="/img/loading.gif" lazyload alt="image-20230922144618617" style="zoom:33%;" /></p>
+<img src="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/image-20230922144618617.png" srcset="/img/loading.gif" lazyload alt="image-20230922144618617" style="zoom:33%;" />
 <ul>
 <li>每个中断向量都指向对应的中断服务程序（实模式的中断机制）</li>
 <li>256个中断向量，每个4字节，2字节IP的值，2字节是CS的值</li>
 </ul>
-<h3 id="加载操作系统内核程序">2、加载操作系统内核程序</h3>
+<h3 id="2、加载操作系统内核程序">2、加载操作系统内核程序</h3>
 <blockquote>
 <p>分批从软盘的不同扇区加载所有的操作系统程序到内存，为保护模式准备</p>
 </blockquote>
-<h4 id="加载第一批内核代码bootsect">加载第一批内核代码：bootsect</h4>
+<h4 id="加载第一批内核代码：bootsect">加载第一批内核代码：bootsect</h4>
 <ul>
-<li>硬件设计+BIOS，出现一个int
-0x19中断，对应找到对应的中断服务程序，这个服务程序的作用是将第一扇区的程序加载</li>
+<li>硬件设计+BIOS，出现一个int 0x19中断，对应找到对应的中断服务程序，这个服务程序的作用是将第一扇区的程序加载</li>
 </ul>
-<p><img src="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/image-20230922150911622.png" srcset="/img/loading.gif" lazyload alt="image-20230922150911622" style="zoom:33%;" /></p>
+<img src="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/image-20230922150911622.png" srcset="/img/loading.gif" lazyload alt="image-20230922150911622" style="zoom:33%;" />
 <ul>
-<li>第一扇区（boot
-sector）内对应的程序就是引导程序：bootsect（512B）</li>
+<li>第一扇区（boot sector）内对应的程序就是引导程序：bootsect（512B）</li>
 </ul>
-<p><img src="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/image-20230922151502051.png" srcset="/img/loading.gif" lazyload alt="image-20230922151502051" style="zoom:33%;" /></p>
+<img src="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/image-20230922151502051.png" srcset="/img/loading.gif" lazyload alt="image-20230922151502051" style="zoom:33%;" />
 <ul>
 <li>至此，从启动电脑终于接触到了linux操作系统自己的代码（一段汇编），加载到了内存中</li>
 </ul>
-<h4
-id="讨论对于不同操作系统如何同样方式加载">讨论：对于不同操作系统，如何同样方式加载？</h4>
+<h4 id="讨论：对于不同操作系统，如何同样方式加载？">讨论：对于不同操作系统，如何同样方式加载？</h4>
 <p>BIOS是写在主机板ROM上的，不管操作系统是啥，对于不同的操作系统类型，采用同样方式加载：</p>
-<ol type="1">
+<ol>
 <li>BIOS接到启动os的指定，固定从启动扇区把程序加载到0x07C00</li>
 <li>操作系统的第一段程序固定放在软盘0盘面0磁道1扇区</li>
 </ol>
-<h4 id="第二部分内核代码setup">第二部分内核代码：setup</h4>
+<h4 id="第二部分内核代码：setup">第二部分内核代码：setup</h4>
 <p>boosect的任务是继续加载第二、三批的内核代码，采取以下步骤：</p>
-<h5 id="规划内存key-in-os">（1）规划内存（key in os）</h5>
+<h5 id="（1）规划内存（key-in-os）">（1）规划内存（key in os）</h5>
 <ul>
 <li>确保不同的程序、数据不会重叠，有足够的空间安身立命</li>
 </ul>
-<p><img src="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/image-20230922153024041.png" srcset="/img/loading.gif" lazyload alt="image-20230922153024041" style="zoom:33%;" /></p>
-<h5 id="复制bootsect到新的位置">（2）复制bootsect到新的位置</h5>
+<img src="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/image-20230922153024041.png" srcset="/img/loading.gif" lazyload alt="image-20230922153024041" style="zoom:33%;" />
+<h5 id="（2）复制bootsect到新的位置">（2）复制bootsect到新的位置</h5>
 <ul>
-<li><p>现在CPU的CS指向的就是BOOTSEG</p></li>
-<li><p>bootsect把自身从BOOTSEG复制到INITSEG（pool）</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs 56">start:<br>  mov ax，#BOOTSEG<br>  mov ds,ax<br>  mov ax，#INITSEG<br>  mov es,ax<br>  mov cx,#256  (256字就是512B)<br>  sub si,si<br>  sub di,di<br>  rep<br>  movw<br> <br></code></pre></td></tr></table></figure></li>
-<li><p>bootsect直接可以跳转到INITSEG执行了（相当于原来的BOOTSEG位置是约定的位置，不是自己规划的位置），这个时候开始完全摆脱BIOS，根据自己的安排执行</p></li>
+<li>
+<p>现在CPU的CS指向的就是BOOTSEG</p>
+</li>
+<li>
+<p>bootsect把自身从BOOTSEG复制到INITSEG（pool）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs 56">start:<br>  mov ax，#BOOTSEG<br>  mov ds,ax<br>  mov ax，#INITSEG<br>  mov es,ax<br>  mov cx,#256  (256字就是512B)<br>  sub si,si<br>  sub di,di<br>  rep<br>  movw<br> <br></code></pre></td></tr></table></figure>
+</li>
+<li>
+<p>bootsect直接可以跳转到INITSEG执行了（相当于原来的BOOTSEG位置是约定的位置，不是自己规划的位置），这个时候开始完全摆脱BIOS，根据自己的安排执行</p>
+</li>
 </ul>
-<p><img src="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/image-20230922161104507.png" srcset="/img/loading.gif" lazyload alt="image-20230922161104507" style="zoom:33%;" /></p>
+<img src="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/image-20230922161104507.png" srcset="/img/loading.gif" lazyload alt="image-20230922161104507" style="zoom:33%;" />
 <figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs vim">jmpi <span class="hljs-keyword">go</span>，INITSEG   ！这行之前bootsect已经复制过去到了INITSEG，程序跳转到INITSEG执行了<br><span class="hljs-keyword">go</span>: mov ax, <span class="hljs-keyword">cs</span>	  ！在INITSEG新的位置继续执行bootsect代码<br></code></pre></td></tr></table></figure>
-<p><img src="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/image-20230922161722859.png" srcset="/img/loading.gif" lazyload alt="image-20230922161722859" style="zoom:33%;" /></p>
+<img src="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/image-20230922161722859.png" srcset="/img/loading.gif" lazyload alt="image-20230922161722859" style="zoom:33%;" />
 <ul>
 <li>代码整体位置变了，所以代码各个段（寄存器）也会发生变化
 <ul>
 <li>SS（Stack segment）：指向栈段</li>
 <li>SP（Stack pointer）：栈顶指针</li>
-</ul></li>
 </ul>
-<h5 id="加载setup程序">（3）加载setup程序</h5>
+</li>
+</ul>
+<h5 id="（3）加载setup程序">（3）加载setup程序</h5>
 <ul>
 <li>int 0x13中断，指向磁盘服务程序</li>
 <li>和加载bootect时候的0x19中断不同，0x19对应的服务程序是BIOS执行的，但现在是bootsect执行0x13指向的程序</li>
 <li>0x19对应的服务程序写死，将第一扇区的程序加载到0x07C00，而0x13的程序可以指定扇区的代码加载到指定位置，开始要<strong>传参</strong>了</li>
 </ul>
-<p><img src="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/image-20230922162147780.png" srcset="/img/loading.gif" lazyload alt="image-20230922162147780" style="zoom: 33%;" /></p>
+<img src="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/image-20230922162147780.png" srcset="/img/loading.gif" lazyload alt="image-20230922162147780" style="zoom: 33%;" />
 <ul>
-<li><p>注意此时已经加载5个扇区，且setup.s会加载到INITSEG的位置</p>
-<p><img src="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/image-20230922162942831.png" srcset="/img/loading.gif" lazyload alt="image-20230922162942831" style="zoom:33%;" /></p></li>
+<li>
+<p>注意此时已经加载5个扇区，且setup.s会加载到INITSEG的位置</p>
+<img src="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/image-20230922162942831.png" srcset="/img/loading.gif" lazyload alt="image-20230922162942831" style="zoom:33%;" />
+</li>
 </ul>
-<h4
-id="加载第三部分内核代码system模块">加载第三部分内核代码：system模块</h4>
+<h4 id="加载第三部分内核代码：system模块">加载第三部分内核代码：system模块</h4>
 <ul>
-<li><p>still用0x13的中断</p>
-<p><img src="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/image-20230922163259030.png" srcset="/img/loading.gif" lazyload alt="image-20230922163259030" style="zoom:33%;" /></p></li>
-<li><p>这次加载240个扇区，由bootsect的read_it完成，加载到SYSSEG之后</p>
-<p><img src="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/image-20230922163439978.png" srcset="/img/loading.gif" lazyload alt="image-20230922163439978" style="zoom:33%;" /></p></li>
+<li>
+<p>仍然用0x13的中断</p>
+<img src="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/image-20230922163259030.png" srcset="/img/loading.gif" lazyload alt="image-20230922163259030" style="zoom:33%;" />
+</li>
+<li>
+<p>这次加载240个扇区，由bootsect的read_it完成，加载到SYSSEG之后</p>
+<img src="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/image-20230922163439978.png" srcset="/img/loading.gif" lazyload alt="image-20230922163439978" style="zoom:33%;" />
+</li>
 </ul>
-<h4
-id="bootsect收尾工作检查根设备号">Bootsect收尾工作：检查根设备号</h4>
+<h4 id="Bootsect收尾工作：检查根设备号">Bootsect收尾工作：检查根设备号</h4>
 <ul>
 <li>检查是否设置了根文件系统设备，若没有设置根据不同扇区数设置</li>
 <li>所以linux启动要系统内核镜像、根文件系统</li>
@@ -392,23 +398,85 @@ id="bootsect收尾工作检查根设备号">Bootsect收尾工作：检查根设�
 <li>jump 0，SETUPSEG，跳转到setup程序的位置开始执行</li>
 <li>利用BIOS的中断服务程序，提取内核运行需要的<strong>机器系统数据</strong>：光标位置、显示页面等等，加载到内存对应的位置</li>
 </ul>
-<p><img src="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/image-20230922164428132.png" srcset="/img/loading.gif" lazyload alt="image-20230922164428132" style="zoom:33%;" /></p>
+<img src="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/image-20230922164428132.png" srcset="/img/loading.gif" lazyload alt="image-20230922164428132" style="zoom:33%;" />
 <ul>
 <li>加载的位置覆盖了bootsect的程序位置（只留出一个字节空间）</li>
-<li>至此，加载完全结束，通过已经加载到内存的内核代码，系统将从实模式转变为保护模式</li>
+<li>至此，内核代码加载完全结束，通过已经加载到内存的内核代码，系统将从实模式转变为保护模式</li>
 </ul>
-<h3
-id="开启32位保护模式准备调用main">3、开启32位保护模式，准备调用main</h3>
+<h3 id="3、开启32位保护模式">3、开启32位保护模式</h3>
+<h4 id="废除原本的中断机制">废除原本的中断机制</h4>
 <ul>
-<li>p17</li>
+<li>关闭中断：关闭直到建立main适合的新的中断服务建立
+<ul>
+<li>将CPU的标识寄存器EFLAGS的IF置为0（中断不被允许）</li>
+<li>setup.s中的cli和sti分别是关、开中断</li>
 </ul>
+</li>
+<li>移动内核代码到0x00000，覆盖了原来BIOS的中断向量表、数据的区域
+<ul>
+<li>16位的实模式中断不再适合即将开始的32位linux中断，因此可以回收这块区域了</li>
+</ul>
+</li>
+</ul>
+<img src="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/image-20230923100014304.png" srcset="/img/loading.gif" lazyload style="zoom:33%;" />
+<h4 id="描述符表的准备">描述符表的准备</h4>
+<ul>
+<li>
+<p>全局描述符表：GDT</p>
+<ul>
+<li>唯一存段寄存器内容（段描述符）的数组，配合程序实现段寻址</li>
+<li>所有进程的全局目录，存储每一个任务的局部描述符表（LDT）地址、任务状态段（TSS）地址</li>
+<li>功能：各段的寻址、保护和恢复现场</li>
+<li>GDTR：GDT基地址寄存器，存GDT的基地址，通过LGDTR命令来加载GDT到GDTR</li>
+</ul>
+</li>
+<li>
+<p>中断描述符表：IDT</p>
+<ul>
+<li>所有中断服务程序的入口地址，类似实模式的中断向量表</li>
+<li>IDTR：IDT基地址寄存器</li>
+</ul>
+</li>
+<li>
+<p>比较16位中断和32位中断</p>
+<ul>
+<li>16位的中断向量表固定写死在0x00000的位置，32位利用IDT可以任意放位置，用IDTR来寻址</li>
+<li>在中断重启之前，IDT是一张空的表</li>
+</ul>
+</li>
+</ul>
+<h4 id="打开32位寻址">打开32位寻址</h4>
+<ul>
+<li>
+<p>打开A20地址线，注意物理内存寻址和内存寻址的变化</p>
+<img src="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/image-20230923102442817.png" srcset="/img/loading.gif" lazyload alt="image-20230923102442817" style="zoom:33%;" />
+</li>
+<li>
+<p>内存寻址：直接从5个f变成8个f，32位，4GB的寻址空间</p>
+</li>
+<li>
+<p>物理寻址：16MB（pool）</p>
+</li>
+</ul>
+<h4 id="重新编程8259A">重新编程8259A</h4>
+<ul>
+<li>8259A是一个可编程的中断控制器</li>
+<li>保护模式下，Intel保留了0x00-0x1F作为不可屏蔽中断、异常中断，所以要重新分布中断号</li>
+</ul>
+<img src="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/image-20230923103757762.png" srcset="/img/loading.gif" lazyload alt="image-20230923103757762" style="zoom:33%;" />
+<ul>
+<li>CR0寄存器置为1，CR0寄存器保存的是PE（protected mode enable，保护模式使能，为0则实模式）</li>
+<li>正式开启保护模式，对比开启前后的寻址变化（pool，P26）</li>
+</ul>
+<h3 id="4、-head-s的执行">4、 head.s的执行</h3>
+<p>p27</p>
 <h2 id="review">review</h2>
 <h4 id="实模式和保护模式">实模式和保护模式</h4>
 <ul>
 <li>实模式，即程序中用到的地址都是真实的物理地址，“段基址:段内偏移地址”产生的逻辑地址就是物理地址，即程序员可见的地址完全是真实的内存地址</li>
-<li>保护模式：pool</li>
+<li>保护模式：随着CPU的位数和寄存器的位数增加，有更安全内存地址定位方式。见<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/42309472">详细解释</a></li>
 </ul>
-<h4 id="cs和ip">CS和IP</h4>
+<h4 id="CS和IP">CS和IP</h4>
 <ul>
 <li>CS是代码段寄存器，定义存放代码的存储器的起始地址</li>
 <li>IP为指令指针寄存器，他们一起合作指向了CPU当前要读取的指令地址</li>
