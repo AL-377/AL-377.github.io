@@ -16,26 +16,24 @@
   <meta name="author" content="Aidan Lew">
   <meta name="keywords" content="">
   
-    <meta name="description" content="操作系统的内核知识">
+    <meta name="description" content="docker原理及基本用法">
 <meta property="og:type" content="article">
-<meta property="og:title" content="操作系统与虚拟化安全-内核导论">
-<meta property="og:url" content="https://al-377.github.io/2023/09/18/OS-Virtualization-Security-lesson3-md/index.html">
+<meta property="og:title" content="docker入门">
+<meta property="og:url" content="https://al-377.github.io/2023/10/08/docker-intro/index.html">
 <meta property="og:site_name" content="Aidan Lew&#39;s Blog">
-<meta property="og:description" content="操作系统的内核知识">
+<meta property="og:description" content="docker原理及基本用法">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/image-20230915122823399.png">
-<meta property="article:published_time" content="2023-09-18T01:36:21.000Z">
-<meta property="article:modified_time" content="2023-09-18T05:23:18.688Z">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/image-20231008180237339.png">
+<meta property="article:published_time" content="2023-10-08T09:57:27.000Z">
+<meta property="article:modified_time" content="2023-10-08T15:10:36.470Z">
 <meta property="article:author" content="Aidan Lew">
-<meta property="article:tag" content="OS">
-<meta property="article:tag" content="Virtualization">
-<meta property="article:tag" content="Security">
+<meta property="article:tag" content="虚拟化">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/image-20230915122823399.png">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/image-20231008180237339.png">
   
   
   
-  <title>操作系统与虚拟化安全-内核导论 - Aidan Lew&#39;s Blog</title>
+  <title>docker入门 - Aidan Lew&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -195,13 +193,13 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/image-20230915122823399.png') no-repeat center center; background-size: cover;">
+     style="background: url('https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/image-20231008180237339.png') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="操作系统与虚拟化安全-内核导论"></span>
+            <span id="subtitle" data-typed-text="docker入门"></span>
           
         </div>
 
@@ -212,8 +210,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-09-18 09:36" pubdate>
-          星期一, 九月 18日 2023, 9:36 上午
+        <time datetime="2023-10-08 17:57" pubdate>
+          星期日, 十月 8日 2023, 5:57 下午
         </time>
       </span>
     
@@ -225,7 +223,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          2.2k 字
+          3.6k 字
         
       </span>
     
@@ -237,7 +235,7 @@
         
         
           <!-- compatible with older versions-->
-          19 分钟
+          30 分钟
         
       </span>
     
@@ -282,194 +280,152 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">操作系统与虚拟化安全-内核导论</h1>
+            <h1 id="seo-header">docker入门</h1>
             
             
               <div class="markdown-body">
                 
-                <p><a target="_blank" rel="noopener" href="https://www.kernel.org/**">配合内核代码结构理解</a></p>
-<p><strong>安全工作重点关注：</strong>不同子组件的系统调用，pool</p>
-<h2 id="内核结构">内核结构</h2>
-<p><img src="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/image-20230918093945084.png" srcset="/img/loading.gif" lazyload alt="程序调用内核协同" style="zoom:50%;" /></p>
-<h3 id="内核代码结构">内核代码结构</h3>
+                <h2 id="基本概念">基本概念</h2>
+<p><strong>容器（container）</strong>：用沙盒把进程包装起来运行，和其他的进程独立运行</p>
+<ul>
+<li>是一个可运行的镜像实例</li>
+<li>可部署在云端、虚拟机、本地</li>
+<li>支持各种os</li>
+<li>独立于其他的容器，共享同一个os</li>
+<li>云原生的核心技术</li>
+</ul>
+<p><strong>镜像（image）</strong>：为容器运行提供独立的文件系统，包含容器运行所需的所有内容：依赖、配置、脚本、二进制文件等等</p>
+<p><strong>云原生</strong></p>
+<p><strong>从需求产生的技术</strong></p>
 <blockquote>
-<p><strong>linux
-4.19内核代码</strong>：https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/tree/?h=v4.19.294</p>
-</blockquote>
-<p>init：开机启动</p>
-<ul>
-<li>https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/tree/init?h=v4.19.294</li>
-</ul>
-<p>kernel：进程管理和调度</p>
-<ul>
-<li>https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/tree/kernel?h=v4.19.294</li>
-<li>fork.c等等</li>
-</ul>
-<p>ipc：进程通信</p>
-<ul>
-<li>https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/tree/ipc?h=v4.19.294</li>
-</ul>
-<p>fs：文件系统</p>
-<ul>
-<li>https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/tree/fs?h=v4.19.294</li>
-<li>vfs是抽象层次封装的文件系统，便于扩展</li>
-<li>鸿蒙的文件系统就是在vfs下实现的分布式文件系统</li>
-</ul>
-<p>include：数据结构的实现</p>
-<p>security：安全部分代码</p>
-<ul>
-<li>https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/tree/security?h=v4.19.294</li>
-<li>比如se linux等模块</li>
-</ul>
-<h3 id="文件子系统">文件子系统</h3>
-<h4 id="功能">功能</h4>
-<ul>
-<li>分配文件空间</li>
-<li>管理空闲空间</li>
-<li>控制对文件的存取</li>
-<li>为用户检索数据</li>
-</ul>
-<h4 id="系统调用">系统调用</h4>
-<ul>
-<li>open, creat, close, read, write, state, chown, chmod, link, unlink,
-mount, umount</li>
-</ul>
-<h3 id="进程控制子系统">进程控制子系统</h3>
-<h4 id="功能-1">功能</h4>
-<ul>
-<li>进程同步</li>
-<li>进程间通信</li>
-<li>存储管理</li>
-<li>进程调度</li>
-</ul>
-<h4 id="系统调用-1">系统调用</h4>
-<ul>
-<li>fork, exec, execve, setuid, exit, kill, wait, brk</li>
-</ul>
-<h3 id="硬件控制">硬件控制</h3>
-<h4 id="功能-2">功能</h4>
-<ul>
-<li>负责处理中断及与机器通信</li>
-</ul>
-<h2 id="文件的内容表示">文件的内容表示</h2>
-<h3 id="inode-table">inode table</h3>
-<blockquote>
-<p>include/inode.c</p>
-</blockquote>
-<h4 id="内容">内容</h4>
-<ul>
-<li><p>包含文件所有者、存取权限、及其存取时间等信息</p></li>
-<li><p><strong>后期做安全权限控制修改的部分</strong></p></li>
-</ul>
-<h4 id="文件索引过程">文件索引过程</h4>
-<ul>
-<li>内核每次分析文件名中的<strong>一个分量</strong>，检查该进程是否有权检索路径中的目录</li>
-<li>并且最终检索到该文件所对应的索引节点。如：<code>open(“/fs2/mjb/rje/sourcefile”,1);</code></li>
-</ul>
-<h4 id="文件创建操作过程">文件创建、操作过程</h4>
-<ul>
-<li>当一个进程建立一个新文件时，内核分配给它一个尚未使用的索引节点，索引节点被存储在文件系统中(即磁盘索引节点表）</li>
-<li>但是当操作文件时，内核将它们读到内存索引节点表中，即：对系统中的每个活动的文件（被某个进程打开了），内存中索引节点表都包含一个条目</li>
-</ul>
-<h4
-id="对比磁盘索引节点表内存索引节点表">对比：磁盘索引节点表、内存索引节点表</h4>
-<ul>
-<li>磁盘索引节点</li>
-</ul>
-<p><img src="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/image-20230918102004538.png" srcset="/img/loading.gif" lazyload alt="磁盘索引节点内容" style="zoom: 50%;" /></p>
-<ul>
-<li>内存索引节点
-<ul>
-<li><img src="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/image-20230918102202300.png" srcset="/img/loading.gif" lazyload alt="内存索引节点" style="zoom: 50%;" /></li>
-<li>引用数：open文件的进程数</li>
-<li>内核函数：
-<ul>
-<li>iget 分配一个索引节点的内存拷贝</li>
-<li>iput 释放一个索引节点的内存拷贝</li>
-<li>namei 把路径名转换为索引节点</li>
-<li>ialloc 把一个磁盘索引节点分配给一个新建立的文件</li>
-<li>ifree 释放一个磁盘索引节点</li>
-</ul></li>
-</ul></li>
-</ul>
-<h4
-id="对比文件表file-table用户文件描述符表user-file-descriptor-table内存索引节点">对比：文件表(file
-table)、用户文件描述符表(user file descriptor table)、内存索引节点</h4>
-<ul>
-<li><p>文件表</p>
-<blockquote>
-<p>include/file结构体</p>
+<p>As defined by the Cloud Native Computing Foundation (CNCF), Cloud
+native technologies empower organizations to build and run scalable
+applications in public, private, and hybrid clouds. Features such as
+containers, service meshes, microservices, immutable infrastructure, and
+declarative application programming interfaces (APIs) best illustrate
+this approach.</p>
+<p>These features enable loosely coupled systems that are resilient,
+manageable, and observable. They allow engineers to make high-impact
+changes frequently and with minimal effort.</p>
 </blockquote>
 <ul>
-<li>linux内核里全局表，所有进程共享（内核唯一）</li>
-<li>其中的一个条目《=》内核里all进程的open
+<li>可扩展的资源分配，提高运行效率</li>
+<li>不同服务之间的低耦合，提高部署和更新效率</li>
+</ul>
+<p><strong>service meshes</strong></p>
 <ul>
-<li>文件偏移量</li>
-<li>访问模式（读、写、or 读-写）</li>
-<li>指向它的文件描述符表的条目计数</li>
+<li>整合不同微服务的通信框架</li>
+<li>在每一个微服务旁边配置网络代理，统一管控所有的流量</li>
+</ul>
+<p><strong>immutable infrastructure</strong></p>
+<p><strong>microservices</strong></p>
+<p><strong>declarative application programming interfaces
+(APIs)</strong></p>
+<h2 id="基本原理">基本原理</h2>
+<h3 id="docker整体结构">docker整体结构</h3>
+<h3 id="文件系统">文件系统</h3>
+<h3 id="multi-container">multi-container</h3>
+<h4 id="通信机制">通信机制</h4>
+<p>Netshoot 是一个 Docker
+容器，包含一套强大的网络故障排除工具。它的作用是帮助用户解决复杂的
+Docker 和 Kubernetes 网络问题，提供了必要的工具来进行故障排除。</p>
+<p>在使用 netshoot
+之前，有一个重要的概念需要理解，那就是网络命名空间（Network
+Namespaces）。网络命名空间提供网络相关系统资源的隔离。Docker 和
+Kubernetes 使用网络命名空间为每个容器或者 Pod
+创建一个独立的网络环境。在容器或者 Pod
+的网络命名空间中，所有的接口、路由和 IP 地址都是完全隔离的。</p>
+<p>Netshoot 允许用户在不同的网络命名空间之间切换，从而在其他容器或者 Pod
+中进行网络故障排除。这在跨多个容器或者 Pod
+进行网络故障排查时非常有用。此外，netshoot
+还可以利用主机的网络命名空间来对主机本身进行故障排除，而无需直接在主机上或者应用程序中安装任何新的软件包。</p>
+<h2 id="常用">常用</h2>
+<h3 id="build-and-run-an-image-as-a-container">Build and run an image as
+a container</h3>
+<ul>
+<li><p>get the app</p></li>
+<li><p>write a <a
+target="_blank" rel="noopener" href="https://docs.docker.com/engine/reference/builder/">dockerfile</a></p>
+<ul>
+<li>docker参考dockerfile自动build镜像</li>
+<li>实际上，dockerfile里是build时候需要调用的指令（脚本）</li>
 </ul></li>
+<li><p><code>docker build -t self-customized-image-name .</code>
+build并命名镜像</p></li>
+<li><p><code>docker run -dp 127.0.0.1:3000:3000 self-customized-image-name</code></p>
+<ul>
+<li>-d detach 后台运行docker</li>
+<li>-p 绑定端口，上面这个端口例子publishes the container's port 3000 to
+<code>127.0.0.1:3000</code> (<code>localhost:3000</code>) on the
+host</li>
 </ul></li>
-<li><p>用户文件描述符表</p>
+<li><p><code>docker ps</code> 列出所有container（container
+ID...）</p></li>
+<li><p><code>docker stop &lt;the-container-id&gt;</code>
+stop某个container</p></li>
+<li><p><code>docker rm &lt;the-container-id&gt;</code>
+remove某个container，便可以在app更新以后重新build和run</p></li>
+</ul>
+<h3 id="share-images-using-docker-hub">Share images using Docker
+Hub</h3>
 <blockquote>
-<p>files_struct 结构体</p>
+<p>https://docs.docker.com/get-started/04_sharing_app/</p>
+</blockquote>
+<h3 id="persist-db">Persist DB</h3>
+<h4 id="volumes-mount">volumes mount</h4>
+<blockquote>
+<p>https://docs.docker.com/get-started/05_persisting_data/</p>
+</blockquote>
+<p>提供挂载信息，map the specific filesystem paths of the container back
+to the host machine，挂载的位置docker定</p>
+<h4 id="bind-mount">bind mount</h4>
+<blockquote>
+<p>https://docs.docker.com/get-started/06_bind_mounts/</p>
+</blockquote>
+<p>直接共享文件夹，可以实时看到host的修改，share a directory from the
+host's filesystem into the container</p>
+<h3
+id="deploy-docker-applications-using-multiple-containers-with-a-database">Deploy
+Docker applications using multiple containers with a database</h3>
+<blockquote>
+<p>https://docs.docker.com/get-started/07_multi_container/</p>
 </blockquote>
 <ul>
-<li>记录某进程所有打开的文件（进程唯一）</li>
-<li>每个进程用一个fs_struct结构体来描述<strong>进程的当前工作目录</strong>及其<strong>所在文件系统根目录下的索引节点</strong></li>
-<li>理解图1：由于文件表条目存储了访问模式（当前读写位置），所以由于A、B进程中对同一个位置的访问模式不同，所以指向不同的文件表条目。</li>
-<li>理解图2：假设B是一个A打开文件以后fork的进程，对应后面的图，不需要再开一个新的文件表条目</li>
+<li><p><code>docker network create todo-app</code></p>
+<ul>
+<li>创建网络，便于不同container的通信</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs shell">docker run -d \<br>    --network todo-app --network-alias mysql \<br>    -v todo-mysql-data:/var/lib/mysql \<br>    -e MYSQL_ROOT_PASSWORD=secret \<br>    -e MYSQL_DATABASE=todos \<br>    mysql:8.0<br></code></pre></td></tr></table></figure>
+<ul>
+<li>启动mysql container并attach到之前的网络（<a
+target="_blank" rel="noopener" href="https://hub.docker.com/_/mysql/?_gl=1*yhqkw4*_ga*MjA2NzAxNDI1NS4xNjk2NzQ0NTkx*_ga_XJWPQMJYHQ*MTY5Njc2NjY1Mi41LjEuMTY5Njc2NzU2Ny41OC4wLjA.">mysql
+docker配置</a>）</li>
+<li>-v
+这一行自动volume命名为<code>todo-mysql-data</code>,挂在container的<code>/var/lib/mysql</code></li>
+</ul></li>
+<li><p><code>docker run -it --network todo-app nicolaka/netshoots</code></p>
+<ul>
+<li>container之间的通信需要用到nicolaka/netshoot工具来辅助，首先启动nicolaka/netshoot</li>
+</ul></li>
+<li><p><code>dig mysql</code></p>
+<ul>
+<li>使用nicolaka/netshoot提供的DNS工具查看就知道要连接到什么host-name，可以让新的container连接到mysql</li>
 </ul></li>
 </ul>
-<p><img src="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/image-20230918103220916.png" srcset="/img/loading.gif" lazyload alt="理解三张表的关系" style="zoom:33%;" /></p>
-<p><img src="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/image-20230918103902793.png" srcset="/img/loading.gif" lazyload alt="image-20230918103902793" style="zoom:33%;" /></p>
-<h2 id="进程的结构">进程的结构</h2>
-<h3 id="数据结构">数据结构</h3>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs shell">docker run -dp 127.0.0.1:3000:3000 \<br>  -w /app -v &quot;$(pwd):/app&quot; \<br>  --network todo-app \<br>  -e MYSQL_HOST=mysql \<br>  -e MYSQL_USER=root \<br>  -e MYSQL_PASSWORD=secret \<br>  -e MYSQL_DB=todos \<br>  node:18-alpine \<br>  sh -c &quot;yarn install &amp;&amp; yarn run dev<br></code></pre></td></tr></table></figure>
 <ul>
-<li>标识号：唯一标识一个进程，用组号标识、用户标识来确定权限
-<ul>
-<li>真正用户/组标识号：uid，gid</li>
-<li>有效用户/组标识号：euid，egid（真正有效的一组），pool</li>
-</ul></li>
-<li>状态信息：进程当前的状态</li>
-<li>调度信息：如计数器、优先级、调度策略、实时优先级</li>
-<li>通信信息：
-<ul>
-<li>如信号Signals，管道Pipes，以及内存共享shared memory,
-信号量semaphore, 消息队列 Message Queues</li>
-<li>进程接到的信号、信号掩码、信号处理函数、为避免死锁而在信号量上设置的取消操作、与信号量相关的等待队列</li>
-</ul></li>
-<li>进程链接信息：
-<ul>
-<li>进程树中的位置（父子关系、兄弟关系）</li>
-<li>运行队列的位置</li>
-</ul></li>
-<li>时间和定时器</li>
-<li>文件系统信息
-<ul>
-<li>可执行映像所对应根目录、当前目录的指针（<code>struct fs_struct *fs</code>）</li>
-<li>打开的文件的描述符（<code>struct files_struct *files</code>）</li>
-</ul></li>
-<li>相关上下文信息
-<ul>
-<li>虚拟内存与物理内存之间的映射信息</li>
-<li>和处理器相关的环境信息，如寄存器、堆栈信息，在进程暂停、恢复是保存和恢复其状态</li>
-</ul></li>
+<li>启动需要连接mysql的container，并提供相应的mysql参数</li>
 </ul>
-<h3 id="进程树">进程树</h3>
-<h3 id="进程的标识">进程的标识</h3>
-<h3 id="进程上下文">进程上下文</h3>
-<h3 id="进程表与u区">进程表与U区</h3>
-<h3 id="进程的状态">进程的状态</h3>
-<h4 id="进程的控制">进程的控制</h4>
-<h2 id="进程的通信">进程的通信</h2>
-<h3 id="基本机制">基本机制</h3>
-<h3 id="unix系统v的ipc机制">UNIX系统V的IPC机制</h3>
-<h3 id="系统调用-2">系统调用</h3>
-<h4 id="消息队列">消息队列</h4>
-<h4 id="共享存储区">共享存储区</h4>
-<h4 id="信号量">信号量</h4>
-<h2 id="io-子系统">I/O 子系统</h2>
-<p>​</p>
+<h3 id="run-applications-using-docker-compose">Run applications using
+Docker Compose</h3>
+<blockquote>
+<p>使用 YAML 文件简化多container应用的启动</p>
+<p>https://docs.docker.com/get-started/08_using_compose/</p>
+</blockquote>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">services:</span><br>  <span class="hljs-attr">app:</span><br>    <span class="hljs-attr">image:</span> <span class="hljs-string">node:18-alpine</span><br>    <span class="hljs-attr">command:</span> <span class="hljs-string">sh</span> <span class="hljs-string">-c</span> <span class="hljs-string">&quot;yarn install &amp;&amp; yarn run dev&quot;</span><br>    <span class="hljs-attr">ports:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-number">127.0</span><span class="hljs-number">.0</span><span class="hljs-number">.1</span><span class="hljs-string">:3000:3000</span><br>    <span class="hljs-attr">working_dir:</span> <span class="hljs-string">/app</span><br>    <span class="hljs-attr">volumes:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">./:/app</span><br>    <span class="hljs-attr">environment:</span><br>      <span class="hljs-attr">MYSQL_HOST:</span> <span class="hljs-string">mysql</span><br>      <span class="hljs-attr">MYSQL_USER:</span> <span class="hljs-string">root</span><br>      <span class="hljs-attr">MYSQL_PASSWORD:</span> <span class="hljs-string">secret</span><br>      <span class="hljs-attr">MYSQL_DB:</span> <span class="hljs-string">todos</span><br><br>  <span class="hljs-attr">mysql:</span><br>    <span class="hljs-attr">image:</span> <span class="hljs-string">mysql:8.0</span><br>    <span class="hljs-attr">volumes:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">todo-mysql-data:/var/lib/mysql</span><br>    <span class="hljs-attr">environment:</span><br>      <span class="hljs-attr">MYSQL_ROOT_PASSWORD:</span> <span class="hljs-string">secret</span><br>      <span class="hljs-attr">MYSQL_DATABASE:</span> <span class="hljs-string">todos</span><br><br><span class="hljs-attr">volumes:</span><br>  <span class="hljs-attr">todo-mysql-data:</span><br></code></pre></td></tr></table></figure>
+<h2 id="reference">Reference</h2>
+<p>[1] https://medium.com/<span class="citation"
+data-cites="saschagrunert/demystifying-containers-part-i-kernel-space-2c53d6979504">@saschagrunert/demystifying-containers-part-i-kernel-space-2c53d6979504</span></p>
 
                 
               </div>
@@ -488,15 +444,8 @@ table)、用户文件描述符表(user file descriptor table)、内存索引节�
     
       <span class="category-chain">
         
-  <a href="/categories/PKU-lessons/" class="category-chain-item">PKU lessons</a>
+  <a href="/categories/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/" class="category-chain-item">系统设计</a>
   
-  
-    <span>></span>
-    
-  <a href="/categories/PKU-lessons/PG-1/" class="category-chain-item">PG-1</a>
-  
-  
-
   
 
       </span>
@@ -510,11 +459,7 @@ table)、用户文件描述符表(user file descriptor table)、内存索引节�
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/OS/" class="print-no-link">#OS</a>
-      
-        <a href="/tags/Virtualization/" class="print-no-link">#Virtualization</a>
-      
-        <a href="/tags/Security/" class="print-no-link">#Security</a>
+        <a href="/tags/%E8%99%9A%E6%8B%9F%E5%8C%96/" class="print-no-link">#虚拟化</a>
       
     </div>
   
@@ -526,8 +471,8 @@ table)、用户文件描述符表(user file descriptor table)、内存索引节�
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>操作系统与虚拟化安全-内核导论</div>
-      <div>https://al-377.github.io/2023/09/18/OS-Virtualization-Security-lesson3-md/</div>
+      <div>docker入门</div>
+      <div>https://al-377.github.io/2023/10/08/docker-intro/</div>
     </div>
     <div class="license-meta">
       
@@ -539,7 +484,7 @@ table)、用户文件描述符表(user file descriptor table)、内存索引节�
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年9月18日</div>
+          <div>2023年10月8日</div>
         </div>
       
       
@@ -571,18 +516,12 @@ table)、用户文件描述符表(user file descriptor table)、内存索引节�
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/09/22/The-Art-of-Linux-Kernel-Ch1/" title="《The Art of Linux Kernel》- Ch1">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">《The Art of Linux Kernel》- Ch1</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/09/18/OS-Virtualization-Security-lesson2-md/" title="操作系统与虚拟化安全-OS基础">
-                        <span class="hidden-mobile">操作系统与虚拟化安全-OS基础</span>
+                      <a href="/2023/09/25/OS-Virtualization-Security-lesson4/" title="操作系统与虚拟化安全-虚拟化概述">
+                        <span class="hidden-mobile">操作系统与虚拟化安全-虚拟化概述</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

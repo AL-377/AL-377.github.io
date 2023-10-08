@@ -16,16 +16,16 @@
   <meta name="author" content="Aidan Lew">
   <meta name="keywords" content="">
   
-    <meta name="description" content="虚拟化技术概述">
+    <meta name="description" content="操作系统基础回顾，重点关注和安全相关的内容">
 <meta property="og:type" content="article">
-<meta property="og:title" content="操作系统与虚拟化安全-虚拟化概述">
-<meta property="og:url" content="https://al-377.github.io/2023/09/25/OS-Virtualization-Security-lesson4/index.html">
+<meta property="og:title" content="操作系统与虚拟化安全-OS基础">
+<meta property="og:url" content="https://al-377.github.io/2023/09/18/OS-Virtualization-Security-lesson2/index.html">
 <meta property="og:site_name" content="Aidan Lew&#39;s Blog">
-<meta property="og:description" content="虚拟化技术概述">
+<meta property="og:description" content="操作系统基础回顾，重点关注和安全相关的内容">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/image-20230915122823399.png">
-<meta property="article:published_time" content="2023-09-25T01:17:46.000Z">
-<meta property="article:modified_time" content="2023-09-25T06:11:46.662Z">
+<meta property="article:published_time" content="2023-09-18T00:43:20.000Z">
+<meta property="article:modified_time" content="2023-09-18T05:23:21.079Z">
 <meta property="article:author" content="Aidan Lew">
 <meta property="article:tag" content="OS">
 <meta property="article:tag" content="Virtualization">
@@ -35,7 +35,7 @@
   
   
   
-  <title>操作系统与虚拟化安全-虚拟化概述 - Aidan Lew&#39;s Blog</title>
+  <title>操作系统与虚拟化安全-OS基础 - Aidan Lew&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -201,7 +201,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="操作系统与虚拟化安全-虚拟化概述"></span>
+            <span id="subtitle" data-typed-text="操作系统与虚拟化安全-OS基础"></span>
           
         </div>
 
@@ -212,8 +212,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-09-25 09:17" pubdate>
-          星期一, 九月 25日 2023, 9:17 上午
+        <time datetime="2023-09-18 08:43" pubdate>
+          星期一, 九月 18日 2023, 8:43 早上
         </time>
       </span>
     
@@ -225,7 +225,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          1.2k 字
+          432 字
         
       </span>
     
@@ -237,7 +237,7 @@
         
         
           <!-- compatible with older versions-->
-          11 分钟
+          4 分钟
         
       </span>
     
@@ -282,122 +282,85 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">操作系统与虚拟化安全-虚拟化概述</h1>
+            <h1 id="seo-header">操作系统与虚拟化安全-OS基础</h1>
             
             
               <div class="markdown-body">
                 
-                <p>（接intro）</p>
-<h2 id="虚拟化技术分类">虚拟化技术分类</h2>
+                <h2 id="cpu管理">CPU管理</h2>
+<h3 id="进程调度">进程调度</h3>
+<h4 id="意义">意义</h4>
+<p>​ 线程-资源分配、保护的基本单位</p>
+<h4 id="攻击点">攻击点</h4>
 <ul>
-<li><p>按照数据中心分，基础设施、系统、软件</p></li>
-<li><p>按照层次分，可以如图</p></li>
+<li><p>进程调度优先级控制：拒绝服务</p></li>
+<li><p>cpu时间窃取</p></li>
 </ul>
-<p><img src="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/image-20230925095343336.png" srcset="/img/loading.gif" lazyload alt="image-20230925095343336" style="zoom:33%;" /></p>
-<h4 id="基础设施虚拟化">基础设施虚拟化</h4>
+<h3 id="中断管理">中断管理</h3>
+<h4 id="定义">定义</h4>
+<p><img src="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/image-20230918085040730.png" srcset="/img/loading.gif" lazyload alt="中断定义" style="zoom: 50%;" /></p>
+<h4 id="功能">功能</h4>
 <ul>
-<li>网络虚拟化：网络的硬件与软件资源整合，向用户提供虚拟网络连接的虚拟化技术</li>
-<li>存储虚拟化：物理的存储设备提供一个抽象的逻辑视图</li>
-<li>系统虚拟化：一台物理机上虚拟出一台或多台虚拟机(VM)</li>
+<li>实现多道程序设计与并发执行的基础和必要条件</li>
+<li>将CPU（也作为一种资源）分派给不同的进程而实现并发执行</li>
 </ul>
-<h4 id="系统虚拟化">系统虚拟化</h4>
-<p>pool</p>
-<h4 id="软件虚拟化">软件虚拟化</h4>
-<p>Pool</p>
-<h2 id="服务器虚拟化技术">服务器虚拟化技术</h2>
-<h3 id="种体系结构">3种体系结构</h3>
-<h4 id="esx">ESX</h4>
-<p><img src="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/image-20230925101847326.png" srcset="/img/loading.gif" lazyload alt="image-20230925101847326" style="zoom:50%;" /></p>
-<h4 id="vmware-workstation">VMware workstation</h4>
-<p><img src="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/image-20230925101914213.png" srcset="/img/loading.gif" lazyload alt="image-20230925101914213" style="zoom:50%;" /></p>
-<h4 id="xen">Xen</h4>
-<p><img src="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/image-20230925101928521.png" srcset="/img/loading.gif" lazyload alt="image-20230925101928521" style="zoom:50%;" /></p>
-<h3 id="虚拟化实现技术">虚拟化实现技术</h3>
+<h4 id="中断源">中断源</h4>
+<ul>
+<li>中断时机</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/image-20230918085510940.png" srcset="/img/loading.gif" lazyload alt="中断源类型" style="zoom: 33%;" /></p>
+<h2 id="存储管理">存储管理</h2>
+<h3 id="功能-1">功能</h3>
+<ul>
+<li>分配：给用户程序分配运行空间</li>
+<li>扩充：虚拟存储</li>
+<li>保护：隔离不同的用户程序</li>
+<li>共享：用户程序公用数据</li>
+</ul>
+<h3 id="存储体系">存储体系</h3>
+<ul>
+<li>在cache层次解密，提高安全等级</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/image-20230918085756979.png" srcset="/img/loading.gif" lazyload alt="存储体系" style="zoom:33%;" /></p>
+<h2 id="设备管理">设备管理</h2>
+<p>解决不同类型的设备协同</p>
+<h3 id="设备类型">设备类型</h3>
+<h4 id="按资源的占用">按资源的占用</h4>
+<ul>
+<li><p>独占设备：一个时间仅允许一个进程</p></li>
+<li><p>共享设备</p></li>
+<li><p>虚设备</p>
+<ul>
+<li>共享模拟独占</li>
+<li>高速模拟低速</li>
+<li>慢速模拟共享：提高利用率</li>
+</ul></li>
+</ul>
+<h4 id="按数据访问方式">按数据访问方式</h4>
+<ul>
+<li>块设备：常用缓冲-填满再一并处理</li>
+<li>字符设备</li>
+<li>网络设备：by BSD套接口socket</li>
+</ul>
+<h2 id="文件管理">文件管理</h2>
+<h3 id="文件系统">文件系统</h3>
+<p>操纵和管理文件的整套设施</p>
+<h4 id="分类">分类</h4>
 <blockquote>
-<p>虚拟机系统是通过在现有平台(裸机或操作系统)上增加一个虚拟层VMM(virtual
-Machine Monitor或Hypervisor)来实现</p>
+<p>下面的数值-文件存储最小单元，即新建文件的初始大小</p>
 </blockquote>
-<h4 id="全虚拟化">1、全虚拟化</h4>
 <ul>
-<li>hypervisor提到0环权限，os换成1环</li>
-<li>全部的指令都交给Hypervisor拦截，并转换处理，不需要改os</li>
-<li>Hypervisor需要做软件模拟，开销大</li>
+<li>FAT：32kb</li>
+<li>FAT32：4kb</li>
+<li>NTFS：4kb</li>
 </ul>
-<p><img src="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/image-20230925102155008.png" srcset="/img/loading.gif" lazyload alt="image-20230925102155008" style="zoom:33%;" /></p>
-<h4 id="半虚拟化">2、半虚拟化</h4>
+<p>不同的文件系统设计、<strong>对加密的支持不同</strong></p>
+<p><a
+target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-CN/troubleshoot/windows-client/backup-and-storage/fat-hpfs-and-ntfs-file-systems">对比FAT和NTFS的特点、优缺</a></p>
+<h3 id="文件目录">文件目录</h3>
 <ul>
-<li>os的权限环不变，hypervisor也在0权限环</li>
-<li>对特权指令的调用都改成对Hypervisor的调用（hyper call），os修改</li>
-<li>性能优于全虚拟化</li>
+<li>对于不同层级的路径进行权限管理、监测</li>
 </ul>
-<p><img src="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/image-20230925102522518.png" srcset="/img/loading.gif" lazyload alt="image-20230925102522518" style="zoom:33%;" /></p>
-<h4 id="硬件辅助虚拟化">3、 硬件辅助虚拟化</h4>
-<ul>
-<li>CPU 额外的多提供了一个环为Hypervisor专用，称为 -1
-环（硬件实现）</li>
-<li>在操作系统调用特权指令的时候，通过硬件的机制将特权指令调用转到在处在
--1环上的Hypervisor 上（os不用修改）</li>
-<li>需要硬件支持（Intel VT和AMD-V）</li>
-</ul>
-<p><img src="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/image-20230925103038438.png" srcset="/img/loading.gif" lazyload alt="image-20230925103038438" style="zoom:33%;" /></p>
-<h4 id="相应的产品对比">相应的产品对比</h4>
-<p><img src="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/image-20230925103151200.png" srcset="/img/loading.gif" lazyload alt="image-20230925103151200" style="zoom:33%;" /></p>
-<h3 id="vmm实现技术">VMM实现技术</h3>
-<blockquote>
-<p>上一节相当于vmm的实现类型</p>
-</blockquote>
-<h4 id="cpu虚拟化">CPU虚拟化</h4>
-<h5 id="目标">目标</h5>
-<ul>
-<li><p>为每个虚拟机提供 一个或多个 虚拟CPU（VCPU）</p></li>
-<li><p>多个VCPU 复用 物理CPUs,
-任何时刻一个物理CPU只能被一个VCPU使用</p></li>
-</ul>
-<h5 id="实现">实现</h5>
-<ul>
-<li>模拟执行
-是指由VMM模拟所有指令的执行效果，包括解释执行和二进制代码翻译执行，效率较低。</li>
-<li>监控执行
-是指虚拟机的绝大多数指令都在物理主机上直接执行，少量可能影响虚拟机运行或影响其虚拟机状态的指令(敏感指令)必须由VMM监控并模拟其执行效果。执行效率较高。取决于模拟执行指令数量、复杂度和算法性能</li>
-</ul>
-<h5 id="硬件辅助的实现intel-vt-x操作模式">硬件辅助的实现——Intel
-VT-x操作模式</h5>
-<ul>
-<li>即上文硬件辅助虚拟化具体实现机制，实现根模式、非根模式切换</li>
-</ul>
-<p>pool</p>
-<h4 id="内存虚拟化">内存虚拟化</h4>
-<h5 id="vmm参与时的机器地址定位过程">VMM参与时的机器地址定位过程</h5>
-<p><img src="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/image-20230925111332784.png" srcset="/img/loading.gif" lazyload alt="image-20230925111332784" style="zoom:50%;" /></p>
-<ul>
-<li>在硬件层面用EPT技术实现两次的地址转换（x86只能支持一次地址转换）</li>
-<li>或者用下文的页表虚拟化技术</li>
-</ul>
-<h5 id="页表虚拟化">页表虚拟化</h5>
-<ul>
-<li><p>背景：os通过多级页表建立虚拟地址到物理地址的映射关系</p></li>
-<li><p>整体思路：由VMM 根据映射 f 和 g 生成复合的映射
-f·g，并直接将这个映射关系交给MMU（Memory Management Unit)</p>
-<ul>
-<li>泛虚拟化方法
-<ul>
-<li>直接将 f.g 映射关系更新到Guest OS页表项中</li>
-<li>安全隐患大，因为理论上VMM不应该知道guest
-os到HW的映射（违背了f映射对于虚拟机不应可见的规则）</li>
-<li>例如：Xen</li>
-</ul></li>
-<li>全虚拟化方法
-<ul>
-<li>guest OS的每个页表维护一个影子页表，并将合成后的映射关系 f·g
-写入到“影子”中，guest OS的页表内容保持不变</li>
-<li>VMM将影子页表交给MMU进行地址转换</li>
-</ul></li>
-</ul></li>
-</ul>
-<p><img src="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/image-20230925111742019.png" srcset="/img/loading.gif" lazyload alt="image-20230925111742019" style="zoom:50%;" /></p>
-<h5 id="内存虚拟化的优化">内存虚拟化的优化</h5>
-<p>pool</p>
-<h4 id="io虚拟化">IO虚拟化</h4>
 
                 
               </div>
@@ -454,8 +417,8 @@ os到HW的映射（违背了f映射对于虚拟机不应可见的规则）</li>
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>操作系统与虚拟化安全-虚拟化概述</div>
-      <div>https://al-377.github.io/2023/09/25/OS-Virtualization-Security-lesson4/</div>
+      <div>操作系统与虚拟化安全-OS基础</div>
+      <div>https://al-377.github.io/2023/09/18/OS-Virtualization-Security-lesson2/</div>
     </div>
     <div class="license-meta">
       
@@ -467,7 +430,7 @@ os到HW的映射（违背了f映射对于虚拟机不应可见的规则）</li>
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年9月25日</div>
+          <div>2023年9月18日</div>
         </div>
       
       
@@ -499,9 +462,9 @@ os到HW的映射（违背了f映射对于虚拟机不应可见的规则）</li>
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/10/08/docker-intro/" title="docker入门">
+                      <a href="/2023/09/18/OS-Virtualization-Security-lesson3/" title="操作系统与虚拟化安全-内核导论">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">docker入门</span>
+                        <span class="hidden-mobile">操作系统与虚拟化安全-内核导论</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -509,8 +472,8 @@ os到HW的映射（违背了f映射对于虚拟机不应可见的规则）</li>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/09/22/The-Art-of-Linux-Kernel-Ch1/" title="《The Art of Linux Kernel》- Ch1">
-                        <span class="hidden-mobile">《The Art of Linux Kernel》- Ch1</span>
+                      <a href="/2023/09/17/multi-thread/" title="多线程编程">
+                        <span class="hidden-mobile">多线程编程</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
