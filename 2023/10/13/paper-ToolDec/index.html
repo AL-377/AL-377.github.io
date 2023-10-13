@@ -16,25 +16,25 @@
   <meta name="author" content="Aidan Lew">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Outlines is a framework which guides the LLM generation by reformulating the neural text generation in terms of transitions between the states of a finite-state machine.">
+    <meta name="description" content="Here&#39;s something encrypted, password is required to continue reading.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="《Paper Reading》Efficient Guided Generation for Large Language Models">
-<meta property="og:url" content="https://al-377.github.io/2023/10/13/paper-outlines/index.html">
+<meta property="og:title" content="《Paper Reading》ToolDec:SYNTAX ERROR-FREE AND GENERALIZABLE TOOL USE FOR LLMS VIA FINITE-STATE DECODING">
+<meta property="og:url" content="https://al-377.github.io/2023/10/13/paper-ToolDec/index.html">
 <meta property="og:site_name" content="Aidan Lew&#39;s Blog">
-<meta property="og:description" content="Outlines is a framework which guides the LLM generation by reformulating the neural text generation in terms of transitions between the states of a finite-state machine.">
+<meta property="og:description" content="Here&#39;s something encrypted, password is required to continue reading.">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/image-20231013102147611.png">
-<meta property="article:published_time" content="2023-10-13T00:25:58.000Z">
-<meta property="article:modified_time" content="2023-10-13T08:34:18.695Z">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/image-20231013114704689.png">
+<meta property="article:published_time" content="2023-10-13T08:31:36.000Z">
+<meta property="article:modified_time" content="2023-10-13T08:40:40.770Z">
 <meta property="article:author" content="Aidan Lew">
+<meta property="article:tag" content="ToolDec">
 <meta property="article:tag" content="FSM">
-<meta property="article:tag" content="Outlines">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/image-20231013102147611.png">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/image-20231013114704689.png">
   
   
   
-  <title>《Paper Reading》Efficient Guided Generation for Large Language Models - Aidan Lew&#39;s Blog</title>
+  <title>《Paper Reading》ToolDec:SYNTAX ERROR-FREE AND GENERALIZABLE TOOL USE FOR LLMS VIA FINITE-STATE DECODING - Aidan Lew&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -194,13 +194,13 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/image-20231013102147611.png') no-repeat center center; background-size: cover;">
+     style="background: url('https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/image-20231013114704689.png') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="《Paper Reading》Efficient Guided Generation for Large Language Models"></span>
+            <span id="subtitle" data-typed-text="《Paper Reading》ToolDec:SYNTAX ERROR-FREE AND GENERALIZABLE TOOL USE FOR LLMS VIA FINITE-STATE DECODING"></span>
           
         </div>
 
@@ -211,8 +211,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-10-13 08:25" pubdate>
-          星期五, 十月 13日 2023, 8:25 早上
+        <time datetime="2023-10-13 16:31" pubdate>
+          星期五, 十月 13日 2023, 4:31 下午
         </time>
       </span>
     
@@ -224,7 +224,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          3.2k 字
+          8.2k 字
         
       </span>
     
@@ -236,7 +236,7 @@
         
         
           <!-- compatible with older versions-->
-          27 分钟
+          69 分钟
         
       </span>
     
@@ -281,159 +281,25 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">《Paper Reading》Efficient Guided Generation for Large Language Models</h1>
+            <h1 id="seo-header">《Paper Reading》ToolDec:SYNTAX ERROR-FREE AND GENERALIZABLE TOOL USE FOR LLMS VIA FINITE-STATE DECODING</h1>
             
             
-              <div class="markdown-body">
-                
-                <h2 id="background">Background</h2>
-<h3 id="guided-generation">Guided Generation</h3>
-<ul>
-<li>We want the LLM generation in a human-specified format</li>
-<li>Other than prompt, need to figure out more efficient end effective
-ways</li>
-</ul>
-<h3 id="temp-solutions">Temp solutions</h3>
-<blockquote>
-<p>from
-https://medium.com/productizing-language-models/guided-text-generation-with-large-language-models-d88fc3dcf4c</p>
-</blockquote>
-<h4 id="prompt-engineering-and-output-parsers">1.Prompt engineering and
-output parsers</h4>
-<h5 id="typical">Typical</h5>
-<ul>
-<li><a
-target="_blank" rel="noopener" href="https://python.langchain.com/docs/get_started/introduction">Langchain</a></li>
-</ul>
-<h5 id="methods">Methods</h5>
-<ul>
-<li><strong>Format instructions</strong>: A method that returns a string
-containing instructions for how the output of a language model should be
-formatted.Here can use the pydantic model and "schema"
-function（generate the json schema）
-<ul>
-<li>Input the pydantic model format, get the instructions</li>
-<li>refer to the <code>get_format_instructions</code> in <a
-target="_blank" rel="noopener" href="https://github.com/langchain-ai/langchain/blob/master/libs/langchain/langchain/output_parsers/pydantic.py">implementation
-example in LangChain</a></li>
-</ul></li>
-<li><strong>Parser</strong>: A method that takes in a string (assumed to
-be the response from a language model) and parses it into some
-structure.
-<ul>
-<li><strong>Regex to find the json</strong></li>
-<li>parse the json into a object（pydantic_object.parse_obj）</li>
-</ul></li>
-</ul>
-<h5 id="benifits">Benifits</h5>
-<ul>
-<li>support any LLM (black box)</li>
-<li>Automatically generates the output instructions.</li>
-<li>Parses the generated JSON string into the model</li>
-</ul>
-<h5 id="limitations">Limitations</h5>
-<ul>
-<li><p>Json output is no guaranteed,since it's key in the first step
-(before the parser)</p></li>
-<li><p>the more complex is the schema ,the more chances for the model to
-make mistake</p></li>
-<li><p>context size too large for the instructions containing long
-schema desciption</p></li>
-</ul>
-<h4 id="fill-in-values-only">2. Fill in values only</h4>
-<h5 id="typical-1">Typical</h5>
-<ul>
-<li><a target="_blank" rel="noopener" href="https://github.com/1rgs/jsonformer/">JsonFormer</a>：a
-wrapper around Hugging Face transformers that fills in these fixed
-tokens during the generation process and only delegates the generation
-of content tokens, the actual field values to the language model</li>
-</ul>
-<h5 id="methods-1">Methods</h5>
-<p>The idea behind this method is to guide the text generation
-monitoring the logits and tokens sampling.Support 4 types:</p>
-<ul>
-<li>Generating <strong>booleans</strong> : compares logits for
-<strong>true</strong> and <strong>false</strong></li>
-<li>Generating <strong>numbers</strong>: squash logits for non-digit
-tokens before sampling</li>
-<li>Generating <strong>strings</strong>: stops generation on second
-<strong>”</strong></li>
-<li>Generating <strong>arrays</strong>: compare logits for “[“, “,”,
-“]”</li>
-</ul>
-<h5 id="benifits-1">Benifits</h5>
-<ul>
-<li>Efficiency. By generating only the content tokens and filling in the
-fixed tokens, this method is more efficient than generating a full JSON
-string and parsing it.</li>
-<li>Flexible and extendable. This library is built on top of the Hugging
-Face transformers library, making it compatible with any model that
-supports the Hugging Face interface.</li>
-<li>supports JSON schemas with nested objects.</li>
-<li>available in small and less capable LLM</li>
-</ul>
-<h5 id="limitations-1">Limitations</h5>
-<ul>
-<li><p>currently only supports a limited subset of JSON Schema types
-(number, boolean, string, array, object)</p></li>
-<li><p>project is not actively maintained</p></li>
-</ul>
-<h4
-id="transform-the-geneation-task-into-a-finite-state-machine-transition">3.
-Transform the geneation task into a finite-state machine transition</h4>
-<h5 id="typical-2">Typical</h5>
-<ul>
-<li>Outlines（this work）</li>
-</ul>
-<h5 id="methods-2">Methods</h5>
-<ul>
-<li>Transform the geneation task into a finite-state machine
-transition</li>
-<li>modify the logits by mask the invalid token each time</li>
-</ul>
-<h5 id="benifits-2">Benifits</h5>
-<ul>
-<li>The approach is model agnostic as long as you can mask the logits.
-Open-source LLMs can be used.</li>
-<li>Integration with HuggingFace transformers models.</li>
-</ul>
-<h5 id="limitations-2">Limitations</h5>
-<ul>
-<li>it does not support APIs like OpenAI due to API limitation
-<ul>
-<li>https://github.com/outlines-dev/outlines/issues/227</li>
-</ul></li>
-</ul>
-<h4 id="domain-specific-language">4. Domain Specific Language</h4>
-<h5 id="typical-3">Typical</h5>
-<ul>
-<li><a
-target="_blank" rel="noopener" href="https://github.com/guidance-ai/guidance/tree/main">Guidance</a>:
-provides a Domain Specific Language (DSL) for prompting. It merges
-templating and logic control making it possible to have more complex and
-clever prompts</li>
-</ul>
-<h5 id="methods-3">Methods</h5>
-<ul>
-<li>to do</li>
-</ul>
-<h5 id="benifits-3">Benifits</h5>
-<ul>
-<li><p>It provides a powerful Domain Specific Language for prompting
-making it easy to build the template for a JSON response.</p></li>
-<li><p>doesn’t work well with small LLMs</p></li>
-</ul>
-<h2 id="reference">Reference</h2>
-<p>[1] Prompting is programming: A query language for large language
-models</p>
-<p>[2] CODEP: Grammatical Seq2Seq Model for General-Purpose Code
-Generation</p>
-<p>[3]
-https://medium.com/productizing-language-models/guided-text-generation-with-large-language-models-d88fc3dcf4c</p>
-<p>[4] https://docs.pydantic.dev/latest/concepts/models/</p>
+              
+              <div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
+  <script id="hbeData" type="hbeData" data-hmacdigest="81bc7cc7a3026823d498ff080cf8c3d9cd539f678ffcc9b1831e5731c13fba57">8d8288463184cbc6310d2068d8771019181f148b225656057eac4e1e371446f79825fa00c544a90113382d972b58cb48d76a33f8a45504196b3e6633f13437617259628d8058feb1de98eed9dcbf899571c062bb22c3f96eb126b83f0b9f2a7d85c3e56257e85a15684e119802957d046fd19f23f8dca7dcc00a39b4ded44bb7b2666b8a34cdb262446cc5dbd552c530304e3a7e3a0d7ff08a6e48d6fc46d04a0f15624144cc411bd13a682bf4aea36dbb6d5b220831b80d2ce402dc6a2d954a026b1ae21e86ebb4a51a819bbcf29793c3011222fa027e3d8a65a04c3bbccba9a2c40dba160c76a5488cc9629d3e27ff3ced2a957b625ccfa19afcb5aa4383f70f4e259e4c09078435918195d489df6d648e3f70c1b5f0923e8ae0c423607baaa9362b531153439885ee09ea4a83a69d38ca78e833deeaa723fa757b0509863cf89f98d44b1eb794b45e12b6fdcdd498538802ed29ac6366106427900a5b8453f70d07cba9b58bc569b0e6a09b8d076ff24f1623c7e1697ca4f7d590b42022703cc66646c836f4e9d1372ac3ae707c8bdd552538eb388888a2ff0d75df044ab1450f9e3c348e9c85f571c5282637f3710e192e6ead0578e94c763db86cd0d0f7ac42a759c31f6cb98593013878d918b5f107ea8fd6eb3428e1dfc2a876094314da342e8179ee190804fd784cbeac8733ff883f7f6c25f32472443f0e637e589de58ebf5b40b89e15296e22e7afba3f00e3a9e2ef3c67b7d4a3664bff43228b2bd3b729f1d43df426eb1392d86310f2c67c95272640d3471fb065b695de797b3606dbe2ada188d21611b891cb11df741ac47e4f249acc8757f8dade82a88034ea294844f4470b157d0fa3e6f6b6a6954281899d95a4e2450b6f880a0d5e772566445bbea6b494a921acdda7fd21ea0397a116900ee841ae70cc237a86905dd2b3b4a963faaae4f49ac09f50499b386ab61666292795cd1a84fc4b694858a7d878c2660c356f0fa1b7596bf1280f6363f822ce3da423d80f2521fe3b871b4839503550c5ef49525b8b6d898c4333bc75f57176d25369d310cc8013bb6ba9d3dd407911e25a1f5994d98807ab8f0fbce9fabef6676b76b29b1fde16f4d27c9cd95fcf844e30a959fd91dfec0ef3926845f6921b734a2e88e04856c105a0f2d9712fa356ac1095d073ee1ba49945b29044d309944cb8a4d8f9b6e406e2a4b362155f2971e57b8de76fe8b61e14be117f3bb7f4b9bc4cf5fe92fb6740e572e244da628f8d24d5e139268585e48a850c5005a359b8a6204ab061df77c0968fd8868454441c8678077b7dc6264328a2bd1a6a8388a2aec4713feba6f9d2e436b42460649d004862c99d0d31fab56eb03f0d7c176438b22c2474ad50677ebf4dd58d22478194fc9948699750b58a4d398f5eac398b85234df97b4ed4d3a08492dc750adeba20b00f2f174078478f5a499df3047b05fa6e0bbb2b4642feea897d9627b5cbbbf3234305f455cdd6a65a8c916acac0727496c705ea05ced8df8b1e1f29a07d20433622abd354604a12dad9e2a35fd9bf7e66c16d5b45c80813dc6d1608fa516be9da58f4a852d7cd4152e98f28c1de3f809a8cfeffc383ef14f4907ff24c6153a165fe98c04b693f8dc22e1df526e5c0ddd0865bb93108bf12a3ccda09302f95db930a99c0aab2405be605fa590838bd10ae4c99942f0253f472f60fb0eb163e693d9300d2eee0a576c49d2f63801a039a27196881890cdabbe1cec746b7fe0d7f6cd809756642a102954d2c6aa17c0559b4f9e7f517238ad0634c8d0cb939cde7a6f74923e5347835ff30f3a8cf746dbf81bbb5e6486146d1214192055bb784e65f44302695f3933eb01d2db33a286a1d47a6ce57359bd844152e86753f02efc52a507029e40e641411f9fed488416d742f22682794a8d47e04e9d10553d67c6acf464c46b8669a539a4975905acbd7ebc127d2f85b97492993278deeebeab84f212dec2570d4bf7e036e6dcd4675efd15e1e2526537b1ebba33c3deb85cbbc826ca90f1a6255b3bbeb5052ab2d5cd19041c20f94c62d2011e2ccdd4805bc97822d2ba7e7f0d6b4c0d25f255e48d041b332ae75b68e7b2b4d4e64af1e9b4fcc2d6d0f8c87c7c6c839b67928be244644d7d4830706ea2830e10dd4d7c7a33378553ac71c2913640f89f113e55884c7687735f4baf58ab54cc3b58e583027c2666b57ade38919e90bbe810cbbedc90a1a09c83767c7ef37fa8d96b55f8201fad6893174aec04cada77b593267e860505404bbb13ed042587533cf6417882de7e77a3c1f3d05630c9b19f3c5ad55bdec23ff42620a3ce24ff69ec2b3debe2e64a4d5dc71bf813a9ca2cac77b9449b56b3133c0a0def05456b86ef049c368ebea7c39dbbef11e93fd2eba6c36d53388cbe7571c97da4a7099ed9dd6b670f59102e7fecda892c86c251d2d919c6d78533da40ead1b7d83f09d036d08f9a91c7f6a4d9bf082578bcd6741b3e3968b77dafb4cfb51f49081324489f0e4923d5d7998be5311fdf65a53e6af82052c5ae84dbb10eb6de36a9994cf8d7b8b0a11d9849105d12675b1a19549a5bace74ea05c82aee8bc2480904300357d5195419279a0be3c1b830d933a8ebe5ba711ad83d6af5fc708f52b357470d5372525883f4ab62d7655adb5e4d55f2777e0288abac6cd2377a559cb21c016d7acb916195eff6b40786ace54eeef97a529b14fefac91d8a0db85e0e34415a83428a6a7c26c40c468370a189c1d1566fbb2251713c42d0d0f076c1ff50cfc7286099eb345716ec1669bd3b9e8589f886e5276d3e3fefc687a537e98ea016f97a25422b852f8ef3aaf7fe59417baf7fd4518c33a562d6afba91bfd39817f0e803fd59d931a469e523e9661709ff43369e6ad58f64bdf8032e2b756de3a8f1b209887cc470376eefd4cab230cedd1a41c75e833ef57aa753a49d9bb0204aff956c3f1d9e532f1306acba68c438037da086461db9a4152ca4fd30c58fafb755ad002c019948b5a97c5b019e11b953b8e992c36d0b923c1c3d292655f9bd443debb007ae9c67b28bdd9b9f23fb30cee0d11c37f5792cbeb534cf7f36d32e217172791d454d356ea938c393d63c43770940bef11db5327f581d8b6af6f1b35467840ee1f237f3f76dc8dc7736fa3ad6bb59422f5ae87fb1c8318ce59ab296b2177154f6f4cdf977aa154f019bec93335475b30705c6e4e0839930b044ba241fe9fdd625eb79f19a360af718643085a756352e9a475556ff6340428a546d6ad15edce5e60331c74aeb70443475f83646b132b825dc2196c994ed6087c77a2779193e66b3edecc4509305d57f8359aec94bfca3629c38329da427ca1cffc560937a2599486244257b4aea74e3e18c614bf429d117d45bfd33e71e19330939e56e7a3a7043e90368a8326bf4d66691c7c766cb41142ac5b2fac86dc7043aba004aef5f1b2bb9419389d3be140d88363031a5bc708fc27b2cffb5f2aa861fe4838a99454c469366ae7b8624aa72ec39a9338411f580f131b7f43e7c99614f8ead3272234ec3bea67795816b280c8577b96ac9661a24188d818b1f2aa8a91a4b6406086d8064dc5974d52d8d3591358f03770f715a936ce2eed2ae604cadd1ae45d64099b580415811cdbb067b1db28cb9848f312ca7c352d95b337719eabe5a5580ad559b51a8a5ce3cb58444f4b5fc5d4cf1ec3a39cc13546c3e6003a2e6c47d0ea42b4b496fd297a64cdc164ef3700b7fc30b981166668a36a597228019131d1e700cd30f5e17fee3871d0bd5bde229428139386bf55534ae461660fd07d0e8dca68c79b22b68cea3d0d360d753790dd7ee08536342f0b34d2deb74a5a1ea2749987f9aed8a0fc058eec9890aaa17b54578e928b2b14566c5c5eb2da21641d8226909f35c42831011a96fef0d71c6f68ea9a942e168e1104fff8e0084d653ad7f14e73cf2322aae1ac6c45f612ec70cf55004d8647dbf217059159f810ad5f5566ed1bdb5be78b828fbd2a4b0c1fd22b06d737f74a5143adf9e4dabaa1ad279da3ac56fcdbca65ac9c1b57f18f6077617bb8ccbc6f28b4eb9e4ef37c73d5fabc1cc8f5c7156964c8e853dbc154d5bc87b74b2280a8e366753c5fe94ed8394d213c239b3cfab784babe10d45e5b30b178dc7b95388ff3a07b20d4cedc42fbdbf01bb3b0b940bb0b2b8f01bd29a06880024cf4313e7a83cd98a3073c0d93307c31e01b4c2f19b10341e3f0b05a8f0cc48e4f757eef25f18d6bcacaf129f48628763788000985b988cd814c7e86cfc0833fcdfe9b725498cdadaeddcd2b03dfbac6f0609564e93ddf1cfcf7282c3ffbf8cec029dd2d06d8bf3e601389a0cd1dd407de4fda4cae476a2abda3c699b0d77969a14479fbe2960883e6a9c811beb94e2d3505b66979a72ca9fce4b12571aec9b348f9debd53b0aec10e6238d1ffefaa461d106dc37da980463b333c133e63677057ecf4bb8a109bb090ea9140904acf0f91c977fa95ef24b72f6481d57d6048f70e7cdcaa4e47183100ae1835684a3b5ea9965610a6b4660ac0d5da88c262d5651cbe7c0bd1fb5946de9cdc349bbe2a804586ee0f239343cd6ef8d7de76822c65e622ff815614f626167d95e1a3f07f7d2d1211d266d44e98d354d80146b4fe94b626897b4f8f2e69d3035ca768e2720c7075123c55c0ef049777a95f4290a2831781da379d55fc4afa874461046984f4c2da8e9279ed19fca7c3bc5fec0b1f0be97f637e76856ff1ae0f1a02ac9f5c48675569295a59947704b8b59d6501221474ab9960d43372f1604efa752659d594eacb014d8fd111fa8f33780e137405b9a65a4cabb41318c70fd646df67a0029561a6df2cd7d7f53640810b44be50603f9bb6c5dfe65d0fb8b4fc1925bda0ad34a6d74f708069eb56ad6f8dc8b8c5dc94c244e32d6a73dcaaf24d8229f1d0b11ee5fbb14167c32bd5e8a65d0d0bb4a4f93aa8730239f1230ecd1c82f6bbaa9dda4cd0829f75ea52c4890323b65c2a55208e9b9a98dbb7c620f0467c431af2209e84f3e2e64e15c7c4110a195b0a7c75c39d0dd35e3232fae7672825f179daa300d1383acd7d282232d975f4ee571aebb4f9ccff505b76d9506063a5aa3c0f3a9dd1a228bf741ab5c9d0193e86ae77cd2368de496ab35af7f55694f9309244ed689988a38057355545b2a057835e31c87a90574a1c878029475966c97cc3036c55e7a4ab128af05fe6773a11ee9992cec7978f997a57499c72b32e936381b9882255e0dd073e598d0f720e104e6538c829830bec9ecddb83ab0a9540682eba9ded90bdf56c15c043a18df0ca12c55284fce740844a2bce2b9acee5e02b335fb6c599a64830c32329fa3eb4fff0be8c9877bbf86d225fee94e0ae461b78f6912844718e679666583a23de9425e81d577ed0fa07aff967d4fa478831ae887d9a58534bd2b470fa04a1b814461777b3c87c61acdf247157144dc7c9478aae2911424f5456ae4c2ed641a30886a649515a35593d5b48b71b3cd83c7d5833a0e3de3ec9a460aeae38cd69a3430301907ec6e436e0ff20896d259b13646505ec97699bc3619f5c0b40be161cda302014d73bdb115f6a929b8c93748d72abafd88141b125bf986a1121a82c583233fff0ca60ad7cbe8da8a039e0ff3bff9e90398785ecde728ba030fe7c75f7e91142add94e29de92339bdb3302cd514bab0408238f3eb301107f38cab6ddf276563c6b5f8b03e6be05f377a480ad2a8308aaf</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-default">
+      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-default">Hey, password is required here.</span>
+      </label>
+    </div>
+  </div>
+</div>
+<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">
+              
 
-                
-              </div>
+              
             
             <hr/>
             <div>
@@ -478,9 +344,9 @@ https://medium.com/productizing-language-models/guided-text-generation-with-larg
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/FSM/" class="print-no-link">#FSM</a>
+        <a href="/tags/ToolDec/" class="print-no-link">#ToolDec</a>
       
-        <a href="/tags/Outlines/" class="print-no-link">#Outlines</a>
+        <a href="/tags/FSM/" class="print-no-link">#FSM</a>
       
     </div>
   
@@ -492,8 +358,8 @@ https://medium.com/productizing-language-models/guided-text-generation-with-larg
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>《Paper Reading》Efficient Guided Generation for Large Language Models</div>
-      <div>https://al-377.github.io/2023/10/13/paper-outlines/</div>
+      <div>《Paper Reading》ToolDec:SYNTAX ERROR-FREE AND GENERALIZABLE TOOL USE FOR LLMS VIA FINITE-STATE DECODING</div>
+      <div>https://al-377.github.io/2023/10/13/paper-ToolDec/</div>
     </div>
     <div class="license-meta">
       
@@ -537,18 +403,12 @@ https://medium.com/productizing-language-models/guided-text-generation-with-larg
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/10/13/paper-ToolDec/" title="《Paper Reading》ToolDec:SYNTAX ERROR-FREE AND GENERALIZABLE TOOL USE FOR LLMS VIA FINITE-STATE DECODING">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">《Paper Reading》ToolDec:SYNTAX ERROR-FREE AND GENERALIZABLE TOOL USE FOR LLMS VIA FINITE-STATE DECODING</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/10/09/OS-Virtualization-Security-lesson5/" title="操作系统安全的重要性">
-                        <span class="hidden-mobile">操作系统安全的重要性</span>
+                      <a href="/2023/10/13/paper-outlines/" title="《Paper Reading》Efficient Guided Generation for Large Language Models">
+                        <span class="hidden-mobile">《Paper Reading》Efficient Guided Generation for Large Language Models</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -719,6 +579,23 @@ https://medium.com/productizing-language-models/guided-text-generation-with-larg
   
 
 
+
+
+  
+  <script defer>
+    if (document.getElementById('hbePass') || document.querySelector('hbe-prefix')) {
+      Fluid.utils.waitElementLoaded('hbe-prefix', function() {
+        var hbePrefix = document.querySelector('hbe-prefix');
+        hbePrefix.parentElement.classList.add('markdown-body');
+        Fluid.utils.retry(function() {
+          if (Fluid.boot && Fluid.boot.refresh) {
+            Fluid.boot.refresh();
+            return true;
+          }
+        }, 100, 10);
+      })
+    }
+  </script>
 
 
   
