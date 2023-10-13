@@ -4,6 +4,37 @@
   
   
   <entry>
+    <title>《Paper Reading》Efficient Guided Generation for Large Language Models</title>
+    <link href="/2023/10/13/paper-outlines/"/>
+    <url>/2023/10/13/paper-outlines/</url>
+    
+    <content type="html"><![CDATA[<h2 id="background">Background</h2><h3 id="guided-generation">Guided Generation</h3><ul><li>We want the LLM generation in a human-specified format</li><li>Other than prompt, need to figure out more efficient end effectiveways</li></ul><h3 id="temp-solutions">Temp solutions</h3><blockquote><p>fromhttps://medium.com/productizing-language-models/guided-text-generation-with-large-language-models-d88fc3dcf4c</p></blockquote><h4 id="prompt-engineering-and-output-parsers">1.Prompt engineering andoutput parsers</h4><h5 id="typical">Typical</h5><ul><li><ahref="https://python.langchain.com/docs/get_started/introduction">Langchain</a></li></ul><h5 id="methods">Methods</h5><ul><li><strong>Format instructions</strong>: A method that returns a stringcontaining instructions for how the output of a language model should beformatted.Here can use the pydantic model and "schema"function（generate the json schema）<ul><li>Input the pydantic model format, get the instructions</li><li>refer to the <code>get_format_instructions</code> in <ahref="https://github.com/langchain-ai/langchain/blob/master/libs/langchain/langchain/output_parsers/pydantic.py">implementationexample in LangChain</a></li></ul></li><li><strong>Parser</strong>: A method that takes in a string (assumed tobe the response from a language model) and parses it into somestructure.<ul><li><strong>Regex to find the json</strong></li><li>parse the json into a object（pydantic_object.parse_obj）</li></ul></li></ul><h5 id="benifits">Benifits</h5><ul><li>support any LLM (black box)</li><li>Automatically generates the output instructions.</li><li>Parses the generated JSON string into the model</li></ul><h5 id="limitations">Limitations</h5><ul><li><p>Json output is no guaranteed,since it's key in the first step(before the parser)</p></li><li><p>the more complex is the schema ,the more chances for the model tomake mistake</p></li><li><p>context size too large for the instructions containing longschema desciption</p></li></ul><h4 id="fill-in-values-only">2. Fill in values only</h4><h5 id="typical-1">Typical</h5><ul><li><a href="https://github.com/1rgs/jsonformer/">JsonFormer</a>：awrapper around Hugging Face transformers that fills in these fixedtokens during the generation process and only delegates the generationof content tokens, the actual field values to the language model</li></ul><h5 id="methods-1">Methods</h5><p>The idea behind this method is to guide the text generationmonitoring the logits and tokens sampling.Support 4 types:</p><ul><li>Generating <strong>booleans</strong> : compares logits for<strong>true</strong> and <strong>false</strong></li><li>Generating <strong>numbers</strong>: squash logits for non-digittokens before sampling</li><li>Generating <strong>strings</strong>: stops generation on second<strong>”</strong></li><li>Generating <strong>arrays</strong>: compare logits for “[“, “,”,“]”</li></ul><h5 id="benifits-1">Benifits</h5><ul><li>Efficiency. By generating only the content tokens and filling in thefixed tokens, this method is more efficient than generating a full JSONstring and parsing it.</li><li>Flexible and extendable. This library is built on top of the HuggingFace transformers library, making it compatible with any model thatsupports the Hugging Face interface.</li><li>supports JSON schemas with nested objects.</li><li>available in small and less capable LLM</li></ul><h5 id="limitations-1">Limitations</h5><ul><li><p>currently only supports a limited subset of JSON Schema types(number, boolean, string, array, object)</p></li><li><p>project is not actively maintained</p></li></ul><h4id="transform-the-geneation-task-into-a-finite-state-machine-transition">3.Transform the geneation task into a finite-state machine transition</h4><h5 id="typical-2">Typical</h5><ul><li>Outlines（this work）</li></ul><h5 id="methods-2">Methods</h5><ul><li>Transform the geneation task into a finite-state machinetransition</li><li>modify the logits by mask the invalid token each time</li></ul><h5 id="benifits-2">Benifits</h5><ul><li>The approach is model agnostic as long as you can mask the logits.Open-source LLMs can be used.</li><li>Integration with HuggingFace transformers models.</li></ul><h5 id="limitations-2">Limitations</h5><ul><li>it does not support APIs like OpenAI due to API limitation<ul><li>https://github.com/outlines-dev/outlines/issues/227</li></ul></li></ul><h4 id="domain-specific-language">4. Domain Specific Language</h4><h5 id="typical-3">Typical</h5><ul><li><ahref="https://github.com/guidance-ai/guidance/tree/main">Guidance</a>:provides a Domain Specific Language (DSL) for prompting. It mergestemplating and logic control making it possible to have more complex andclever prompts</li></ul><h5 id="methods-3">Methods</h5><ul><li>to do</li></ul><h5 id="benifits-3">Benifits</h5><ul><li><p>It provides a powerful Domain Specific Language for promptingmaking it easy to build the template for a JSON response.</p></li><li><p>doesn’t work well with small LLMs</p></li></ul><h2 id="reference">Reference</h2><p>[1] Prompting is programming: A query language for large languagemodels</p><p>[2] CODEP: Grammatical Seq2Seq Model for General-Purpose CodeGeneration</p><p>[3]https://medium.com/productizing-language-models/guided-text-generation-with-large-language-models-d88fc3dcf4c</p><p>[4] https://docs.pydantic.dev/latest/concepts/models/</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>AI</category>
+      
+      <category>LLM</category>
+      
+      <category>guided generation</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>outlines</tag>
+      
+      <tag>finite-state machine</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>操作系统安全的重要性</title>
     <link href="/2023/10/09/OS-Virtualization-Security-lesson5/"/>
     <url>/2023/10/09/OS-Virtualization-Security-lesson5/</url>
