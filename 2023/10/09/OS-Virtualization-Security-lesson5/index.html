@@ -18,14 +18,14 @@
   
     <meta name="description" content="开始进入安全部分，可信计算。。。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="操作系统安全的重要性">
+<meta property="og:title" content="操作系统安全基本知识">
 <meta property="og:url" content="https://al-377.github.io/2023/10/09/OS-Virtualization-Security-lesson5/index.html">
 <meta property="og:site_name" content="Aidan Lew&#39;s Blog">
 <meta property="og:description" content="开始进入安全部分，可信计算。。。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/image-20230915122823399.png">
 <meta property="article:published_time" content="2023-10-09T01:06:43.000Z">
-<meta property="article:modified_time" content="2023-10-09T02:04:57.003Z">
+<meta property="article:modified_time" content="2023-10-16T00:59:03.848Z">
 <meta property="article:author" content="Aidan Lew">
 <meta property="article:tag" content="OS">
 <meta property="article:tag" content="Virtualization">
@@ -35,7 +35,7 @@
   
   
   
-  <title>操作系统安全的重要性 - Aidan Lew&#39;s Blog</title>
+  <title>操作系统安全基本知识 - Aidan Lew&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -201,7 +201,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="操作系统安全的重要性"></span>
+            <span id="subtitle" data-typed-text="操作系统安全基本知识"></span>
           
         </div>
 
@@ -225,7 +225,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          462 字
+          990 字
         
       </span>
     
@@ -237,7 +237,7 @@
         
         
           <!-- compatible with older versions-->
-          4 分钟
+          9 分钟
         
       </span>
     
@@ -282,12 +282,13 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">操作系统安全的重要性</h1>
+            <h1 id="seo-header">操作系统安全基本知识</h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="攻击类型">攻击类型</h2>
+                <h2 id="安全的重要性">安全的重要性</h2>
+<h3 id="攻击类型">攻击类型</h3>
 <blockquote>
 <p>硬件、软件、通信、人</p>
 </blockquote>
@@ -304,8 +305,8 @@
 <li>信息泄露(TEMPEST)－从电磁辐射中抽取信息</li>
 <li>社会工程(Social engineering)- 为了达到攻击目的而欺骗人</li>
 </ul>
-<h2 id="安全与可信">安全与可信</h2>
-<h3 id="可信系统的建立">可信系统的建立</h3>
+<h3 id="安全与可信">安全与可信</h3>
+<h4 id="可信系统的建立">可信系统的建立</h4>
 <ul>
 <li>逐层做安全</li>
 <li>不能在不安全的层上做安全应用</li>
@@ -329,6 +330,49 @@
 <li>安全是0和1，可信是有程度的被量化的</li>
 <li>安全一般用特性来描述，可信是需要证明的</li>
 </ul>
+<h2 id="安全相关概念">安全相关概念</h2>
+<h3 id="主客体">主客体</h3>
+<p>主体：<strong>引起信息在客体之间的流动的实体</strong></p>
+<p>客体：<strong>客体是一个被动的实体</strong></p>
+<h3 id="访问控制">访问控制</h3>
+<p>功能：系统允许或禁止对数据的访问或者一些操作的执行</p>
+<p>包括：</p>
+<ul>
+<li>文件（增删改查）</li>
+<li>程序</li>
+<li>数据</li>
+</ul>
+<h4 id="访问控制矩阵">访问控制矩阵</h4>
+<p><img src="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/image-20231016084318180.png" srcset="/img/loading.gif" lazyload alt="image-20231016084318180" style="zoom:50%;" /></p>
+<h3 id="安全三要素">安全三要素</h3>
+<h4 id="安全策略">安全策略</h4>
+<p>安全性的定义（what to do）</p>
+<h4 id="安全机制">安全机制</h4>
+<p>如何实现安全恶略（how to do）</p>
+<h5 id="类型">类型</h5>
+<ul>
+<li><strong>prevention</strong></li>
+<li><strong>detection</strong></li>
+<li><strong>recovery</strong></li>
+</ul>
+<h5 id="引用监视器">引用监视器</h5>
+<p>功能：<strong>an abstract</strong> machine that mediates all accesses
+to <strong>objects by subjects</strong></p>
+<p><strong>components</strong>：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/image-20231016084903773.png" srcset="/img/loading.gif" lazyload alt="image-20231016084903773" style="zoom:50%;" /></p>
+<h4 id="安全保证">安全保证</h4>
+<p>确保做法正确</p>
+<h3 id="可信计算基trusted-computing-base-tcb">可信计算基（Trusted
+computing base, TCB）</h3>
+<p>定义： <em>comprises all of the hardware and software that must
+be</em> <em>trusted to enforce the system security
+policy</em>，TCB就是实现这个目的所有安全保护机制的集合</p>
+<p>注意两个范围：</p>
+<ul>
+<li><p>安全周界：<strong>系统内部组件有两种：负责维护系统安全(或者安全相关)的部分和所有其他部分。这些安全相关的组件实现内部控制。用一种假想的边界分离两种类型的组件，该边界称为安全周界。</strong></p></li>
+<li><p>系统边界：<strong>系统内部所有的东西由系统来保护，系统之外的东西不受其保护。</strong></p></li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/image-20231016085454631.png" srcset="/img/loading.gif" lazyload alt="image-20231016085454631" style="zoom:50%;" /></p>
 
                 
               </div>
@@ -385,7 +429,7 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>操作系统安全的重要性</div>
+      <div>操作系统安全基本知识</div>
       <div>https://al-377.github.io/2023/10/09/OS-Virtualization-Security-lesson5/</div>
     </div>
     <div class="license-meta">
