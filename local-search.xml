@@ -4,6 +4,62 @@
   
   
   <entry>
+    <title>《Paper Reading》prompt sketching for large language model</title>
+    <link href="/2023/11/11/paper-PROMPT-SKETCHING/"/>
+    <url>/2023/11/11/paper-PROMPT-SKETCHING/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    <categories>
+      
+      <category>AI</category>
+      
+      <category>LLM</category>
+      
+      <category>guided generation</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>dclib</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>大数据大作业</title>
+    <link href="/2023/10/23/bigdata-project/"/>
+    <url>/2023/10/23/bigdata-project/</url>
+    
+    <content type="html"><![CDATA[<h2 id="大数据基础知识">大数据基础知识</h2><h2 id="Reference">Reference</h2><p>[1] <a href="https://blog.51cto.com/dataclub/5360675">从数据收集、数据处理、数据存储、数据流转的过程理解不同大的大数据组件</a></p><p>[2] <a href="https://cloud.tencent.com/developer/article/1894031">一张图解释大数据架构</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>大数据</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>hadoop</tag>
+      
+      <tag>spark</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>《Paper Reading》ToolDec:SYNTAX ERROR-FREE AND GENERALIZABLE TOOL USE FOR LLMS VIA FINITE-STATE DECODING</title>
     <link href="/2023/10/13/paper-ToolDec/"/>
     <url>/2023/10/13/paper-ToolDec/</url>
