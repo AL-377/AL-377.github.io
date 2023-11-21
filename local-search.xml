@@ -4,11 +4,30 @@
   
   
   <entry>
+    <title>人工智能中的数学</title>
+    <link href="/2023/11/21/math2ai/"/>
+    <url>/2023/11/21/math2ai/</url>
+    
+    <content type="html"><![CDATA[<h2 id="资源">资源</h2><p>https://zhuanlan.zhihu.com/p/337020614</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>AI</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>《Paper Reading》prompt sketching for large language model</title>
     <link href="/2023/11/11/paper-PROMPT-SKETCHING/"/>
     <url>/2023/11/11/paper-PROMPT-SKETCHING/</url>
     
-    <content type="html"><![CDATA[]]></content>
+    <content type="html"><![CDATA[<h2 id="background">Background</h2><ul><li>argmax decoding</li><li>beam search decoding</li><li><strong>grid beam Search </strong>(pool)</li></ul><h2 id="motivation">Motivation</h2><h3 id="contraint-decode">contraint decode</h3><h4 id="temp-solution-problems">Temp Solution Problems</h4><figure><imgsrc="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/202311110923309.png"alt="3 types prompt" /><figcaption aria-hidden="true">3 types prompt</figcaption></figure><p><strong>Stop and go:</strong> repeat problems</p><blockquote><p>actually <strong>Outlines</strong> is stop and go?</p></blockquote><p>（1）Can we improve on naive stop-and-go inference by<strong>anticipating the overall template</strong> duringgeneration?</p><p>（2）What is the general <strong>effect of this form of templatedgeneration on overall model performance</strong>, i.e., does it impairor improve the model’s reasoning capabilities?</p><h3 id="sequential-prompting">sequential prompting</h3><h4 id="features">Features</h4><h4 id="problems">Problems</h4><p>disconnected and undesirably wordy intermediate responses.</p><h2 id="method">Method</h2><h2 id="experiments">Experiments</h2><ol type="1"><li><p>Is templated-guided inference and sketching effective atimproving the performance of LLMs on reasoning tasks?</p></li><li><p>Can sketch-aware decoders outperform existing decoders in andoutside of the sketching setting?</p></li><li><p>what kind of tasks benefit the most from sketching?</p></li></ol><h2 id="inspiration">Inspiration?</h2><p>1、high level of guided generation than tokenlevel(<strong>outlines</strong>)？</p>]]></content>
     
     
     <categories>

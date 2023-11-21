@@ -18,22 +18,22 @@
   
     <meta name="description" content="Paper sketching is a method coping with the problems of sequentially prompt and template-guided inference by predicting the follow up prompts,may be a good solution for template-guided text generation">
 <meta property="og:type" content="article">
-<meta property="og:title" content="《Paper Reading》prompt sketching for large language model">
-<meta property="og:url" content="https://al-377.github.io/2023/11/11/paper-PROMPT-SKETCHING/index.html">
+<meta property="og:title" content="Aidan Lew&#39;s Blog">
+<meta property="og:url" content="https://al-377.github.io/2023/11/13/paper-LMQL/index.html">
 <meta property="og:site_name" content="Aidan Lew&#39;s Blog">
 <meta property="og:description" content="Paper sketching is a method coping with the problems of sequentially prompt and template-guided inference by predicting the follow up prompts,may be a good solution for template-guided text generation">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/202311110923309.png">
-<meta property="article:published_time" content="2023-11-11T01:05:48.000Z">
-<meta property="article:modified_time" content="2023-11-13T09:43:09.831Z">
+<meta property="article:published_time" content="2023-11-13T06:40:37.000Z">
+<meta property="article:modified_time" content="2023-11-21T06:56:15.170Z">
 <meta property="article:author" content="Aidan Lew">
-<meta property="article:tag" content="dclib">
+<meta property="article:tag" content="LMQL">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/202311110923309.png">
   
   
   
-  <title>《Paper Reading》prompt sketching for large language model - Aidan Lew&#39;s Blog</title>
+  <title>Aidan Lew&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -199,7 +199,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="《Paper Reading》prompt sketching for large language model"></span>
+            <span id="subtitle" data-typed-text=""></span>
           
         </div>
 
@@ -210,8 +210,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-11-11 09:05" pubdate>
-          星期六, 十一月 11日 2023, 9:05 上午
+        <time datetime="2023-11-13 14:40" pubdate>
+          星期一, 十一月 13日 2023, 2:40 下午
         </time>
       </span>
     
@@ -223,7 +223,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          795 字
+          280 字
         
       </span>
     
@@ -235,7 +235,7 @@
         
         
           <!-- compatible with older versions-->
-          7 分钟
+          3 分钟
         
       </span>
     
@@ -280,52 +280,36 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">《Paper Reading》prompt sketching for large language model</h1>
+            <h1 id="seo-header"></h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="background">Background</h2>
+                <h2 id="motivation">Motivation</h2>
+<p><strong>Challenges</strong></p>
+<p><em>Interaction</em></p>
 <ul>
-<li>argmax decoding</li>
-<li>beam search decoding</li>
-<li><strong>grid beam Search </strong>(pool)</li>
+<li>human participant many times</li>
 </ul>
-<h2 id="motivation">Motivation</h2>
-<h3 id="contraint-decode">contraint decode</h3>
-<h4 id="temp-solution-problems">Temp Solution Problems</h4>
-<figure>
-<img
-src="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/202311110923309.png" srcset="/img/loading.gif" lazyload
-alt="3 types prompt" />
-<figcaption aria-hidden="true">3 types prompt</figcaption>
-</figure>
-<p><strong>Stop and go:</strong> repeat problems</p>
-<blockquote>
-<p>actually <strong>Outlines</strong> is stop and go?</p>
-</blockquote>
-<p>（1）Can we improve on naive stop-and-go inference by
-<strong>anticipating the overall template</strong> during
-generation?</p>
-<p>（2）What is the general <strong>effect of this form of templated
-generation on overall model performance</strong>, i.e., does it impair
-or improve the model’s reasoning capabilities?</p>
-<h3 id="sequential-prompting">sequential prompting</h3>
-<h4 id="features">Features</h4>
-<h4 id="problems">Problems</h4>
-<p>disconnected and undesirably wordy intermediate responses.</p>
-<h2 id="method">Method</h2>
-<h2 id="experiments">Experiments</h2>
-<ol type="1">
-<li><p>Is templated-guided inference and sketching effective at
-improving the performance of LLMs on reasoning tasks?</p></li>
-<li><p>Can sketch-aware decoders outperform existing decoders in and
-outside of the sketching setting?</p></li>
-<li><p>what kind of tasks benefit the most from sketching?</p></li>
-</ol>
-<h2 id="inspiration">Inspiration?</h2>
-<p>1、high level of guided generation than token
-level(<strong>outlines</strong>)？</p>
+<p><em>Constraints &amp; Token Representation</em></p>
+<ul>
+<li>concept level than token level</li>
+</ul>
+<p><em>Efficiency and Cost</em></p>
+<p><strong>Persueing an advanced prompting method:</strong></p>
+<ul>
+<li>lower the price</li>
+<li>improve the constraints</li>
+<li>simplify the prompt procedure</li>
+</ul>
+<h2 id="methods">Methods</h2>
+<h3 id="example">Example</h3>
+<p><img src="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/image-20231114203731324.png" srcset="/img/loading.gif" lazyload alt="image-20231114203731324" style="zoom:50%;" /></p>
+<h3 id="procedure">Procedure</h3>
+<p>1、dealing with query</p>
+<p><img src="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/image-20231114211138342.png" srcset="/img/loading.gif" lazyload alt="image-20231114211138342" style="zoom:50%;" /></p>
+<p>2、decoding</p>
+<p><img src="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/image-20231114214548202.png" srcset="/img/loading.gif" lazyload alt="image-20231114214548202" style="zoom:50%;" /></p>
 
                 
               </div>
@@ -373,7 +357,7 @@ level(<strong>outlines</strong>)？</p>
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/dclib/" class="print-no-link">#dclib</a>
+        <a href="/tags/LMQL/" class="print-no-link">#LMQL</a>
       
     </div>
   
@@ -385,8 +369,8 @@ level(<strong>outlines</strong>)？</p>
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>《Paper Reading》prompt sketching for large language model</div>
-      <div>https://al-377.github.io/2023/11/11/paper-PROMPT-SKETCHING/</div>
+      <div></div>
+      <div>https://al-377.github.io/2023/11/13/paper-LMQL/</div>
     </div>
     <div class="license-meta">
       
@@ -398,7 +382,7 @@ level(<strong>outlines</strong>)？</p>
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年11月11日</div>
+          <div>2023年11月13日</div>
         </div>
       
       
@@ -425,29 +409,6 @@ level(<strong>outlines</strong>)？</p>
 
 
 
-              
-                <div class="post-prevnext my-3">
-                  <article class="post-prev col-6">
-                    
-                    
-                      <a href="/2023/11/21/math2ai/" title="人工智能中的数学">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">人工智能中的数学</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                      <a href="/2023/10/23/bigdata-project/" title="大数据大作业">
-                        <span class="hidden-mobile">大数据大作业</span>
-                        <span class="visible-mobile">下一篇</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </article>
-                </div>
               
             </div>
 
