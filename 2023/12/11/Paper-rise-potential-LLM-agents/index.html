@@ -23,11 +23,17 @@
 <meta property="og:site_name" content="Aidan Lew&#39;s Blog">
 <meta property="og:description" content="20230919 LLM Agent Survey,choose some parts.">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/image-20231211112924455.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/image-20231211113646350.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/image-20231211142412933.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/image-20231211143917051.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/image-20231211152221242.png">
 <meta property="article:published_time" content="2023-12-11T02:31:57.000Z">
-<meta property="article:modified_time" content="2023-12-11T04:47:52.756Z">
+<meta property="article:modified_time" content="2023-12-11T07:51:18.637Z">
 <meta property="article:author" content="Aidan Lew">
 <meta property="article:tag" content="Agents">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/image-20231211112924455.png">
   
   
   
@@ -221,7 +227,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          1.2k 字
+          1.6k 字
         
       </span>
     
@@ -233,7 +239,7 @@
         
         
           <!-- compatible with older versions-->
-          10 分钟
+          14 分钟
         
       </span>
     
@@ -283,41 +289,26 @@
             
               <div class="markdown-body">
                 
-                <h2 id="abstract">Abstract</h2>
+                <h2 id="Abstract">Abstract</h2>
 <ul>
 <li>History</li>
 <li><strong>a general frameowork of Agent</strong></li>
 <li><strong>3 kinds of Agent organization</strong></li>
 <li>Agent society</li>
 </ul>
-<h2 id="history">History</h2>
+<h2 id="History">History</h2>
 <p>5 level world scope ( from NLP to general AI)</p>
 <ul>
-<li>Corpus, Internet, <strong>Perception,Embodiment</strong>, and
-Social</li>
+<li>Corpus, Internet, <strong>Perception,Embodiment</strong>, and Social</li>
 </ul>
-<p>LLM based Agents implements both the abilities of <strong>Symbolic
-Agents</strong> and <strong>Reactive agents.</strong></p>
-<h2 id="framework">Framework</h2>
-<figure>
-<img
-src="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/image-20231211112924455.png" srcset="/img/loading.gif" lazyload
-alt="image-20231211112924455" />
-<figcaption aria-hidden="true">image-20231211112924455</figcaption>
-</figure>
-<h3 id="brain">Brain</h3>
-<h4>
-<mark>typology of brain module</mark>
-</h4>
-<p><a
-target="_blank" rel="noopener" href="https://github.com/WooooDyy/LLM-Agent-Paper-List?tab=readme-ov-file#11-brain-primarily-composed-of-an-llm">reference</a></p>
-<figure>
-<img
-src="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/image-20231211113646350.png" srcset="/img/loading.gif" lazyload
-alt="image-20231211113646350" />
-<figcaption aria-hidden="true">image-20231211113646350</figcaption>
-</figure>
-<h4 id="knowledge">Knowledge</h4>
+<p>LLM based Agents implements both the abilities of <strong>Symbolic Agents</strong> and <strong>Reactive agents.</strong></p>
+<h2 id="Framework">Framework</h2>
+<p><img src="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/image-20231211112924455.png" srcset="/img/loading.gif" lazyload alt="image-20231211112924455"></p>
+<h3 id="Brain">Brain</h3>
+<h4> <mark>typology of brain module</mark></h4>
+<p><a target="_blank" rel="noopener" href="https://github.com/WooooDyy/LLM-Agent-Paper-List?tab=readme-ov-file#11-brain-primarily-composed-of-an-llm">reference</a></p>
+<p><img src="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/image-20231211113646350.png" srcset="/img/loading.gif" lazyload alt="image-20231211113646350"></p>
+<h4 id="Knowledge">Knowledge</h4>
 <p><strong>problems</strong></p>
 <ul>
 <li>incorrect 、outdated knowledge</li>
@@ -329,15 +320,15 @@ alt="image-20231211113646350" />
 <li>evaluate the correctness of LLM</li>
 <li>utilize external tools to avoid incorrect</li>
 </ul>
-<h4 id="memory">Memory</h4>
-<p><strong>stores</strong> the past <strong>observations, thoughts and
-actions</strong></p>
+<h4 id="Memory">Memory</h4>
+<p><strong>stores</strong> the past <strong>observations, thoughts and actions</strong></p>
 <p><strong>Problems</strong></p>
 <ul>
 <li>sheer length of memory length
 <ul>
 <li>may surpass the length limit</li>
-</ul></li>
+</ul>
+</li>
 <li>extracting relevant memories</li>
 <li>with memory increase, how to locate the relevent parts</li>
 </ul>
@@ -345,42 +336,90 @@ actions</strong></p>
 <ul>
 <li>Raising the length limit of Transformers</li>
 <li>summarizing memory</li>
-<li><strong>Compressing memories with vectors or data
-structures</strong>
+<li><strong>Compressing memories with vectors or data structures</strong>
 <ul>
 <li>by what format to boost memory retrieval efficiency</li>
-</ul></li>
 </ul>
-<h5 id="memory-retrieval">Memory Retrieval</h5>
+</li>
+</ul>
+<h5 id="Memory-Retrieval">Memory Retrieval</h5>
 <ul>
 <li>evaluate by <strong>Recency, Relevance, and Importance</strong></li>
 <li>move、edit、remove、merge memory</li>
 </ul>
-<h4 id="reasoning-and-planning">Reasoning and Planning</h4>
-<h5 id="plan">Plan</h5>
+<h4 id="Reasoning-and-Planning">Reasoning and Planning</h4>
+<h5 id="Plan">Plan</h5>
 <p><strong>Plan formulation</strong></p>
 <p>decompose an overarching task into numerous sub-tasks</p>
 <ul>
-<li>in one go</li>
+<li>in  one go</li>
 <li>by cot</li>
 <li>hierarchical</li>
 <li>evaluate all paths before exe</li>
 </ul>
 <p><strong>Plan reflection</strong></p>
 <ul>
-<li><p>Align with human</p></li>
-<li><p>from task accomplishments or post-action observations</p></li>
+<li>
+<p>Align with human</p>
+</li>
+<li>
+<p>from  task accomplishments or post-action observations</p>
+</li>
 </ul>
-<h4 id="transferability-and-generalization">Transferability and
-Generalization</h4>
-<h3 id="perception">Perception</h3>
-<h3 id="action">Action</h3>
-<h2 id="insights">Insights</h2>
-<ol type="1">
+<h4 id="Transferability-and-Generalization">Transferability and Generalization</h4>
+<ul>
+<li>ICL</li>
+<li>Continual learning
+<ul>
+<li>continuous acquisition and update of skills</li>
+<li>key issue is  catastrophic forgetting</li>
+</ul>
+</li>
+</ul>
+<h3 id="Perception">Perception</h3>
+<p><img src="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/image-20231211142412933.png" srcset="/img/loading.gif" lazyload alt="image-20231211142412933"></p>
+<h3 id="Action">Action</h3>
+<p><img src="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/image-20231211143917051.png" srcset="/img/loading.gif" lazyload alt="image-20231211143917051"></p>
+<h4 id="Tools">Tools</h4>
+<ul>
+<li>understanding</li>
+<li>learning to use</li>
+<li>user suitable for agent
+<ul>
+<li>modular</li>
+<li>Input\output format</li>
+</ul>
+</li>
+</ul>
+<h2 id="Agent-in-practice">Agent in practice</h2>
+<h3 id="Organizations">Organizations</h3>
+<p><img src="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/image-20231211152221242.png" srcset="/img/loading.gif" lazyload alt="image-20231211152221242"></p>
+<h3 id="Single-Agent-Deployment">Single Agent Deployment</h3>
+<ul>
+<li><strong>Task-oriented Deployment</strong>
+<ul>
+<li>daily high-level instructions from users-&gt;goal decomposition-&gt;interactive exploration of the environment</li>
+</ul>
+</li>
+<li><strong>Innovation-oriented Deployment</strong>
+<ul>
+<li>domain-specific,professional scenes</li>
+</ul>
+</li>
+<li><strong>Lifecycle-oriented Deployment</strong>
+<ul>
+<li>some minecraft examples</li>
+</ul>
+</li>
+</ul>
+<h2 id="Insights">Insights</h2>
+<ol>
 <li>记忆机制</li>
 <li>高效generation</li>
 <li>高效interaction</li>
+<li>Low-level、high-level的计划</li>
 </ol>
+<p>​</p>
 
                 
               </div>
