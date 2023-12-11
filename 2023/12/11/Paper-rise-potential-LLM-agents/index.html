@@ -16,25 +16,22 @@
   <meta name="author" content="Aidan Lew">
   <meta name="keywords" content="">
   
-    <meta name="description" content="大数据大作业的选题+方案">
+    <meta name="description" content="20230919 LLM Agent Survey">
 <meta property="og:type" content="article">
-<meta property="og:title" content="大数据大作业">
-<meta property="og:url" content="https://al-377.github.io/2023/10/23/bigdata-project/index.html">
+<meta property="og:title" content="《Paper Reading》The Rise and Potential of Large Language Model">
+<meta property="og:url" content="https://al-377.github.io/2023/12/11/Paper-rise-potential-LLM-agents/index.html">
 <meta property="og:site_name" content="Aidan Lew&#39;s Blog">
-<meta property="og:description" content="大数据大作业的选题+方案">
+<meta property="og:description" content="20230919 LLM Agent Survey">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/image-20231023105216081.png">
-<meta property="article:published_time" content="2023-10-23T02:49:01.000Z">
-<meta property="article:modified_time" content="2023-10-23T05:45:38.080Z">
+<meta property="article:published_time" content="2023-12-11T02:31:57.000Z">
+<meta property="article:modified_time" content="2023-12-11T03:50:23.317Z">
 <meta property="article:author" content="Aidan Lew">
-<meta property="article:tag" content="hadoop">
-<meta property="article:tag" content="spark">
+<meta property="article:tag" content="Agents">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/image-20231023105216081.png">
   
   
   
-  <title>大数据大作业 - Aidan Lew&#39;s Blog</title>
+  <title>《Paper Reading》The Rise and Potential of Large Language Model - Aidan Lew&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -194,13 +191,13 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/image-20231023105216081.png') no-repeat center center; background-size: cover;">
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="大数据大作业"></span>
+            <span id="subtitle" data-typed-text="《Paper Reading》The Rise and Potential of Large Language Model"></span>
           
         </div>
 
@@ -211,8 +208,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-10-23 10:49" pubdate>
-          星期一, 十月 23日 2023, 10:49 上午
+        <time datetime="2023-12-11 10:31" pubdate>
+          星期一, 十二月 11日 2023, 10:31 上午
         </time>
       </span>
     
@@ -224,7 +221,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          66 字
+          492 字
         
       </span>
     
@@ -236,7 +233,7 @@
         
         
           <!-- compatible with older versions-->
-          1 分钟
+          5 分钟
         
       </span>
     
@@ -281,15 +278,51 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">大数据大作业</h1>
+            <h1 id="seo-header">《Paper Reading》The Rise and Potential of Large Language Model</h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="大数据基础知识">大数据基础知识</h2>
-<h2 id="Reference">Reference</h2>
-<p>[1] <a target="_blank" rel="noopener" href="https://blog.51cto.com/dataclub/5360675">从数据收集、数据处理、数据存储、数据流转的过程理解不同大的大数据组件</a></p>
-<p>[2] <a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1894031">一张图解释大数据架构</a></p>
+                <h2 id="abstract">Abstract</h2>
+<ul>
+<li>History</li>
+<li><strong>a general frameowork of Agent</strong></li>
+<li><strong>3 kinds of Agent organization</strong></li>
+<li>Agent society</li>
+</ul>
+<h2 id="history">History</h2>
+<p>5 level world scope ( from NLP to general AI)</p>
+<ul>
+<li>Corpus, Internet, <strong>Perception,Embodiment</strong>, and
+Social</li>
+</ul>
+<p>LLM based Agents implements both the abilities of <strong>Symbolic
+Agents</strong> and <strong>Reactive agents.</strong></p>
+<h2 id="framework">Framework</h2>
+<figure>
+<img
+src="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/image-20231211112924455.png" srcset="/img/loading.gif" lazyload
+alt="image-20231211112924455" />
+<figcaption aria-hidden="true">image-20231211112924455</figcaption>
+</figure>
+<h3 id="brain">Brain</h3>
+<h4 id="typology-of-brain-module">==typology of brain module==</h4>
+<p>refer to:</p>
+<p>https://github.com/WooooDyy/LLM-Agent-Paper-List?tab=readme-ov-file#11-brain-primarily-composed-of-an-llm</p>
+<figure>
+<img
+src="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/image-20231211113646350.png" srcset="/img/loading.gif" lazyload
+alt="image-20231211113646350" />
+<figcaption aria-hidden="true">image-20231211113646350</figcaption>
+</figure>
+<h3 id="perception">Perception</h3>
+<h3 id="action">Action</h3>
+<h2 id="insights">Insights</h2>
+<ol type="1">
+<li>记忆机制</li>
+<li>高效generation</li>
+<li>高效interaction</li>
+</ol>
 
                 
               </div>
@@ -308,8 +341,15 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/" class="category-chain-item">大数据</a>
+  <a href="/categories/LLM/" class="category-chain-item">LLM</a>
   
+  
+    <span>></span>
+    
+  <a href="/categories/LLM/Agents/" class="category-chain-item">Agents</a>
+  
+  
+
   
 
       </span>
@@ -323,9 +363,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/hadoop/" class="print-no-link">#hadoop</a>
-      
-        <a href="/tags/spark/" class="print-no-link">#spark</a>
+        <a href="/tags/Agents/" class="print-no-link">#Agents</a>
       
     </div>
   
@@ -337,8 +375,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>大数据大作业</div>
-      <div>https://al-377.github.io/2023/10/23/bigdata-project/</div>
+      <div>《Paper Reading》The Rise and Potential of Large Language Model</div>
+      <div>https://al-377.github.io/2023/12/11/Paper-rise-potential-LLM-agents/</div>
     </div>
     <div class="license-meta">
       
@@ -350,7 +388,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年10月23日</div>
+          <div>2023年12月11日</div>
         </div>
       
       
@@ -382,18 +420,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/11/21/math2ai/" title="人工智能中的数学">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">人工智能中的数学</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/10/13/paper-ToolDec/" title="《Paper Reading》ToolDec:SYNTAX ERROR-FREE AND GENERALIZABLE TOOL USE FOR LLMS VIA FINITE-STATE DECODING">
-                        <span class="hidden-mobile">《Paper Reading》ToolDec:SYNTAX ERROR-FREE AND GENERALIZABLE TOOL USE FOR LLMS VIA FINITE-STATE DECODING</span>
+                      <a href="/2023/12/10/Agent-Resource/" title="Agent随笔">
+                        <span class="hidden-mobile">Agent随笔</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

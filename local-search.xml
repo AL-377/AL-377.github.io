@@ -4,6 +4,33 @@
   
   
   <entry>
+    <title>《Paper Reading》The Rise and Potential of Large Language Model</title>
+    <link href="/2023/12/11/Paper-rise-potential-LLM-agents/"/>
+    <url>/2023/12/11/Paper-rise-potential-LLM-agents/</url>
+    
+    <content type="html"><![CDATA[<h2 id="abstract">Abstract</h2><ul><li>History</li><li><strong>a general frameowork of Agent</strong></li><li><strong>3 kinds of Agent organization</strong></li><li>Agent society</li></ul><h2 id="history">History</h2><p>5 level world scope ( from NLP to general AI)</p><ul><li>Corpus, Internet, <strong>Perception,Embodiment</strong>, andSocial</li></ul><p>LLM based Agents implements both the abilities of <strong>SymbolicAgents</strong> and <strong>Reactive agents.</strong></p><h2 id="framework">Framework</h2><figure><imgsrc="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/image-20231211112924455.png"alt="image-20231211112924455" /><figcaption aria-hidden="true">image-20231211112924455</figcaption></figure><h3 id="brain">Brain</h3><h4 id="typology-of-brain-module">==typology of brain module==</h4><p>refer to:</p><p>https://github.com/WooooDyy/LLM-Agent-Paper-List?tab=readme-ov-file#11-brain-primarily-composed-of-an-llm</p><figure><imgsrc="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/image-20231211113646350.png"alt="image-20231211113646350" /><figcaption aria-hidden="true">image-20231211113646350</figcaption></figure><h3 id="perception">Perception</h3><h3 id="action">Action</h3><h2 id="insights">Insights</h2><ol type="1"><li>记忆机制</li><li>高效generation</li><li>高效interaction</li></ol>]]></content>
+    
+    
+    <categories>
+      
+      <category>LLM</category>
+      
+      <category>Agents</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Agents</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Agent随笔</title>
     <link href="/2023/12/10/Agent-Resource/"/>
     <url>/2023/12/10/Agent-Resource/</url>
@@ -100,33 +127,6 @@
       
     </categories>
     
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>大数据大作业</title>
-    <link href="/2023/10/23/bigdata-project/"/>
-    <url>/2023/10/23/bigdata-project/</url>
-    
-    <content type="html"><![CDATA[<h2 id="大数据基础知识">大数据基础知识</h2><h2 id="Reference">Reference</h2><p>[1] <a href="https://blog.51cto.com/dataclub/5360675">从数据收集、数据处理、数据存储、数据流转的过程理解不同大的大数据组件</a></p><p>[2] <a href="https://cloud.tencent.com/developer/article/1894031">一张图解释大数据架构</a></p>]]></content>
-    
-    
-    <categories>
-      
-      <category>大数据</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>hadoop</tag>
-      
-      <tag>spark</tag>
-      
-    </tags>
     
   </entry>
   
