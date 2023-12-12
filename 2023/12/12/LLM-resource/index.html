@@ -16,28 +16,22 @@
   <meta name="author" content="Aidan Lew">
   <meta name="keywords" content="">
   
-    <meta name="description" content="20230919 LLM Agent Survey,choose some parts.">
+    <meta name="description" content="Here&#39;s something encrypted, password is required to continue reading.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="《Paper Reading》The Rise and Potential of Large Language Model">
-<meta property="og:url" content="https://al-377.github.io/2023/12/11/Paper-rise-potential-LLM-agents/index.html">
+<meta property="og:title" content="LLM Resource List">
+<meta property="og:url" content="https://al-377.github.io/2023/12/12/LLM-resource/index.html">
 <meta property="og:site_name" content="Aidan Lew&#39;s Blog">
-<meta property="og:description" content="20230919 LLM Agent Survey,choose some parts.">
+<meta property="og:description" content="Here&#39;s something encrypted, password is required to continue reading.">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/image-20231211112924455.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/image-20231211113646350.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/image-20231211142412933.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/image-20231211143917051.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/image-20231211152221242.png">
-<meta property="article:published_time" content="2023-12-11T02:31:57.000Z">
-<meta property="article:modified_time" content="2023-12-12T01:40:08.434Z">
+<meta property="article:published_time" content="2023-12-12T01:47:26.000Z">
+<meta property="article:modified_time" content="2023-12-12T01:50:45.481Z">
 <meta property="article:author" content="Aidan Lew">
-<meta property="article:tag" content="Agents">
+<meta property="article:tag" content="LLM">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/image-20231211112924455.png">
   
   
   
-  <title>《Paper Reading》The Rise and Potential of Large Language Model - Aidan Lew&#39;s Blog</title>
+  <title>LLM Resource List - Aidan Lew&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -203,7 +197,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="《Paper Reading》The Rise and Potential of Large Language Model"></span>
+            <span id="subtitle" data-typed-text="LLM Resource List"></span>
           
         </div>
 
@@ -214,8 +208,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-12-11 10:31" pubdate>
-          星期一, 十二月 11日 2023, 10:31 上午
+        <time datetime="2023-12-12 09:47" pubdate>
+          星期二, 十二月 12日 2023, 9:47 上午
         </time>
       </span>
     
@@ -227,7 +221,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          1.7k 字
+          571 字
         
       </span>
     
@@ -239,7 +233,7 @@
         
         
           <!-- compatible with older versions-->
-          15 分钟
+          5 分钟
         
       </span>
     
@@ -284,158 +278,25 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">《Paper Reading》The Rise and Potential of Large Language Model</h1>
+            <h1 id="seo-header">LLM Resource List</h1>
             
             
-              <div class="markdown-body">
-                
-                <h2 id="Abstract">Abstract</h2>
-<ul>
-<li>History</li>
-<li><strong>a general frameowork of Agent</strong></li>
-<li><strong>3 kinds of Agent organization</strong></li>
-<li>Agent society</li>
-</ul>
-<h2 id="History">History</h2>
-<p>5 level world scope ( from NLP to general AI)</p>
-<ul>
-<li>Corpus, Internet, <strong>Perception,Embodiment</strong>, and Social</li>
-</ul>
-<p>LLM based Agents implements both the abilities of <strong>Symbolic Agents</strong> and <strong>Reactive agents.</strong></p>
-<h2 id="Framework">Framework</h2>
-<p><img src="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/image-20231211112924455.png" srcset="/img/loading.gif" lazyload alt="image-20231211112924455"></p>
-<h3 id="Brain">Brain</h3>
-<h4> <mark>typology of brain module</mark></h4>
-<p><a target="_blank" rel="noopener" href="https://github.com/WooooDyy/LLM-Agent-Paper-List?tab=readme-ov-file#11-brain-primarily-composed-of-an-llm">reference</a></p>
-<p><img src="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/image-20231211113646350.png" srcset="/img/loading.gif" lazyload alt="image-20231211113646350"></p>
-<h4 id="Knowledge">Knowledge</h4>
-<p><strong>problems</strong></p>
-<ul>
-<li>incorrect 、outdated knowledge</li>
-</ul>
-<p><strong>editing knowledge</strong></p>
-<ul>
-<li>locate knowledge</li>
-<li>modify knowledge</li>
-<li>evaluate the correctness of LLM</li>
-<li>utilize external tools to avoid incorrect</li>
-</ul>
-<h4 id="Memory">Memory</h4>
-<p><strong>stores</strong> the past <strong>observations, thoughts and actions</strong></p>
-<p><strong>Problems</strong></p>
-<ul>
-<li>sheer length of memory length
-<ul>
-<li>may surpass the length limit</li>
-</ul>
-</li>
-<li>extracting relevant memories</li>
-<li>with memory increase, how to locate the relevent parts</li>
-</ul>
-<p><strong>Methods:</strong></p>
-<ul>
-<li>Raising the length limit of Transformers</li>
-<li>summarizing memory</li>
-<li><strong>Compressing memories with vectors or data structures</strong>
-<ul>
-<li>by what format to boost memory retrieval efficiency</li>
-</ul>
-</li>
-</ul>
-<h5 id="Memory-Retrieval">Memory Retrieval</h5>
-<ul>
-<li>evaluate by <strong>Recency, Relevance, and Importance</strong></li>
-<li>move、edit、remove、merge memory</li>
-</ul>
-<h4 id="Reasoning-and-Planning">Reasoning and Planning</h4>
-<p><strong>Plan formulation</strong></p>
-<p>decompose an overarching task into numerous sub-tasks</p>
-<ul>
-<li>in  one go</li>
-<li>by cot</li>
-<li>hierarchical</li>
-<li>evaluate all paths before exe</li>
-</ul>
-<p><strong>Plan reflection</strong></p>
-<ul>
-<li>
-<p>Align with human</p>
-</li>
-<li>
-<p>from  task accomplishments or post-action observations</p>
-</li>
-</ul>
-<h4 id="Transferability-and-Generalization">Transferability and Generalization</h4>
-<ul>
-<li>ICL</li>
-<li>Continual learning
-<ul>
-<li>continuous acquisition and update of skills</li>
-<li>key issue is  catastrophic forgetting</li>
-</ul>
-</li>
-</ul>
-<h3 id="Perception">Perception</h3>
-<p><img src="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/image-20231211142412933.png" srcset="/img/loading.gif" lazyload alt="image-20231211142412933"></p>
-<h3 id="Action">Action</h3>
-<p><img src="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/image-20231211143917051.png" srcset="/img/loading.gif" lazyload alt="image-20231211143917051"></p>
-<h4 id="Tools">Tools</h4>
-<ul>
-<li>understanding</li>
-<li>learning to use</li>
-<li>user suitable for agent
-<ul>
-<li>modular</li>
-<li>Input\output format</li>
-</ul>
-</li>
-</ul>
-<h2 id="Agent-in-practice">Agent in practice</h2>
-<h3 id="Organizations">Organizations</h3>
-<p><img src="https://cdn.jsdelivr.net/gh/AL-377/pic_bed/img/image-20231211152221242.png" srcset="/img/loading.gif" lazyload alt="image-20231211152221242"></p>
-<h3 id="Single-Agent-Deployment">Single Agent Deployment</h3>
-<ul>
-<li><strong>Task-oriented Deployment</strong>
-<ul>
-<li>daily high-level instructions from users-&gt;goal decomposition-&gt;interactive exploration of the environment</li>
-</ul>
-</li>
-<li><strong>Innovation-oriented Deployment</strong>
-<ul>
-<li>domain-specific,professional scenes</li>
-</ul>
-</li>
-<li><strong>Lifecycle-oriented Deployment</strong>
-<ul>
-<li>some minecraft examples</li>
-</ul>
-</li>
-</ul>
-<h3 id="Multi-Agents-Interaction">Multi-Agents Interaction</h3>
-<ul>
-<li>
-<p><strong>disordered cooperation</strong></p>
-<ul>
-<li>without a specific workflow</li>
-<li>feel free to express everyone’s perspective</li>
-<li></li>
-</ul>
-</li>
-<li>
-<p><strong>ordered cooperation</strong></p>
-</li>
-</ul>
-<h2 id="Insights">Insights</h2>
-<ol>
-<li>记忆机制</li>
-<li>高效generation</li>
-<li>高效interaction</li>
-<li>Low-level、high-level的计划</li>
-</ol>
-<p>​</p>
+              
+              <div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
+  <script id="hbeData" type="hbeData" data-hmacdigest="696eb3f451cd281a430cd71fd35c67662c3a59eda2cfbd31e4674078a7b8cf49">53411691478b5b9b0a7b1469976248e2f9cfb98e8d63027adccfbab5e323b254e949df4a152df02564991bad85a2dad801bb84d214bdd64bd9d5c2511f9d92bffdaec1900d58fe8d09871b86c293134d1bcd50830cc37b424ee9b2c44085d6bdff5dbecb32f3ded3eb4f20cc23cb8a2ef341beceec21752e7c78890e47069ccec569267a06c724abe428d0723b0d964dd4174cfd4d81f6229c75654edb85d76d9ecf7788ba930cf271837a79c9d325d04fc71e76ad66e9831d344baca6b65197f6ed44a7738436e74c9f5587b7cc92b0c57b38375f7fc9071d049d767676c80d01216d324ff153f705edb5a7d9064a512bdb92e0a09a3f77033accdfbe2a766085e6958cac1c3679c9a8394f4e26a5c6</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-default">
+      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-default">Hey, password is required here.</span>
+      </label>
+    </div>
+  </div>
+</div>
+<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">
+              
 
-                
-              </div>
+              
             
             <hr/>
             <div>
@@ -454,13 +315,6 @@
   <a href="/categories/LLM/" class="category-chain-item">LLM</a>
   
   
-    <span>></span>
-    
-  <a href="/categories/LLM/Agents/" class="category-chain-item">Agents</a>
-  
-  
-
-  
 
       </span>
     
@@ -473,7 +327,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/Agents/" class="print-no-link">#Agents</a>
+        <a href="/tags/LLM/" class="print-no-link">#LLM</a>
       
     </div>
   
@@ -485,8 +339,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>《Paper Reading》The Rise and Potential of Large Language Model</div>
-      <div>https://al-377.github.io/2023/12/11/Paper-rise-potential-LLM-agents/</div>
+      <div>LLM Resource List</div>
+      <div>https://al-377.github.io/2023/12/12/LLM-resource/</div>
     </div>
     <div class="license-meta">
       
@@ -498,7 +352,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年12月11日</div>
+          <div>2023年12月12日</div>
         </div>
       
       
@@ -530,18 +384,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/12/12/LLM-resource/" title="LLM Resource List">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">LLM Resource List</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/12/10/Agent-Resource/" title="Agent随笔">
-                        <span class="hidden-mobile">Agent随笔</span>
+                      <a href="/2023/12/11/Paper-rise-potential-LLM-agents/" title="《Paper Reading》The Rise and Potential of Large Language Model">
+                        <span class="hidden-mobile">《Paper Reading》The Rise and Potential of Large Language Model</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -712,6 +560,23 @@
   
 
 
+
+
+  
+  <script defer>
+    if (document.getElementById('hbePass') || document.querySelector('hbe-prefix')) {
+      Fluid.utils.waitElementLoaded('hbe-prefix', function() {
+        var hbePrefix = document.querySelector('hbe-prefix');
+        hbePrefix.parentElement.classList.add('markdown-body');
+        Fluid.utils.retry(function() {
+          if (Fluid.boot && Fluid.boot.refresh) {
+            Fluid.boot.refresh();
+            return true;
+          }
+        }, 100, 10);
+      })
+    }
+  </script>
 
 
   
