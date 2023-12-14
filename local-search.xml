@@ -4,6 +4,33 @@
   
   
   <entry>
+    <title>quantization-learning</title>
+    <link href="/2023/12/14/quantization-learning/"/>
+    <url>/2023/12/14/quantization-learning/</url>
+    
+    <content type="html"><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">  <script id="hbeData" type="hbeData" data-hmacdigest="3b17a416ae48c47ac787d7ca3551cbc8241d34d9497717b077d57bf3ae8f53d8">011267d2989b78af419d149d94eaa029d76b867676a833e9a9e4a2b30abce3e4bf33d0fba3fff38d9bd27750f6d4f2151423cef4b0b3599afc50aaa3c5d157a36a875dd8b3d0d391b0b6a41ed16a88edfac469a2d0fcf74e0e123e01186e956d96d080d85d525b8fe5f7672f0397a7e33bdececdee768d27d6f8db6cef21a0a4b287180dbc062f45d5d556f5e01b61ae5337949211d22737787700c1382f4776f8abd24af3aa13387e7ec5a1b4d1752b7fd8087d24009eacd5da762a97e6805bb497324fc7139257af58715de2e60c5ccc802e2a8656db903e2a21521cd824dd211dced8df494a92db65c24c744bb7a1c1fe0a08e4668cac6442c25a06aa4de2dc691e956e9d0c3f631f9ea30510770fc4202615ee52c72e092fe4ff1b258bf0f77f8bec0f3be5030095a3bc7a07c792b3a233f95f0ba8da7dd8ee0aa4fa53bf1ab308596cca61425db9a8c34197f1030ab0d9bde5b59e69a48574334f046bb844fcc4b8f806187f5ae424d5d1908874839ab411f46e8bb2a249c8275d81c89907e3885aee2ecd2e61b2874f8d969e79432c1d1d4e3697d881f1196274abd33d75492319862425df227330faaa2d3dda17aa47542b093ec45444b396ff36b8d7</script>  <div class="hbe hbe-content">    <div class="hbe hbe-input hbe-input-default">      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">        <span class="hbe hbe-input-label-content hbe-input-label-content-default">Hey, password is required here.</span>      </label>    </div>  </div></div><script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
+    
+    
+    <categories>
+      
+      <category>LLM</category>
+      
+      <category>quantization</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>quantization</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>LLM Resource List</title>
     <link href="/2023/12/12/LLM-resource/"/>
     <url>/2023/12/12/LLM-resource/</url>
