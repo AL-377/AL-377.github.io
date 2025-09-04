@@ -55,10 +55,10 @@ My current research interests primarily focus on:
   Seed VLM Team \
   Technical Report 2025, [[Paper](arxiv.org/abs/2505.07062)]
 - **AXIS: Efficient Human-Agent-Computer Interaction with API-First LLM-Based Agents** \
-  <i>**Junting Lu**</i>, Zhiyang Zhang, Fangkai Yang, Jue Zhang, Lu Wang, Chao Du, Qingwei Lin, Saravan Rajmohan, Dongmei Zhang, Qi Zhang \
+  <i>**Junting Lu\***</i>, Zhiyang Zhang\*, Fangkai Yang, Jue Zhang, Lu Wang, Chao Du, Qingwei Lin, Saravan Rajmohan, Dongmei Zhang, Qi Zhang \
   ACL 2025 Main, [[Paper](https://arxiv.org/abs/2409.17140)]
 - **Large Action Models**: From Inception to Implementation \
-  Lu Wang, Fangkai Yang, Chaoyun Zhang, <i>**Junting Lu**</i>, Jiaxu Qian, Shilin He, Pu Zhao, Bo Qiao, Ray Huang, Si Qin, Qisheng Su, Jiayi Ye, Yudi Zhang, Jian-Guang Lou, Qingwei Lin, Saravan Rajmohan, Dongmei Zhang, Qi Zhang \
+  Lu Wang\*, Fangkai Yang\*, Chaoyun Zhang\*, <i>**Junting Lu**</i>, Jiaxu Qian, Shilin He, Pu Zhao, Bo Qiao, Ray Huang, Si Qin, Qisheng Su, Jiayi Ye, Yudi Zhang, Jian-Guang Lou, Qingwei Lin, Saravan Rajmohan, Dongmei Zhang, Qi Zhang \
   TMLR 2025, [[Paper](https://arxiv.org/abs/2412.10047)]
 - **Thread: A Logic-Based Data Organization Paradigm for How-To Question Answering with Retrieval Augmented Generation** \
   Kaikai An, Fangkai Yang, Liqun Li, <i>**Junting Lu**</i>, Sitao Cheng, Lu Wang, Pu Zhao, Lele Cao, Qingwei Lin, Saravan Rajmohan, Dongmei Zhang, Qi Zhang \
@@ -67,13 +67,13 @@ My current research interests primarily focus on:
   Kaikai An, Fangkai Yang, <i>**Junting Lu**</i>, Liqun Li, Zhixing Ren, Hao Huang, Lu Wang, Pu Zhao, Yu Kang, Hua Ding, Qingwei Lin, Saravan Rajmohan, Dongmei Zhang, Qi Zhang \
   ECAI 2024, [[Paper](https://arxiv.org/abs/2402.17531)]
 - **PMPO: Probabilistic Metric Prompt Optimization for Small and Large Language Models** \
-  Chenzhuo Zhao, Ziqian Liu, Xingda Wang, <i>**Junting Lu**</i>, Chaoyi Ruan \
+  Chenzhuo Zhao\*, Ziqian Liu\*, Xingda Wang, <i>**Junting Lu**</i>, Chaoyi Ruan \
   EMNLP 2025, [[Paper](https://arxiv.org/abs/2505.16307)]
 - **Code-vision: Evaluating multimodal llms logic understanding and code generation capabilities** \
-  Hanbin Wang, Xiaoxuan Zhou, Zhipeng Xu, Keyuan Cheng, Yuxin Zuo, Kai Tian, Jingwei Song, <i>**Junting Lu**</i>, Wenhui Hu, Xueyang Liu \
+  Hanbin Wang\*, Xiaoxuan Zhou\*, Zhipeng Xu, Keyuan Cheng, Yuxin Zuo, Kai Tian, Jingwei Song, <i>**Junting Lu**</i>, Wenhui Hu, Xueyang Liu \
   Preprint 2025, [[Paper](https://arxiv.org/abs/2502.11829)]
 - **TASE: Token Awareness and Structured Evaluation for Multilingual Language Models** \
-  Chenzhuo Zhao, Xinda Wang, Yue Huang, <i>**Junting Lu**</i>, Ziqian Liu \
+  Chenzhuo Zhao\*, Xinda Wang\*, Yue Huang, <i>**Junting Lu**</i>, Ziqian Liu \
   Preprint 2025, [[Paper](https://arxiv.org/pdf/2508.05468)]
 
 
