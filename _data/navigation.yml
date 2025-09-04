@@ -1,0 +1,28 @@
+# main links links
+main:
+  - title: "About Me"
+    url: "/#about-me"
+
+  - title: "Educations"
+    url: "/#-educations"
+    
+  - title: "News"
+    url: "/#-news"
+
+  - title: "Publications"
+    url: "/#-publications"
+
+  - title: "Honors and Awards"
+    url: "/#-honors-and-awards"
+
+  - title: "Contest Awards"
+    url: "/#-contest-awards"
+
+  - title: "Invited Activities"
+    url: "/#-invited-activities"
+
+  - title: "Internships"
+    url: "/#-internships"
+  
+  - title: "Lifestyle"
+    url: "/#-lifestyle"
