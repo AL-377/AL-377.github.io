@@ -17,7 +17,7 @@ redirect_from:
 
 <span class='anchor' id='about-me'></span>
 
-😎 Hi, I am Junting Lu (Aidan Lew), currently a second-year master student at Institute for Software Engineering, Peking University (PKU). Prior to that, I received the B.S. degree from Northwestern Polytechnical University (NWPU) in 2023. 
+😎 Hi, I am **Junting Lu (Aidan Lew)**, currently a second-year master student at Institute for Software Engineering, Peking University (PKU). Prior to that, I received the B.S. degree from Northwestern Polytechnical University (NWPU) in 2023. 
 
 My current research interests primarily focus on:
 - **Tool Learning**: Explore how to endow large models with higher-order tool use abilities.
