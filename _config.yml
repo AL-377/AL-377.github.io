@@ -6,9 +6,9 @@
 # `jekyll serve`. If you change this file, please restart the server process.
 
 # Site Settings
-title                    : "Wenxuan Zeng (曾文轩)"
-description              : "Institute for AI @ PKU | Intern @ Microsoft"
-repository               : "zwxandy/zwxandy.github.io"
+title                    : "Junting Lu"
+description              : "Institute for SE @ PKU | Intern @ Bytedance"
+repository               : "AL-377/AL-377.github.io"
 google_scholar_stats_use_cdn : true
 
 # google analytics
@@ -21,14 +21,14 @@ baidu_site_verification  :  # get baidu_site_verification from https://ziyuan.ba
 
 # Site Author
 author:
-  name             : "Wenxuan Zeng"
+  name             : "Junting Lu"
   avatar           : "images/self.png"
   bio              : ""
   location         : "Beijing, China"
   employer         :
   pubmed           : 
-  googlescholar    : "https://scholar.google.com/citations?user=P1c6nDYAAAAJ"
-  email            : "zwx.andy@stu.pku.edu.cn"
+  googlescholar    : "https://scholar.google.com/citations?user=ZyvZWYYAAAAJ"
+  email            : "aidan.lew.37@stu.pku.edu.cn"
   researchgate     :  # e.g., "https://www.researchgate.net/profile/yourprofile"
   uri              :
   bitbucket        :
@@ -43,7 +43,7 @@ author:
   instagram        :
   impactstory      : # e.g., "https://profiles.impactstory.org/u/xxxx-xxxx-xxxx-xxxx"
   lastfm           :
-  linkedin         : "wenxuan-zeng-82851428a"
+  linkedin         : 
   dblp             : # e.g., "https://dblp.org/pid/xx/xxxx.html"
   orcid            : # e.g., "https://orcid.org/xxxx"
   pinterest        :
