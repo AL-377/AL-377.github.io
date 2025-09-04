@@ -20,9 +20,8 @@ redirect_from:
 😎 Hi, I am **Junting Lu (Aidan Lew)**, currently a second-year master student at Institute for Software Engineering, Peking University (PKU). Prior to that, I received the B.S. degree from Northwestern Polytechnical University (NWPU) in 2023. 
 
 My current research interests primarily focus on:
-- **Tool Learning**: Explore how to endow large models with higher-order tool use abilities.
-- **OS Agent**: Investigate the development of intelligent agents that utilize (multi-modal) large language models
-((M)LLMs) to operate within operating systems (OS) environments, enhances user interactions.
+- **Tool Learning**: Explore how to endow large models with human-level tool use abilities.
+- **OS Agent**: Develop intelligent agents that utilize (multi-modal) large language models ((M)LLMs) to operate within operating systems (OS) environments.
 - **Native VLM Agent**: Advancing research on equipping MLLMs with hybird Agent abilities.
 
 
