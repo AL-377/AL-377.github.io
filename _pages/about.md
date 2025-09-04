@@ -31,6 +31,8 @@ My current research interests primarily focus on:
 
 
 # 🔥 News
+- 🌟 [2025.09.04]: We’re excited to announce the release the **UI-TARS-2**, which is a major upgrade from UI-TARS-1.5, featuring with enhanced capabilities in GUI, Game, Code and Tool Use. It is an "All In One" Agent model, enabling seamless integration of multiple abilities for complex tasks. Please check our new [technical report](https://arxiv.org/abs/2509.02544) for more details. Refer to more fantastic showcases at our [website](https://seed-tars.com/showcase/ui-tars-2/).
+- 🌟 [2025.04.16]: We shared the latest progress of the UI-TARS-1.5 model in our [blog](https://seed-tars.com/1.5), which excels in playing games and performing GUI tasks, and we open-sourced the [UI-TARS-1.5-7B](https://huggingface.co/ByteDance-Seed/UI-TARS-1.5-7B).
 - 🎉 [2025.08.21] 2 papers been accepted by EMNLP 2025.
 - 🎉 [2025.07.21] [LAM](https://arxiv.org/abs/2412.10047) been accepted by TMLR 2025.
 - 🎉 [2025.05.16] [AXIS](https://arxiv.org/abs/2409.17140) been accepted by ACL 2025.
