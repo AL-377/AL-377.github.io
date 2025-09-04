@@ -88,7 +88,7 @@ My current research interests primarily focus on:
 # 💻 Internships
 - [2025.2-present] Bytedance-Seed (supervised by Dr. [Yujia Qin](https://yujia-qin.github.io/))
 - [2024.3-2024.10] Microsoft DKI Group (supervised by Dr. [Fangkai Yang](https://www.microsoft.com/en-us/research/people/fangkaiyang/))
-- [2023.8-2024.2] ModelBest & TsinghuaNLP (supervised by Dr. Yinxu Pan, Prof. [Zhiyuan Liu](https://nlp.csai.tsinghua.edu.cn/~lzy/))
+- [2023.8-2024.2] ModelBest && TsinghuaNLP (supervised by Dr. Yinxu Pan, Prof. [Zhiyuan Liu](https://nlp.csai.tsinghua.edu.cn/~lzy/))
 
 # 💡 Lifestyle
 
