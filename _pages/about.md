@@ -32,7 +32,7 @@ My current research interests primarily focus on:
 
 
 # 🔥 News
-- 🎉 [2025.08.21] 2 papers been accepted by EMNLP 2025
+- 🎉 [2025.08.21] 2 papers been accepted by EMNLP 2025.
 - 🎉 [2025.07.21] [LAM](https://arxiv.org/abs/2412.10047) been accepted by TMLR 2025.
 - 🎉 [2025.05.16] [AXIS](https://arxiv.org/abs/2409.17140) been accepted by ACL 2025.
 - 🔥 [2025.02.22] We released [EasyR1](https://github.com/hiyouga/EasyR1) 🎉🎉🎉, an Efficient, Scalable, Multi-Modality RL Training Framework based on veRL.
@@ -40,33 +40,41 @@ My current research interests primarily focus on:
 - 🎉 [2023.11.23] We released the [XAgent](https://github.com/OpenBMB/XAgent) v1.0.0! 🎉🎉🎉
 
 
+
+# 💌 Projects
+- [UI-TARS](https://github.com/bytedance/UI-TARS): **An open-source multimodal agent built upon a powerful vision-language model**. ![Github stars](https://img.shields.io/github/stars/bytedance/UI-TARS.svg)
+- [XAgent](https://github.com/OpenBMB/XAgent): **An Autonomous Agent for Complex Task Solving.** ![Github stars](https://img.shields.io/github/stars/OpenBMB/XAgent.svg)
+- [UFO](https://github.com/microsoft/UFO): **A UI-Focused Agent for Windows OS Interaction.** ![Github stars](https://img.shields.io/github/stars/microsoft/UFO.svg)
+- [EasyR1](https://github.com/hiyouga/EasyR1): **An Efficient, Scalable, Multi-Modality RL Training Framework based on veRL.** ![Github stars](https://img.shields.io/github/stars/hiyouga/EasyR1.svg)
+
+
 # 📝 Publications 
-- UI-TARS-2 Technical Report: Advancing GUI Agent with Multi-Turn Reinforcement Learning \
+- **UI-TARS-2 Technical Report: Advancing GUI Agent with Multi-Turn Reinforcement Learning** \
   UI-TARS Team \
-  Technical Report 2025, [[Paper](https://arxiv.org/abs/2509.02544)]
-- Seed1.5-VL Technical Report \
+  Technical Report 2025, [[Paper](https://arxiv.org/abs/2509.02544)],
+- **Seed1.5-VL Technical Report** \
   Seed VLM Team \
   Technical Report 2025, [[Paper](arxiv.org/abs/2505.07062)]
-- AXIS: Efficient Human-Agent-Computer Interaction with API-First LLM-Based Agents \
-  **Junting Lu**, Zhiyang Zhang, Fangkai Yang, Jue Zhang, Lu Wang, Chao Du, Qingwei Lin, Saravan Rajmohan, Dongmei Zhang, Qi Zhang \
+- **AXIS: Efficient Human-Agent-Computer Interaction with API-First LLM-Based Agents** \
+  <i>**Junting Lu**</i>, Zhiyang Zhang, Fangkai Yang, Jue Zhang, Lu Wang, Chao Du, Qingwei Lin, Saravan Rajmohan, Dongmei Zhang, Qi Zhang \
   ACL 2025 Main, [[Paper](https://arxiv.org/abs/2409.17140)]
-- Large Action Models: From Inception to Implementation \
-  Lu Wang, Fangkai Yang, Chaoyun Zhang, **Junting Lu**, Jiaxu Qian, Shilin He, Pu Zhao, Bo Qiao, Ray Huang, Si Qin, Qisheng Su, Jiayi Ye, Yudi Zhang, Jian-Guang Lou, Qingwei Lin, Saravan Rajmohan, Dongmei Zhang, Qi Zhang \
+- **Large Action Models**: From Inception to Implementation \
+  Lu Wang, Fangkai Yang, Chaoyun Zhang, <i>**Junting Lu**</i>, Jiaxu Qian, Shilin He, Pu Zhao, Bo Qiao, Ray Huang, Si Qin, Qisheng Su, Jiayi Ye, Yudi Zhang, Jian-Guang Lou, Qingwei Lin, Saravan Rajmohan, Dongmei Zhang, Qi Zhang \
   TMLR 2025, [[Paper](https://arxiv.org/abs/2412.10047)]
-- Thread: A Logic-Based Data Organization Paradigm for How-To Question Answering with Retrieval Augmented Generation \
-  Kaikai An, Fangkai Yang, Liqun Li, **Junting Lu**, Sitao Cheng, Lu Wang, Pu Zhao, Lele Cao, Qingwei Lin, Saravan Rajmohan, Dongmei Zhang, Qi Zhang \
+- **Thread: A Logic-Based Data Organization Paradigm for How-To Question Answering with Retrieval Augmented Generation** \
+  Kaikai An, Fangkai Yang, Liqun Li, <i>**Junting Lu**</i>, Sitao Cheng, Lu Wang, Pu Zhao, Lele Cao, Qingwei Lin, Saravan Rajmohan, Dongmei Zhang, Qi Zhang \
   EMNLP 2025, [[Paper](https://arxiv.org/abs/2406.13372)]
-- Nissist: An Incident Mitigation Copilot based on Troubleshooting Guides \
-  Kaikai An, Fangkai Yang, **Junting Lu**, Liqun Li, Zhixing Ren, Hao Huang, Lu Wang, Pu Zhao, Yu Kang, Hua Ding, Qingwei Lin, Saravan Rajmohan, Dongmei Zhang, Qi Zhang \
+- **Nissist: An Incident Mitigation Copilot based on Troubleshooting Guides** \
+  Kaikai An, Fangkai Yang, <i>**Junting Lu**</i>, Liqun Li, Zhixing Ren, Hao Huang, Lu Wang, Pu Zhao, Yu Kang, Hua Ding, Qingwei Lin, Saravan Rajmohan, Dongmei Zhang, Qi Zhang \
   ECAI 2024, [[Paper](https://arxiv.org/abs/2402.17531)]
-- PMPO: Probabilistic Metric Prompt Optimization for Small and Large Language Models \
-  Chenzhuo Zhao, Ziqian Liu, Xingda Wang, **Junting Lu**, Chaoyi Ruan \
+- **PMPO: Probabilistic Metric Prompt Optimization for Small and Large Language Models** \
+  Chenzhuo Zhao, Ziqian Liu, Xingda Wang, <i>**Junting Lu**</i>, Chaoyi Ruan \
   EMNLP 2025, [[Paper](https://arxiv.org/abs/2505.16307)]
-- Code-vision: Evaluating multimodal llms logic understanding and code generation capabilities \
-  Hanbin Wang, Xiaoxuan Zhou, Zhipeng Xu, Keyuan Cheng, Yuxin Zuo, Kai Tian, Jingwei Song, **Junting Lu**, Wenhui Hu, Xueyang Liu \
+- **Code-vision: Evaluating multimodal llms logic understanding and code generation capabilities** \
+  Hanbin Wang, Xiaoxuan Zhou, Zhipeng Xu, Keyuan Cheng, Yuxin Zuo, Kai Tian, Jingwei Song, <i>**Junting Lu**</i>, Wenhui Hu, Xueyang Liu \
   Preprint 2025, [[Paper](https://arxiv.org/abs/2502.11829)]
-- TASE: Token Awareness and Structured Evaluation for Multilingual Language Models \
-  Chenzhuo Zhao, Xinda Wang, Yue Huang, **Junting Lu**, Ziqian Liu \
+- **TASE: Token Awareness and Structured Evaluation for Multilingual Language Models** \
+  Chenzhuo Zhao, Xinda Wang, Yue Huang, <i>**Junting Lu**</i>, Ziqian Liu \
   Preprint 2025, [[Paper](https://arxiv.org/pdf/2508.05468)]
 
 
@@ -84,4 +92,4 @@ My current research interests primarily focus on:
 
 # 💡 Lifestyle
 
-- My hobbies include but are not limited to 🎤singing, 🎸guitar, 🧙 magic and various novel and interesting things like Rubik's Cube. Feel free to discuss these interests and hobbies with me!
+- My hobbies include but are not limited to 🎤singing, 🎸guitar, 🧙 magic.
