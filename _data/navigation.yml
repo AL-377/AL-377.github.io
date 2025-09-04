@@ -8,18 +8,15 @@ main:
     
   - title: "News"
     url: "/#-news"
+  
+  - title: "Projects"
+    url: "/#-projects"
 
   - title: "Publications"
     url: "/#-publications"
 
   - title: "Honors and Awards"
     url: "/#-honors-and-awards"
-
-  - title: "Contest Awards"
-    url: "/#-contest-awards"
-
-  - title: "Invited Activities"
-    url: "/#-invited-activities"
 
   - title: "Internships"
     url: "/#-internships"
