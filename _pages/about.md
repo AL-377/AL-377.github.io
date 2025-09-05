@@ -94,4 +94,4 @@ My current research interests primarily focus on:
 
 # 💡 Lifestyle
 
-- My hobbies include but are not limited to 🎤singing, 🎸guitar, 🧙 magic.
+- My hobbies include but are not limited to 🎤singing, 🎸guitar, 🧙 magic and 🫘 bean.
