@@ -82,7 +82,7 @@ My current research interests primarily focus on:
 
 # 🎖 Honors and Awards
 - [2024] Luo Yuehua Scholarship at Peking University
-- [2023] Shanxi Province Outstanding Undergraduate at NWPU
+- [2023] Shannxi Province Outstanding Undergraduate at NWPU
 - [2022] Huawei Scholarship at NWPU
 - [2020,2021,2022] National Scholarship for Undergraduate at NWPU  
 
