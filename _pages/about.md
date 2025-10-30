@@ -56,11 +56,11 @@ My current research interests primarily focus on:
 # 📝 Publications 
 - **Game-TARS: Pretrained Foundation Models for Scalable Generalist Multimodal Game Agents** \
   UI-TARS Team \
-  Technical Report 2025, [[Paper](https://arxiv.org/pdf/2510.23691)],
+  Technical Report 2025, [[Paper](https://arxiv.org/pdf/2510.23691)]
 
 - **UI-TARS-2 Technical Report: Advancing GUI Agent with Multi-Turn Reinforcement Learning** \
   UI-TARS Team \
-  Technical Report 2025, [[Paper](https://arxiv.org/abs/2509.02544)],
+  Technical Report 2025, [[Paper](https://arxiv.org/abs/2509.02544)]
 - **Seed1.5-VL Technical Report** \
   Seed VLM Team \
   Technical Report 2025, [[Paper](arxiv.org/abs/2505.07062)]
