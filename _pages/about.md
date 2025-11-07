@@ -80,13 +80,12 @@ My current research interests primarily focus on:
 - **PMPO: Probabilistic Metric Prompt Optimization for Small and Large Language Models** \
   Chenzhuo Zhao\*, Ziqian Liu\*, Xingda Wang, <i>**Junting Lu**</i>, Chaoyi Ruan \
   EMNLP 2025, [[Paper](https://arxiv.org/abs/2505.16307)]
+- **TASE: Token Awareness and Structured Evaluation for Multilingual Language Models** \
+  Chenzhuo Zhao\*, Xinda Wang\*, Yue Huang, <i>**Junting Lu**</i>, Ziqian Liu \
+  AAAI 2026, [[Paper](https://arxiv.org/pdf/2508.05468)]
 - **Code-vision: Evaluating multimodal llms logic understanding and code generation capabilities** \
   Hanbin Wang\*, Xiaoxuan Zhou\*, Zhipeng Xu, Keyuan Cheng, Yuxin Zuo, Kai Tian, Jingwei Song, <i>**Junting Lu**</i>, Wenhui Hu, Xueyang Liu \
   Preprint 2025, [[Paper](https://arxiv.org/abs/2502.11829)]
-- **TASE: Token Awareness and Structured Evaluation for Multilingual Language Models** \
-  Chenzhuo Zhao\*, Xinda Wang\*, Yue Huang, <i>**Junting Lu**</i>, Ziqian Liu \
-  Preprint 2025, [[Paper](https://arxiv.org/pdf/2508.05468)]
-
 
 # 🎖 Honors and Awards
 - [2024] Luo Yuehua Scholarship at Peking University
