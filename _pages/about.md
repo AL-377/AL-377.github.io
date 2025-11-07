@@ -42,7 +42,7 @@ My current research interests primarily focus on:
 - 🌟 [2025.04.16]: We shared the latest progress of the UI-TARS-1.5 model in our [blog](https://seed-tars.com/1.5), which excels in playing games and performing GUI tasks, and we open-sourced the [UI-TARS-1.5-7B](https://huggingface.co/ByteDance-Seed/UI-TARS-1.5-7B).
 - 🔥 [2025.02.22] We released [EasyR1](https://github.com/hiyouga/EasyR1) 🎉🎉🎉, an Efficient, Scalable, Multi-Modality RL Training Framework based on veRL.
 - 🔥 [2024.12.13] We released the [UFO](https://github.com/microsoft/UFO) v1.2.0 with the code and sample data for Large Action Model (LAM) data collection! Please checkout our new paper and documentation for more details.
-- 🔥 [2024.07.04] [Nissist](https://arxiv.org/abs/2402.17531) been accepted by ECAI 2024.
+- 🔥 [2024.07.04] [Nissist](https://arxiv.org/abs/2402.17531) been accepted by ECAL 2024.
 - 🎉 [2023.11.23] We released the [XAgent](https://github.com/OpenBMB/XAgent) v1.0.0! 🎉🎉🎉
 
 
@@ -76,7 +76,7 @@ My current research interests primarily focus on:
   EMNLP 2025, [[Paper](https://arxiv.org/abs/2406.13372)]
 - **Nissist: An Incident Mitigation Copilot based on Troubleshooting Guides** \
   Kaikai An, Fangkai Yang, <i>**Junting Lu**</i>, Liqun Li, Zhixing Ren, Hao Huang, Lu Wang, Pu Zhao, Yu Kang, Hua Ding, Qingwei Lin, Saravan Rajmohan, Dongmei Zhang, Qi Zhang \
-  ECAI 2024, [[Paper](https://arxiv.org/abs/2402.17531)]
+  ECAL 2024, [[Paper](https://arxiv.org/abs/2402.17531)]
 - **PMPO: Probabilistic Metric Prompt Optimization for Small and Large Language Models** \
   Chenzhuo Zhao\*, Ziqian Liu\*, Xingda Wang, <i>**Junting Lu**</i>, Chaoyi Ruan \
   EMNLP 2025, [[Paper](https://arxiv.org/abs/2505.16307)]
