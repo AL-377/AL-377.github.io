@@ -33,7 +33,7 @@ My current research interests primarily focus on:
 
 
 # 🔥 News
-- 🎉 [2025.11.08]: [TASE](https://arxiv.org/pdf/2508.05468) been accepted by AAAI 2026. Congratulations to Zhuocheng!
+- 🎉 [2025.11.08]: [TASE](https://arxiv.org/pdf/2508.05468) been accepted by AAAI 2026. Congratulations to Chenzhuo!
 - 🎉 [2025.10.29]: We released [Game-Tars](https://arxiv.org/abs/2510.23691): A generalist game agent trained with a unified, scalable action space anchored to human-aligned native keyboard-mouse inputs.
 - 🌟 [2025.09.04]: We’re excited to announce the release the **UI-TARS-2**, which is a major upgrade from UI-TARS-1.5, featuring with enhanced capabilities in GUI, Game, Code and Tool Use. It is an "All In One" Agent model, enabling seamless integration of multiple abilities for complex tasks. Please check our new [technical report](https://arxiv.org/abs/2509.02544) for more details. Refer to more fantastic showcases at our [website](https://seed-tars.com/showcase/ui-tars-2/).
 - 🎉 [2025.08.21] 2 papers been accepted by EMNLP 2025.
