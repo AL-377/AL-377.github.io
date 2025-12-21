@@ -33,6 +33,7 @@ My current research interests primarily focus on:
 
 
 # 🔥 News
+- 🌟 [2025.12.18]: Our team is releasing **Seed1.8**, a model designed for generalized real-world agency. It supports text and image inputs and with its powerful multimodal processing capabilities, it demonstrates good performance across various complex application scenarios such as information retrieval, coding, Graphical User Interface (GUI) interaction. More details check the [model card](https://lf3-static.bytednsdoc.com/obj/eden-cn/lapzild-tss/ljhwZthlaukjlkulzlp/research/Seed-1.8-Modelcard.pdf).
 - 🌟 [2025.09.04]: We’re excited to announce the release the **UI-TARS-2**, which is a major upgrade from UI-TARS-1.5, featuring with enhanced capabilities in GUI, Game, Code and Tool Use. It is an "All In One" Agent model, enabling seamless integration of multiple abilities for complex tasks. Please check our new [technical report](https://arxiv.org/abs/2509.02544) for more details. Refer to more fantastic showcases at our [website](https://seed-tars.com/showcase/ui-tars-2/).
 - 🎉 [2025.08.21] 2 papers been accepted by EMNLP 2025.
 - 🎉 [2025.07.21] [LAM](https://arxiv.org/abs/2412.10047) been accepted by TMLR 2025.
@@ -53,9 +54,12 @@ My current research interests primarily focus on:
 
 
 # 📝 Publications 
+- **Seed1.8 Model Card: Towards Generalized Real-World Agency** \
+  Seed Team \
+  Model card 2025, [[Paper](https://lf3-static.bytednsdoc.com/obj/eden-cn/lapzild-tss/ljhwZthlaukjlkulzlp/research/Seed-1.8-Modelcard.pdf)]
 - **UI-TARS-2 Technical Report: Advancing GUI Agent with Multi-Turn Reinforcement Learning** \
   UI-TARS Team \
-  Technical Report 2025, [[Paper](https://arxiv.org/abs/2509.02544)],
+  Technical Report 2025, [[Paper](https://arxiv.org/abs/2509.02544)]
 - **Seed1.5-VL Technical Report** \
   Seed VLM Team \
   Technical Report 2025, [[Paper](arxiv.org/abs/2505.07062)]
