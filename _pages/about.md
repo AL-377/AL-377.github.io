@@ -34,17 +34,13 @@ My current research interests primarily focus on:
 - 🔥 [2026.02.14]: We released **Seed 2.0**. It is a powerful unified model with comprehensive capabilities surpassing Gemini 3 Pro with extreme superior agent capabilities.
 As a core contributor, I mainly contribute to **general tool use ability** (MCPmark 54.7, BFCLv4 73.4, tau^ 2 retail 90.9, WorldTravel 23.3), which has been greatly improved compared to version 1.8. More details check the [model card](https://lf3-static.bytednsdoc.com/obj/eden-cn/lapzild-tss/ljhwZthlaukjlkulzlp/seed2/0214/Seed2.0%20Model%20Card.pdf).
 - 🌟 [2025.12.18]: Our team is releasing **Seed1.8**, a model designed for generalized real-world agency. It supports text and image inputs and with its powerful multimodal processing capabilities, it demonstrates good performance across various complex application scenarios such as information retrieval, coding, Graphical User Interface (GUI) interaction. More details check the [model card](https://lf3-static.bytednsdoc.com/obj/eden-cn/lapzild-tss/ljhwZthlaukjlkulzlp/research/Seed-1.8-Modelcard.pdf).
-- 🎉 [2025.11.08]: [TASE](https://arxiv.org/pdf/2508.05468) been accepted by AAAI 2026. Congratulations to Chenzhuo!
 - 🎉 [2025.10.29]: We released [Game-Tars](https://arxiv.org/abs/2510.23691): A generalist game agent trained with a unified, scalable action space anchored to human-aligned native keyboard-mouse inputs.
-
-- 🌟 [2025.09.04]: We’re excited to announce the release the **UI-TARS-2**, which is a major upgrade from UI-TARS-1.5, featuring with enhanced capabilities in GUI, Game, Code and Tool Use. It is an "All In One" Agent model, enabling seamless integration of multiple abilities for complex tasks. Please check our new [technical report](https://arxiv.org/abs/2509.02544) for more details. Refer to more fantastic showcases at our [website](https://seed-tars.com/showcase/ui-tars-2/).
-- 🎉 [2025.08.21] 2 papers been accepted by EMNLP 2025.
-- 🎉 [2025.07.21] [LAM](https://arxiv.org/abs/2412.10047) been accepted by TMLR 2025.
-- 🎉 [2025.05.16] [AXIS](https://arxiv.org/abs/2409.17140) been accepted by ACL 2025.
+- 🌟 [2025.09.04]: We’re excited to announce the release the **UI-TARS-2**, which is a major upgrade from UI-TARS-1.5, featuring with enhanced capabilities in GUI, Game, Code and Tool Use. It is an **"All In One"** Agent model, enabling seamless integration of multiple abilities for complex tasks. Please check our new [technical report](https://arxiv.org/abs/2509.02544) for more details. Refer to more fantastic showcases at our [website](https://seed-tars.com/showcase/ui-tars-2/).
+- 🎉 [2025.07.21]: [LAM](https://arxiv.org/abs/2412.10047) been accepted by TMLR 2025. The first paper to systematically expound how to transform a **Large Language Model** into a **Large Action Model** through different training stages.
+- 🎉 [2025.05.16]: [AXIS](https://arxiv.org/abs/2409.17140) been accepted by ACL 2025. We proposes a pioneering agent framework to hybrid **GUI actions with API actions** through **Skill exploration**, so as to improve the efficiency of the OS Agent.
 - 🌟 [2025.04.16]: We shared the latest progress of the UI-TARS-1.5 model in our [blog](https://seed-tars.com/1.5), which excels in playing games and performing GUI tasks, and we open-sourced the [UI-TARS-1.5-7B](https://huggingface.co/ByteDance-Seed/UI-TARS-1.5-7B).
 - 🔥 [2025.02.22] We released [EasyR1](https://github.com/hiyouga/EasyR1) 🎉🎉🎉, an Efficient, Scalable, Multi-Modality RL Training Framework based on veRL.
 - 🔥 [2024.12.13] We released the [UFO](https://github.com/microsoft/UFO) v1.2.0 with the code and sample data for Large Action Model (LAM) data collection! Please checkout our new paper and documentation for more details.
-- 🔥 [2024.07.04] [Nissist](https://arxiv.org/abs/2402.17531) been accepted by ECAL 2024.
 - 🎉 [2023.11.23] We released the [XAgent](https://github.com/OpenBMB/XAgent) v1.0.0! 🎉🎉🎉
 
 
@@ -56,7 +52,7 @@ As a core contributor, I mainly contribute to **general tool use ability** (MCPm
 - [EasyR1](https://github.com/hiyouga/EasyR1): **An Efficient, Scalable, Multi-Modality RL Training Framework based on veRL.** ![Github stars](https://img.shields.io/github/stars/hiyouga/EasyR1.svg)
 
 
-# 📝 Publications 
+# 📝 Selected Publications 
 - **Seed 2.0 Model Card: Towards Intelligence Frontier for Real-World Complexity** \
  Seed Team \
  Model card 2026, [[Paper](https://lf3-static.bytednsdoc.com/obj/eden-cn/lapzild-tss/ljhwZthlaukjlkulzlp/seed2/0214/Seed2.0%20Model%20Card.pdf)]
@@ -78,21 +74,8 @@ As a core contributor, I mainly contribute to **general tool use ability** (MCPm
 - **Large Action Models**: From Inception to Implementation \
   Lu Wang\*, Fangkai Yang\*, Chaoyun Zhang\*, <i>**Junting Lu**</i>, Jiaxu Qian, Shilin He, Pu Zhao, Bo Qiao, Ray Huang, Si Qin, Qisheng Su, Jiayi Ye, Yudi Zhang, Jian-Guang Lou, Qingwei Lin, Saravan Rajmohan, Dongmei Zhang, Qi Zhang \
   TMLR 2025, [[Paper](https://arxiv.org/abs/2412.10047)]
-- **Thread: A Logic-Based Data Organization Paradigm for How-To Question Answering with Retrieval Augmented Generation** \
-  Kaikai An, Fangkai Yang, Liqun Li, <i>**Junting Lu**</i>, Sitao Cheng, Lu Wang, Pu Zhao, Lele Cao, Qingwei Lin, Saravan Rajmohan, Dongmei Zhang, Qi Zhang \
-  EMNLP 2025, [[Paper](https://arxiv.org/abs/2406.13372)]
-- **Nissist: An Incident Mitigation Copilot based on Troubleshooting Guides** \
-  Kaikai An, Fangkai Yang, <i>**Junting Lu**</i>, Liqun Li, Zhixing Ren, Hao Huang, Lu Wang, Pu Zhao, Yu Kang, Hua Ding, Qingwei Lin, Saravan Rajmohan, Dongmei Zhang, Qi Zhang \
-  ECAL 2024, [[Paper](https://arxiv.org/abs/2402.17531)]
-- **PMPO: Probabilistic Metric Prompt Optimization for Small and Large Language Models** \
-  Chenzhuo Zhao\*, Ziqian Liu\*, Xingda Wang, <i>**Junting Lu**</i>, Chaoyi Ruan \
-  EMNLP 2025, [[Paper](https://arxiv.org/abs/2505.16307)]
-- **TASE: Token Awareness and Structured Evaluation for Multilingual Language Models** \
-  Chenzhuo Zhao\*, Xinda Wang\*, Yue Huang, <i>**Junting Lu**</i>, Ziqian Liu \
-  AAAI 2026, [[Paper](https://arxiv.org/pdf/2508.05468)]
-- **Code-vision: Evaluating multimodal llms logic understanding and code generation capabilities** \
-  Hanbin Wang\*, Xiaoxuan Zhou\*, Zhipeng Xu, Keyuan Cheng, Yuxin Zuo, Kai Tian, Jingwei Song, <i>**Junting Lu**</i>, Wenhui Hu, Xueyang Liu \
-  Preprint 2025, [[Paper](https://arxiv.org/abs/2502.11829)]
+
+> Full paper list refer to [google scholar](https://scholar.google.com/citations?user=ZyvZWYYAAAAJ).
 
 # 🎖 Honors and Awards
 - [2024] Luo Yuehua Scholarship at Peking University
