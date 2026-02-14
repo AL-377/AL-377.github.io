@@ -71,7 +71,7 @@ As a core contributor, I mainly contribute to **general tool use ability** (MCPm
 - **AXIS: Efficient Human-Agent-Computer Interaction with API-First LLM-Based Agents** \
   <i>**Junting Lu\***</i>, Zhiyang Zhang\*, Fangkai Yang, Jue Zhang, Lu Wang, Chao Du, Qingwei Lin, Saravan Rajmohan, Dongmei Zhang, Qi Zhang \
   ACL 2025 Main, [[Paper](https://arxiv.org/abs/2409.17140)]
-- **Large Action Models**: From Inception to Implementation \
+- **Large Action Models: From Inception to Implementation** \
   Lu Wang\*, Fangkai Yang\*, Chaoyun Zhang\*, <i>**Junting Lu**</i>, Jiaxu Qian, Shilin He, Pu Zhao, Bo Qiao, Ray Huang, Si Qin, Qisheng Su, Jiayi Ye, Yudi Zhang, Jian-Guang Lou, Qingwei Lin, Saravan Rajmohan, Dongmei Zhang, Qi Zhang \
   TMLR 2025, [[Paper](https://arxiv.org/abs/2412.10047)]
 
