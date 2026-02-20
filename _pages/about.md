@@ -31,7 +31,7 @@ My current research interests primarily focus on:
 
 
 # 🔥 News
-- 🎉 [2026.02.16]: Seed 2.0 made its debut in the LM Arena rankings, securing **6th** place in the Text Arena and **3rd** place in the Vision Arena respectively ! 🎉🎉🎉
+- 🎉 [2026.02.16]: **Seed 2.0** made its debut in the LM Arena rankings, securing **6th** place in the Text Arena and **3rd** place in the Vision Arena respectively ! 🎉🎉🎉
 - 🔥 [2026.02.14]: We released **Seed 2.0**. It is a powerful unified model with comprehensive capabilities surpassing Gemini 3 Pro with extreme superior agent capabilities.
 As a core contributor, I mainly contribute to **general tool use ability** (MCPmark 54.7, BFCLv4 73.4, tau^ 2 retail 90.9, WorldTravel 23.3), which has been greatly improved compared to version 1.8. More details check the [model card](https://lf3-static.bytednsdoc.com/obj/eden-cn/lapzild-tss/ljhwZthlaukjlkulzlp/seed2/0214/Seed2.0%20Model%20Card.pdf).
 - 🌟 [2025.12.18]: Our team is releasing **Seed1.8**, a model designed for generalized real-world agency. It supports text and image inputs and with its powerful multimodal processing capabilities, it demonstrates good performance across various complex application scenarios such as information retrieval, coding, Graphical User Interface (GUI) interaction. More details check the [model card](https://lf3-static.bytednsdoc.com/obj/eden-cn/lapzild-tss/ljhwZthlaukjlkulzlp/research/Seed-1.8-Modelcard.pdf).
