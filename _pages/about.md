@@ -86,10 +86,10 @@ As a core contributor, I mainly contribute to **general tool use ability** (MCPm
 - [2020,2021,2022] National Scholarship for Undergraduate at NWPU  
 
 
-# 💻 Internships
-- [2025.2-present] Bytedance-Seed (supervised by Dr. [Yujia Qin](https://yujia-qin.github.io/))
-- [2024.3-2024.10] Microsoft DKI Group (supervised by Dr. [Fangkai Yang](https://www.microsoft.com/en-us/research/people/fangkaiyang/))
-- [2023.8-2024.2] ModelBest && TsinghuaNLP (supervised by Dr. Yinxu Pan, Prof. [Zhiyuan Liu](https://nlp.csai.tsinghua.edu.cn/~lzy/))
+# 💻 Work Experience
+- [2025.2-present] Bytedance-Seed Intern (supervised by Dr. [Yujia Qin](https://yujia-qin.github.io/))
+- [2024.3-2024.10] Microsoft DKI Group Intern (supervised by Dr. [Fangkai Yang](https://www.microsoft.com/en-us/research/people/fangkaiyang/))
+- [2023.8-2024.2] ModelBest && TsinghuaNLP Intern (supervised by Dr. Yinxu Pan, Prof. [Zhiyuan Liu](https://nlp.csai.tsinghua.edu.cn/~lzy/))
 
 # 📚 Academic Services
 - Serving as a reviewer of KDD 2026

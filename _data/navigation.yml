@@ -13,13 +13,16 @@ main:
     url: "/#-projects"
 
   - title: "Publications"
-    url: "/#-publications"
+    url: "/#-selected-publications"
 
   - title: "Honors and Awards"
     url: "/#-honors-and-awards"
 
-  - title: "Internships"
-    url: "/#-internships"
+  - title: "Work Experience"
+    url: "/#-work-experience"
+
+  - title: "Academic Services"
+    url: "/#-academic-services"
   
   - title: "Lifestyle"
     url: "/#-lifestyle"
