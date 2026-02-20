@@ -39,6 +39,7 @@ As a core contributor, I mainly contribute to **general tool use ability** (MCPm
 - 🌟 [2025.09.04]: We’re excited to announce the release the **UI-TARS-2**, which is a major upgrade from UI-TARS-1.5, featuring with enhanced capabilities in GUI, Game, Code and Tool Use. It is an **"All In One"** Agent model, enabling seamless integration of multiple abilities for complex tasks. Please check our new [technical report](https://arxiv.org/abs/2509.02544) for more details. Refer to more fantastic showcases at our [website](https://seed-tars.com/showcase/ui-tars-2/).
 - 🎉 [2025.07.21]: [LAM](https://arxiv.org/abs/2412.10047) been accepted by TMLR 2025. The first paper to systematically expound how to transform a **Large Language Model** into a **Large Action Model** through different training stages.
 - 🎉 [2025.05.16]: [AXIS](https://arxiv.org/abs/2409.17140) been accepted by ACL 2025. We proposes a pioneering agent framework to hybrid **GUI actions with API actions** through **Skill exploration**, so as to improve the efficiency of the OS Agent.
+- 🎉 [2025.05.11]: We released [Seed1.5-VL](https://arxiv.org/abs/2505.07062), a vision-language foundation model designed to advance general-purpose multimodal understanding and reasoning. In agent-centric tasks such as **GUI control and gameplay**, Seed1.5-VL outperforms leading multimodal systems, including OpenAI CUA and Claude 3.7.
 - 🌟 [2025.04.16]: We shared the latest progress of the UI-TARS-1.5 model in our [blog](https://seed-tars.com/1.5), which excels in playing games and performing GUI tasks, and we open-sourced the [UI-TARS-1.5-7B](https://huggingface.co/ByteDance-Seed/UI-TARS-1.5-7B).
 - 🔥 [2025.02.22] We released [EasyR1](https://github.com/hiyouga/EasyR1) 🎉🎉🎉, an Efficient, Scalable, Multi-Modality RL Training Framework based on veRL.
 - 🔥 [2024.12.13] We released the [UFO](https://github.com/microsoft/UFO) v1.2.0 with the code and sample data for Large Action Model (LAM) data collection! Please checkout our new paper and documentation for more details.
@@ -68,7 +69,7 @@ As a core contributor, I mainly contribute to **general tool use ability** (MCPm
   Technical Report 2025, [[Paper](https://arxiv.org/abs/2509.02544)]
 - **Seed1.5-VL Technical Report** \
   Seed VLM Team \
-  Technical Report 2025, [[Paper](arxiv.org/abs/2505.07062)]
+  Technical Report 2025, [[Paper](https://arxiv.org/abs/2505.07062)]
 - **AXIS: Efficient Human-Agent-Computer Interaction with API-First LLM-Based Agents** \
   <i>**Junting Lu\***</i>, Zhiyang Zhang\*, Fangkai Yang, Jue Zhang, Lu Wang, Chao Du, Qingwei Lin, Saravan Rajmohan, Dongmei Zhang, Qi Zhang \
   ACL 2025 Main, [[Paper](https://arxiv.org/abs/2409.17140)]
