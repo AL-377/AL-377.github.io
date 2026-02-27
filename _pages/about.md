@@ -56,16 +56,16 @@ As a core contributor, I am responsible for **general tool use ability** (MCPmar
 
 # 📝 Selected Publications 
 - **Seed 2.0 Model Card: Towards Intelligence Frontier for Real-World Complexity** \
- Seed Team \
+ Seed Team **(core contributor)** \
  Model card 2026, [[Paper](https://lf3-static.bytednsdoc.com/obj/eden-cn/lapzild-tss/ljhwZthlaukjlkulzlp/seed2/0214/Seed2.0%20Model%20Card.pdf)]
 - **Seed 1.8 Model Card: Towards Generalized Real-World Agency** \
-  Seed Team \
+  Seed Team **(core contributor)** \
   Model card 2025, [[Paper](https://lf3-static.bytednsdoc.com/obj/eden-cn/lapzild-tss/ljhwZthlaukjlkulzlp/research/Seed-1.8-Modelcard.pdf)]
 - **Game-TARS: Pretrained Foundation Models for Scalable Generalist Multimodal Game Agents** \
-  UI-TARS Team \
+  UI-TARS Team **(core contributor)** \
   Technical Report 2025, [[Paper](https://arxiv.org/pdf/2510.23691)]
 - **UI-TARS-2 Technical Report: Advancing GUI Agent with Multi-Turn Reinforcement Learning** \
-  UI-TARS Team \
+  UI-TARS Team **(core contributor)** \
   Technical Report 2025, [[Paper](https://arxiv.org/abs/2509.02544)]
 - **Seed1.5-VL Technical Report** \
   Seed VLM Team \
