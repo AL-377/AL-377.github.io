@@ -17,7 +17,8 @@ redirect_from:
 
 <span class='anchor' id='about-me'></span>
 
-😎 Hi, I am Aidan Lew (**Junting Lu**), a Latent Fool. 
+😎 Hi, I am Aidan Lew (**Junting Lu**), a Latent Fool.
+ 
 
 My Latest and **maybe the Last** Research Topic:
 
