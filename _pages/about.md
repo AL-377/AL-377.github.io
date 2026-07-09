@@ -19,7 +19,7 @@ redirect_from:
 
 😎 Hi, I am Aidan Lew (**Junting Lu**), a Latent Fool. 
 
-> My Latest and **maybe the Last** Research Topic 
+My Latest and **maybe the Last** Research Topic:
 
 🧑‍🎓 Co-optimization of agent harness and LLM capabilities that can help improve efficiency, or even replace human workflows, so that everyone can get off work earlier.
 
